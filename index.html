@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Copper Kettle Café | Specialty Coffee & Artisanal Kitchen</title>
+  <style>
+    :root {
+      --bg: #faf6f0;
+      --surface: #ffffff;
+      --surface-alt: #f3ebe1;
+      --primary: #7c3f1d;
+      --primary-dark: #5a2b12;
+      --accent: #c87d4b;
+      --text: #231710;
+      --muted: #5c4b41;
+      --border: #e2d5c7;
+      --success: #246a45;
+      --danger: #a82828;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(35, 23, 16, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 18px;
+      z-index: 1000;
+      border-radius: 0 0 8px 0;
+      font-weight: 600;
+    }
+    .skip-link:focus {
+      left: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(250, 246, 240, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 16px;
+      min-height: 44px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover,
+    .tab-btn:focus-visible {
+      background: var(--surface-alt);
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .tab-btn[aria-selected="true"] {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .cart-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 10px 16px;
+      min-height: 44px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-badge {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      min-height: 44px;
+      min-width: 44px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-tabs
+    
