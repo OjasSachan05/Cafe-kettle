@@ -23,12 +23,12 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
     body { background: var(--bg); color: var(--text); line-height: 1.6; }
     header { background: #221209; color: #fff; padding: 14px 20px; position: sticky; top: 0; z-index: 60; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22); }
-    .nav-wrap { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .nav-wrap { max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .brand { font-weight: 800; font-size: 1.25rem; color: #ffd4a8; cursor: pointer; display: flex; align-items: center; gap: 10px; }
     nav { display: flex; gap: 8px; flex-wrap: wrap; }
-    .nav-btn { background: rgba(255, 255, 255, 0.12); color: #f7ece1; border: none; padding: 9px 16px; border-radius: 999px; font-weight: 600; font-size: 0.92rem; cursor: pointer; transition: all 0.2s ease; }
+    .nav-btn { background: rgba(255, 255, 255, 0.12); color: #f7ece1; border: none; padding: 9px 15px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; }
     .nav-btn:hover, .nav-btn.active { background: var(--gold); color: #221209; }
-    main { max-width: 1120px; margin: 28px auto; padding: 0 18px 70px; }
+    main { max-width: 1140px; margin: 28px auto; padding: 0 18px 70px; }
     .page-view { display: none; animation: fadeSlide 0.3s ease; }
     .page-view.active { display: block; }
     @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -40,25 +40,29 @@
     .btn:active { transform: scale(0.97); }
     .btn-dark { background: var(--primary); color: #fff; }
     .btn-dark:hover { background: var(--primary-dark); }
-    .section-head { margin: 28px 0 14px; }
+    .section-head { margin: 30px 0 14px; }
     .section-head h2 { font-size: 1.55rem; color: var(--primary-dark); }
     .section-head p { color: var(--muted); font-size: 0.94rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 20px; margin-top: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 16px; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; }
     .card img { width: 100%; height: 190px; object-fit: cover; background: #efe4d8; }
     .cb { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-between; }
     .badge { background: var(--surface-alt); color: var(--muted); font-size: 0.75rem; padding: 3px 10px; border-radius: 6px; font-weight: 700; display: inline-block; }
     .badge-vegan { background: #e1f3e8; color: var(--success); }
-    .meta { font-size: 0.84rem; color: var(--muted); }
+    .meta { font-size: 0.85rem; color: var(--muted); }
     .allergen { font-size: 0.8rem; color: #6a4c3b; background: #fbf7f2; padding: 5px 9px; border-left: 3px solid var(--accent); border-radius: 4px; }
     .price { font-weight: 800; color: var(--primary); font-size: 1.2rem; }
     .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .story-box { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px; margin-top: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; box-shadow: var(--shadow); }
+    @media (max-width: 780px) { .story-box { grid-template-columns: 1fr; } }
+    .story-box img { width: 100%; height: 260px; object-fit: cover; border-radius: 14px; }
     .filter-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; margin: 16px 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
     .pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pill { padding: 7px 15px; border-radius: 999px; border: 1px solid #dfd0c0; background: var(--bg); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+    .pill { padding: 7px 14px; border-radius: 999px; border: 1px solid #dfd0c0; background: var(--bg); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
     .pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     input, select { width: 100%; padding: 10px 13px; border: 1px solid #d6c5b3; border-radius: 10px; margin: 5px 0 12px; font-size: 0.95rem; background: #fff; }
     .bill { background: #f6eee4; padding: 15px; border-radius: 12px; margin-top: 12px; font-size: 0.95rem; line-height: 1.75; }
+    .status-banner { padding: 12px 14px; border-radius: 10px; margin-top: 12px; font-weight: 600; font-size: 0.9rem; background: #e1f3e8; color: var(--success); display: none; }
     .modal { display: none; position: fixed; inset: 0; background: rgba(18, 10, 5, 0.76); z-index: 100; place-items: center; padding: 16px; overflow-y: auto; }
     .modal.open { display: grid; }
     .mbox { background: #fff; border-radius: 18px; max-width: 440px; width: 100%; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
@@ -83,95 +87,158 @@
       <nav>
         <button id="nav-home" class="nav-btn active" onclick="switchPage('home')">Home</button>
         <button id="nav-menu" class="nav-btn" onclick="switchPage('menu')">Menu</button>
-        <button id="nav-about" class="nav-btn" onclick="switchPage('about')">About &amp; Visit</button>
-        <button id="nav-order" class="nav-btn" onclick="switchPage('order')">Tray (<span id="trayCount">2</span>)</button>
+        <button id="nav-table" class="nav-btn" onclick="switchPage('table')">Book a Table</button>
+        <button id="nav-about" class="nav-btn" onclick="switchPage('about')">Our Story &amp; Visit</button>
+        <button id="nav-order" class="nav-btn" onclick="switchPage('order')">Tray (<span id="trayCount">0</span>)</button>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- PAGE 1: HOME -->
     <section id="view-home" class="page-view active">
       <div class="hero">
         <span class="hero-tag">Main Bidholi Road, Near UPES Campus • Dehradun</span>
-        <h1>Small-Batch Specialty Roasts &amp; Warm Artisanal Plates</h1>
-        <p>Handcrafted Chikmagalur Arabica coffee, traditional kulhad masala chai starting at ₹50, and fresh sourdough bakes right outside UPES Bidholi.</p>
+        <h1>Small-Batch Specialty Roasts, Pastries &amp; Warm Sourdough</h1>
+        <p>Handcrafted Chikmagalur Arabica coffee, kulhad masala chai starting at ₹50, and fresh French pastries right outside UPES Bidholi.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <button class="btn" onclick="switchPage('menu')">Explore Full Menu →</button>
-          <button class="btn" style="background:rgba(255,255,255,0.16);color:#fff" onclick="switchPage('about')">Café Location &amp; Hours</button>
+          <button class="btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.4)" onclick="switchPage('table')">🪑 Book a Table</button>
         </div>
       </div>
 
       <div class="section-head">
         <h2>Bestsellers at Bidholi Campus</h2>
-        <p>Freshly prepared to order with zero-queue express pickup.</p>
+        <p>Tap any item below to add it straight to your tray.</p>
       </div>
       <div class="grid">
         <div class="card">
           <img src="https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80" alt="Adrak Elaichi Kulhad Chai" />
           <div class="cb">
             <div><span class="badge">Student Favorite • ₹50</span><h3 style="margin-top:8px">Adrak Elaichi Kulhad Chai</h3><p class="meta">200 ml • Crushed fresh ginger, green cardamom &amp; Assam orthodox tea simmered in farm milk.</p></div>
-            <button class="btn btn-dark" onclick="quickOrder(1)">Order for ₹50</button>
+            <button class="btn btn-dark" onclick="quickOrder(1)">Add &amp; Order • ₹50</button>
           </div>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Velvet Hazelnut Flat White" />
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Belgian Chocolate Truffle Pastry" />
           <div class="cb">
-            <div><span class="badge">House Roast • 250 ml</span><h3 style="margin-top:8px">Velvet Hazelnut Flat White</h3><p class="meta">Double Chikmagalur espresso shot topped with silky micro-foamed milk &amp; roasted hazelnut.</p></div>
-            <button class="btn btn-dark" onclick="quickOrder(3)">Order for ₹180</button>
+            <div><span class="badge">Fresh Pastry • 1 Slice</span><h3 style="margin-top:8px">Belgian Chocolate Truffle Pastry</h3><p class="meta">Rich 70% dark cocoa sponge layered with velvety chocolate ganache &amp; hazelnut crunch.</p></div>
+            <button class="btn btn-dark" onclick="quickOrder(6)">Add &amp; Order • ₹135</button>
           </div>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80" alt="Smoked Paneer Pesto Sourdough" />
+          <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" alt="Smoked Paneer Pesto Sourdough" />
           <div class="cb">
-            <div><span class="badge">All-Day Plate • 2 Slices</span><h3 style="margin-top:8px">Smoked Paneer Pesto Sourdough</h3><p class="meta">Chargrilled cottage cheese, fresh basil pesto &amp; sun-dried tomatoes on 24-hr sourdough.</p></div>
-            <button class="btn btn-dark" onclick="quickOrder(9)">Order for ₹240</button>
+            <div><span class="badge">All-Day Plate • 2 Slices</span><h3 style="margin-top:8px">Smoked Paneer Pesto Sourdough</h3><p class="meta">Chargrilled cottage cheese, fresh basil pesto &amp; roasted tomatoes on 24-hr sourdough.</p></div>
+            <button class="btn btn-dark" onclick="quickOrder(11)">Add &amp; Order • ₹240</button>
           </div>
         </div>
       </div>
 
-      <div class="section-head">
-        <h2>Why Students &amp; Coffee Lovers Choose Us</h2>
-        <p>Designed for relaxed study sessions, quick class-break pickups, and transparent pricing.</p>
-      </div>
-      <div class="grid">
-        <div class="card"><div class="cb"><h3>12 kg Copper-Drum Roasting</h3><p class="meta">Every batch of Baba Budangiri Arabica is roasted in-house weekly for natural caramel &amp; cacao sweetness without bitterness.</p></div></div>
-        <div class="card"><div class="cb"><h3>High-Speed Study Lounge</h3><p class="meta">Dedicated power sockets at every table, 300 Mbps fiber Wi-Fi, and quiet acoustic zones right next to UPES Bidholi.</p></div></div>
-        <div class="card"><div class="cb"><h3>Instant Verified UPI Pickup</h3><p class="meta">Scan &amp; pay directly via GPay or any UPI app (<code>ojassachan@kotakbank</code>) and grab your order from the express counter.</p></div></div>
+      <div class="story-box">
+        <div>
+          <span class="badge" style="margin-bottom:8px">Our Café Story</span>
+          <h2 style="color:var(--primary-dark);margin-bottom:10px">From Chikmagalur Hills to UPES Bidholi</h2>
+          <p class="meta" style="margin-bottom:10px">The Velvet Bean Roastery &amp; Café started with a simple idea: Dehradun students and coffee lovers deserve freshly roasted single-estate coffee and warm bakery treats without big-city markups.</p>
+          <p class="meta" style="margin-bottom:16px">Every morning at 6:00 AM, our bakers pull flaky croissants and rich chocolate pastries from the oven while our roaster prepares small 12 kg batches of Arabica beans.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn-dark" onclick="switchPage('about')">Read Full Story</button>
+            <button class="btn" onclick="switchPage('table')">Reserve Study Table</button>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="Our Cafe Story Interior" />
       </div>
     </section>
 
+    <!-- PAGE 2: FULL MENU -->
     <section id="view-menu" class="page-view">
       <div class="section-head">
-        <h2>Full Café Menu (Prices in ₹)</h2>
+        <h2>Explore Full Café Menu (Prices in ₹)</h2>
         <p>Apply promo code <b>VELVET20</b> in your tray on orders of ₹300 or above for 20% off.</p>
       </div>
       <div class="filter-box">
         <div class="pills">
-          <button class="pill active" onclick="filterCat('All', this)">All (10)</button>
+          <button class="pill active" onclick="filterCat('All', this)">All Items (12)</button>
           <button class="pill" onclick="filterCat('Chai & Coffee', this)">Chai &amp; Coffee</button>
-          <button class="pill" onclick="filterCat('Bakery', this)">Bakery</button>
+          <button class="pill" onclick="filterCat('Pastries & Bakery', this)">Pastries &amp; Bakery</button>
           <button class="pill" onclick="filterCat('Plates', this)">All-Day Plates</button>
         </div>
         <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-          <input id="searchBox" placeholder="Search coffee, chai, croissant..." oninput="renderMenu()" style="width:210px;margin:0;padding:8px 12px" />
+          <input id="searchBox" placeholder="Search pastry, chai, coffee..." oninput="renderMenu()" style="width:210px;margin:0;padding:8px 12px" />
           <label style="font-weight:600;cursor:pointer"><input type="checkbox" id="veganOnly" onchange="renderMenu()" style="width:auto;margin:0 6px 0 0" />Vegan Only</label>
         </div>
       </div>
       <div class="grid" id="menuGrid"></div>
     </section>
 
+    <!-- PAGE 3: BOOK A TABLE -->
+    <section id="view-table" class="page-view">
+      <div class="section-head">
+        <h2>Book a Table at Bidholi Café</h2>
+        <p>Reserve a cozy window booth, outdoor patio seat, or high-speed Wi-Fi study table near UPES Campus.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=700&q=80" alt="Cafe Seating" />
+          <div class="cb">
+            <h3>Seating Zones &amp; Amenities</h3>
+            <p class="meta"><b>1. Study &amp; Laptop Lounge:</b> Individual power outlets, 300 Mbps Wi-Fi, quiet ambiance.</p>
+            <p class="meta"><b>2. Outdoor Garden Patio:</b> Scenic Dehradun valley breeze, ideal for group hangouts.</p>
+            <p class="meta"><b>3. Window Espresso Bar:</b> Quick coffee &amp; pastry seating right by the roaster.</p>
+            <p class="meta"><b>Address:</b> Main Bidholi Road, Near UPES Campus Gate, Dehradun 248007</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="cb">
+            <form onsubmit="confirmBooking(event)">
+              <h3>Instant Table Reservation</h3>
+              <label style="display:block;margin-top:8px;font-weight:600">Your Full Name *</label>
+              <input id="bkName" required placeholder="Enter your name" />
+              <label style="font-weight:600">Mobile Number (10 digits) *</label>
+              <input id="bkPhone" pattern="[0-9]{10}" required placeholder="e.g. 9876543210" />
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div>
+                  <label style="font-weight:600">Date *</label>
+                  <input id="bkDate" type="date" required />
+                </div>
+                <div>
+                  <label style="font-weight:600">Guests *</label>
+                  <select id="bkGuests">
+                    <option>2 Guests</option>
+                    <option>4 Guests</option>
+                    <option>6 Guests (Group)</option>
+                    <option>1 Person (Solo Study)</option>
+                  </select>
+                </div>
+              </div>
+              <label style="font-weight:600">Preferred Time &amp; Zone</label>
+              <select id="bkSlot">
+                <option>11:00 AM — Study &amp; Laptop Lounge</option>
+                <option>02:00 PM — Window Espresso Bar</option>
+                <option>05:30 PM — Outdoor Garden Patio</option>
+                <option>08:00 PM — Dinner &amp; Coffee Booth</option>
+              </select>
+              <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Confirm Table Booking →</button>
+              <div id="bookingStatus" class="status-banner"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4: OUR STORY & VISIT -->
     <section id="view-about" class="page-view">
       <div class="section-head">
-        <h2>Our Craft &amp; Bidholi Café Location</h2>
-        <p>Rooted in Indian specialty coffee culture and neighborhood hospitality.</p>
+        <h2>Our Café Story &amp; Bidholi Location</h2>
+        <p>Rooted in Indian specialty coffee craft and warm neighborhood hospitality.</p>
       </div>
       <div class="grid">
         <div class="card">
           <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="The Velvet Bean Cafe Interior" />
           <div class="cb">
-            <h3>About The Velvet Bean Roastery</h3>
-            <p class="meta">Founded in 2026 in Dehradun, The Velvet Bean Roastery &amp; Café brings direct-trade Chikmagalur estates together with artisanal sourdough baking. Every takeaway cup, lid, and pastry box is 100% plastic-free and compostable.</p>
-            <p class="meta"><b>Roast Profile:</b> Medium-Dark City Roast • <b>Brew Methods:</b> Espresso, V60 Pour-Over, 18-Hr Cold Steep, Traditional Kulhad.</p>
+            <h3>Our Café Story</h3>
+            <p class="meta">Founded in 2026 in Dehradun, The Velvet Bean Roastery &amp; Café brings direct-trade Chikmagalur estates together with artisanal pastry and sourdough baking. Every takeaway cup, lid, and pastry box is 100% plastic-free and compostable.</p>
+            <p class="meta"><b>Roast Profile:</b> Medium-Dark City Roast • <b>Signature Bakes:</b> Belgian Truffle Pastry, Red Velvet Slice, 24-Hr Sourdough.</p>
           </div>
         </div>
         <div class="card">
@@ -182,16 +249,20 @@
             <p class="meta"><b>Opening Hours:</b> Monday – Sunday, 7:30 AM to 10:30 PM</p>
             <p class="meta"><b>Phone &amp; Support:</b> +91 98370 41210</p>
             <p class="meta"><b>Official Merchant UPI:</b> <code>ojassachan@kotakbank</code></p>
-            <button class="btn btn-dark" onclick="switchPage('menu')">Order Pickup Now →</button>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-dark" onclick="switchPage('menu')">Explore Full Menu →</button>
+              <button class="btn" onclick="switchPage('table')">Book a Table</button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- PAGE 5: TRAY & CHECKOUT -->
     <section id="view-order" class="page-view">
       <div class="section-head">
         <h2>Pre-Order Tray &amp; Secure Checkout</h2>
-        <p>Review your items, apply promo code <b>VELVET20</b>, and verify payment to generate your pickup receipt.</p>
+        <p>Review your selected items, apply promo code <b>VELVET20</b>, and verify payment to get your receipt.</p>
       </div>
       <div class="grid">
         <div class="card">
@@ -222,7 +293,7 @@
                 <option>Express Counter Pickup (10–15 mins) — Bidholi</option>
                 <option>Dine-In Table — Near UPES Campus Gate</option>
               </select>
-              <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Proceed to Payment Gateway →</button>
+              <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Proceed to Payment (GPay / UPI / Card) →</button>
             </form>
           </div>
         </div>
@@ -230,6 +301,7 @@
     </section>
   </main>
 
+  <!-- PAYMENT GATEWAY MODAL -->
   <div class="modal" id="payModal">
     <div class="mbox">
       <div class="row"><h3>VelvetPay Live Payment Tracker</h3><button type="button" onclick="closePaymentModal()" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button></div>
@@ -245,6 +317,7 @@
     </div>
   </div>
 
+  <!-- DIGITAL RECEIPT MODAL -->
   <div class="modal" id="receiptModal">
     <div class="mbox">
       <div style="text-align:center">
@@ -272,15 +345,17 @@
       { id: 2, name: "Chikmagalur Black Pour-Over", cat: "Chai & Coffee", price: 140, vegan: true, cal: "10 kcal • 240 ml", desc: "Single-estate medium roast brewed via V60 with citrus & palm jaggery notes.", allergens: "None (100% Vegan)", img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80" },
       { id: 3, name: "Velvet Hazelnut Flat White", cat: "Chai & Coffee", price: 180, vegan: false, cal: "190 kcal • 250 ml", desc: "Double Arabica espresso shot topped with silky micro-foamed milk & roasted hazelnut.", allergens: "Dairy, Tree Nuts", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" },
       { id: 4, name: "Jaggery Iced Cold Brew", cat: "Chai & Coffee", price: 195, vegan: true, cal: "65 kcal • 300 ml", desc: "18-hour steeped Chikmagalur cold brew lightly sweetened with organic palm jaggery.", allergens: "None", img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" },
-      { id: 5, name: "Himalayan Buransh Fizz", cat: "Chai & Coffee", price: 150, vegan: true, cal: "80 kcal • 300 ml", desc: "Uttarakhand rhododendron flower reduction topped with sparkling spring water & mint.", allergens: "None", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" },
-      { id: 6, name: "Warm Garlic Butter Bun", cat: "Bakery", price: 65, vegan: false, cal: "220 kcal • 1 Pc", desc: "Soft oven-warm brioche bun brushed with roasted garlic & fresh herb butter.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
-      { id: 7, name: "Almond Frangipane Croissant", cat: "Bakery", price: 175, vegan: false, cal: "340 kcal • 1 Pc", desc: "Twice-baked flaky butter croissant filled with roasted almond cream & flakes.", allergens: "Gluten, Dairy, Almonds", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" },
-      { id: 8, name: "70% Dark Chocolate Ganache Tart", cat: "Bakery", price: 190, vegan: true, cal: "310 kcal • 1 Slice", desc: "Idukki single-origin dark chocolate ganache set in a crisp cocoa-almond crust.", allergens: "Tree Nuts (Almonds)", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" },
-      { id: 9, name: "Smoked Paneer Pesto Sourdough", cat: "Plates", price: 240, vegan: false, cal: "420 kcal • 2 Slices", desc: "Chargrilled cottage cheese, fresh basil pesto & sun-dried tomatoes on sourdough.", allergens: "Gluten, Dairy, Walnuts", img: "https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80" },
-      { id: 10, name: "Truffle Mushroom Hummus Tartine", cat: "Plates", price: 230, vegan: true, cal: "360 kcal • 2 Slices", desc: "Garlic-roasted wild mushrooms over whipped chickpea tahini on toasted sourdough.", allergens: "Gluten, Sesame", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" }
+      { id: 5, name: "Warm Garlic Butter Bun", cat: "Pastries & Bakery", price: 65, vegan: false, cal: "220 kcal • 1 Pc", desc: "Soft oven-warm brioche bun brushed with roasted garlic & fresh herb butter.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
+      { id: 6, name: "Belgian Chocolate Truffle Pastry", cat: "Pastries & Bakery", price: 135, vegan: false, cal: "360 kcal • 1 Slice", desc: "Rich 70% dark cocoa sponge layered with silky chocolate ganache & hazelnut crunch.", allergens: "Gluten, Dairy, Tree Nuts", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" },
+      { id: 7, name: "Red Velvet Cream Cheese Pastry", cat: "Pastries & Bakery", price: 145, vegan: false, cal: "330 kcal • 1 Slice", desc: "Classic crimson cocoa velvet sponge frosted with tangy Madagascar vanilla cream cheese.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=600&q=80" },
+      { id: 8, name: "Blueberry Cheesecake Slice", cat: "Pastries & Bakery", price: 165, vegan: false, cal: "380 kcal • 1 Slice", desc: "Creamy baked cheesecake on a buttery biscuit crust topped with wild blueberry compote.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" },
+      { id: 9, name: "Almond Frangipane Croissant", cat: "Pastries & Bakery", price: 175, vegan: false, cal: "340 kcal • 1 Pc", desc: "Twice-baked flaky butter croissant filled with roasted almond cream & flakes.", allergens: "Gluten, Dairy, Almonds", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" },
+      { id: 10, name: "Cinnamon Sugar Churros & Dip", cat: "Pastries & Bakery", price: 120, vegan: true, cal: "290 kcal • 4 Pcs", desc: "Crisp golden choux pastry sticks dusted with cinnamon sugar & dark chocolate dip.", allergens: "Gluten", img: "https://images.unsplash.com/photo-1624371414361-e670edf4898d?auto=format&fit=crop&w=600&q=80" },
+      { id: 11, name: "Smoked Paneer Pesto Sourdough", cat: "Plates", price: 240, vegan: false, cal: "420 kcal • 2 Slices", desc: "Chargrilled cottage cheese, fresh basil pesto & sun-dried tomatoes on sourdough.", allergens: "Gluten, Dairy, Walnuts", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" },
+      { id: 12, name: "Truffle Mushroom Hummus Tartine", cat: "Plates", price: 230, vegan: true, cal: "360 kcal • 2 Slices", desc: "Garlic-roasted wild mushrooms over whipped chickpea tahini on toasted sourdough.", allergens: "Gluten, Sesame", img: "https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80" }
     ];
 
-    let cart = [{ id: 1, qty: 1 }, { id: 9, qty: 1 }];
+    let cart = [];
     let activeCat = "All";
     let discountRate = 0;
     let payMode = "upi";
@@ -311,7 +386,7 @@
       );
       document.getElementById("menuGrid").innerHTML = filtered.length ? filtered.map(item => `
         <div class="card">
-          <img src="${item.img}" alt="${item.name}" />
+          <img src="${item.img}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80'" />
           <div class="cb">
             <div>
               <div class="row" style="margin-bottom:6px">
@@ -381,7 +456,7 @@
               <button type="button" onclick="changeQty(${item.id}, 1)" style="padding:3px 10px;border-radius:6px;border:1px solid #ccc;cursor:pointer">+</button>
             </div>
           </div>`;
-      }).join("") : "<p class='meta'>Your tray is empty. Add items from the Menu tab.</p>";
+      }).join("") : "<p class='meta'>Your tray is currently empty. Explore our menu to add coffee, pastries, or plates.</p>";
 
       subTotal = cart.reduce((sum, c) => sum + MENU.find(m => m.id === c.id).price * c.qty, 0);
       if (subTotal < 300 && discountRate > 0) {
@@ -400,6 +475,18 @@
       `;
     }
 
+    function confirmBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById("bkName").value.trim();
+      const date = document.getElementById("bkDate").value;
+      const guests = document.getElementById("bkGuests").value;
+      const slot = document.getElementById("bkSlot").value;
+      const ref = "TBL-" + Math.floor(1000 + Math.random() * 9000);
+      const banner = document.getElementById("bookingStatus");
+      banner.style.display = "block";
+      banner.textContent = `✅ Table Reserved (${ref}) for ${name} (${guests}) on ${date} at ${slot}.`;
+    }
+
     function updateTracker(text, status) {
       const box = document.getElementById("trackerBox");
       box.className = "tracker" + (status ? " " + status : "");
@@ -408,7 +495,7 @@
 
     function openPaymentModal(e) {
       e.preventDefault();
-      if (!cart.length) return alert("Please add at least one item to your tray first!");
+      if (!cart.length) return alert("Your tray is empty! Please add items from the Menu first.");
       document.getElementById("modalPayAmt").textContent = "₹" + finalTotal;
       selectPayMode("upi");
       document.getElementById("payModal").classList.add("open");
