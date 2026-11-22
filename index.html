@@ -24,9 +24,9 @@
     body { background: var(--bg); color: var(--text); line-height: 1.6; }
     header { background: #221209; color: #fff; padding: 14px 20px; position: sticky; top: 0; z-index: 60; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22); }
     .nav-wrap { max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .brand { font-weight: 800; font-size: 1.25rem; color: #ffd4a8; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-    nav { display: flex; gap: 8px; flex-wrap: wrap; }
-    .nav-btn { background: rgba(255, 255, 255, 0.12); color: #f7ece1; border: none; padding: 9px 15px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; }
+    .brand { font-weight: 800; font-size: 1.22rem; color: #ffd4a8; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+    nav { display: flex; gap: 7px; flex-wrap: wrap; }
+    .nav-btn { background: rgba(255, 255, 255, 0.12); color: #f7ece1; border: none; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.2s ease; }
     .nav-btn:hover, .nav-btn.active { background: var(--gold); color: #221209; }
     main { max-width: 1140px; margin: 28px auto; padding: 0 18px 70px; }
     .page-view { display: none; animation: fadeSlide 0.3s ease; }
@@ -60,23 +60,27 @@
     .pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .pill { padding: 7px 14px; border-radius: 999px; border: 1px solid #dfd0c0; background: var(--bg); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
     .pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    input, select { width: 100%; padding: 10px 13px; border: 1px solid #d6c5b3; border-radius: 10px; margin: 5px 0 12px; font-size: 0.95rem; background: #fff; }
+    input, select { width: 100%; padding: 10px 13px; border: 1px solid #d6c5b3; border-radius: 10px; margin: 4px 0 10px; font-size: 0.93rem; background: #fff; }
     .bill { background: #f6eee4; padding: 15px; border-radius: 12px; margin-top: 12px; font-size: 0.95rem; line-height: 1.75; }
     .status-banner { padding: 12px 14px; border-radius: 10px; margin-top: 12px; font-weight: 600; font-size: 0.9rem; background: #e1f3e8; color: var(--success); display: none; }
     .modal { display: none; position: fixed; inset: 0; background: rgba(18, 10, 5, 0.76); z-index: 100; place-items: center; padding: 16px; overflow-y: auto; }
     .modal.open { display: grid; }
-    .mbox { background: #fff; border-radius: 18px; max-width: 440px; width: 100%; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    .popts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
-    .popt { border: 1.5px solid #dfd0c0; border-radius: 10px; padding: 10px 6px; text-align: center; font-weight: 700; font-size: 0.85rem; cursor: pointer; background: #faf6f0; }
+    .mbox { background: #fff; border-radius: 18px; max-width: 450px; width: 100%; padding: 22px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .popts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0; }
+    .popt { border: 1.5px solid #dfd0c0; border-radius: 10px; padding: 9px 6px; text-align: center; font-weight: 700; font-size: 0.85rem; cursor: pointer; background: #faf6f0; }
     .popt.active { border-color: var(--primary); background: #f3e5d7; color: var(--primary-dark); }
-    .qr { text-align: center; background: #faf6f0; padding: 14px; border-radius: 12px; margin: 10px 0; border: 1.5px dashed var(--accent); }
-    .uapps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-    .uapp { display: block; text-align: center; padding: 9px; border-radius: 9px; background: #fff; border: 1px solid #d5c5b5; color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.85rem; }
-    .tracker { font-size: 0.84rem; padding: 9px 11px; border-radius: 9px; margin-top: 10px; font-weight: 600; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+    .qr { text-align: center; background: #faf6f0; padding: 12px; border-radius: 12px; margin: 8px 0; border: 1.5px dashed var(--accent); }
+    .uapps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+    .uapp { display: block; text-align: center; padding: 8px; border-radius: 9px; background: #fff; border: 1px solid #d5c5b5; color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.83rem; }
+    .tracker { font-size: 0.83rem; padding: 9px 11px; border-radius: 9px; margin-top: 8px; font-weight: 600; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
     .tracker.fail { background: #fde8e8; color: var(--danger); border-color: #f5c6cb; }
     .tracker.ok { background: #e1f3e8; color: var(--success); border-color: #c3e6cb; }
     .paper { background: #fffdf9; border: 1.5px dashed #b89f88; border-radius: 12px; padding: 15px; margin-top: 12px; font-size: 0.88rem; }
-    .rl { display: flex; justify-content: space-between; padding: 4px 0; }
+    .rl { display: flex; justify-content: space-between; padding: 4px 0; gap: 8px; }
+    .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); margin-top: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 720px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #eee2d5; }
+    th { background: #f3ebe1; color: var(--primary-dark); font-weight: 700; }
     footer { background: #221209; color: #e7dcd3; text-align: center; padding: 28px 16px; font-size: 0.92rem; line-height: 1.75; }
   </style>
 </head>
@@ -90,6 +94,7 @@
         <button id="nav-table" class="nav-btn" onclick="switchPage('table')">Book a Table</button>
         <button id="nav-about" class="nav-btn" onclick="switchPage('about')">Our Story &amp; Visit</button>
         <button id="nav-order" class="nav-btn" onclick="switchPage('order')">Tray (<span id="trayCount">0</span>)</button>
+        <button id="nav-logs" class="nav-btn" onclick="switchPage('logs')">Payment Log (<span id="logCount">0</span>)</button>
       </nav>
     </div>
   </header>
@@ -299,6 +304,33 @@
         </div>
       </div>
     </section>
+
+    <!-- PAGE 6: LIVE PAYMENT LOG (COUNTER VIEW) -->
+    <section id="view-logs" class="page-view">
+      <div class="row section-head">
+        <div>
+          <h2>Counter Payment &amp; Payer Log</h2>
+          <p>Live record of verified UPI / Card payers, transaction IDs, and order totals.</p>
+        </div>
+        <button type="button" class="btn" onclick="clearLogs()">Clear History</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID &amp; Time</th>
+              <th>Customer &amp; Phone</th>
+              <th>Payer Details (UPI ID / Card)</th>
+              <th>App / Mode</th>
+              <th>UTR / Ref No.</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="logsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <!-- PAYMENT GATEWAY MODAL -->
@@ -312,7 +344,7 @@
         <div class="popt" id="opt-cash" onclick="selectPayMode('cash')">💵 Counter</div>
       </div>
       <div id="payModeBody"></div>
-      <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment initiation...</div>
+      <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment &amp; payer details...</div>
       <button id="verifyPayBtn" type="button" class="btn btn-dark" style="width:100%;margin-top:12px" onclick="verifyPayment()">Verify Payment Status</button>
     </div>
   </div>
@@ -356,6 +388,7 @@
     ];
 
     let cart = [];
+    let paymentLogs = JSON.parse(localStorage.getItem("vb_payment_logs") || "[]");
     let activeCat = "All";
     let discountRate = 0;
     let payMode = "upi";
@@ -366,6 +399,7 @@
       document.getElementById("view-" + pageId).classList.add("active");
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       document.getElementById("nav-" + pageId).classList.add("active");
+      if (pageId === "logs") renderLogs();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -513,24 +547,32 @@
       const upiUrl = `upi://pay?pa=ojassachan@kotakbank&pn=The%20Velvet%20Bean%20Cafe&am=${finalTotal}&cu=INR`;
 
       if (mode === "upi") {
-        updateTracker("⏳ Tracker: Scan QR or pay via GPay/UPI, then enter 12-digit UTR below.", "");
+        updateTracker("⏳ Tracker: Scan QR or pay via GPay/UPI, then enter your Payer UPI ID & 12-digit UTR.", "");
         body.innerHTML = `
           <div class="qr">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=145x145&data=${encodeURIComponent(upiUrl)}" alt="UPI QR ojassachan@kotakbank" style="margin:auto;display:block;border-radius:8px" />
-            <p style="font-size:0.84rem;margin-top:8px">Scan with <b>GPay, PhonePe, Paytm or any UPI App</b><br>UPI ID: <b>ojassachan@kotakbank</b></p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=135x135&data=${encodeURIComponent(upiUrl)}" alt="UPI QR ojassachan@kotakbank" style="margin:auto;display:block;border-radius:8px" />
+            <p style="font-size:0.82rem;margin-top:6px">Pay To: <b>ojassachan@kotakbank</b></p>
             <div class="uapps">
-              <a class="uapp" href="${upiUrl}" onclick="updateTracker('📱 GPay / UPI opened! Enter 12-digit UTR below after completing payment.','')">Pay via GPay</a>
-              <a class="uapp" href="${upiUrl}" onclick="updateTracker('📱 UPI app opened! Enter 12-digit UTR below after completing payment.','')">Other UPI Apps</a>
+              <a class="uapp" href="${upiUrl}" onclick="document.getElementById('payerApp').value='Google Pay';updateTracker('📱 GPay opened! Fill your UPI ID & 12-digit UTR below.','')">Pay via GPay</a>
+              <a class="uapp" href="${upiUrl}" onclick="document.getElementById('payerApp').value='PhonePe / Paytm';updateTracker('📱 UPI app opened! Fill your UPI ID & 12-digit UTR below.','')">Other UPI Apps</a>
             </div>
-            <input id="utrInput" maxlength="12" placeholder="Enter 12-digit UPI UTR / Ref No. *" style="margin-top:10px;margin-bottom:0" />
+            <select id="payerApp" style="margin-top:6px">
+              <option value="Google Pay">App Used: Google Pay (GPay)</option>
+              <option value="PhonePe">App Used: PhonePe</option>
+              <option value="Paytm">App Used: Paytm</option>
+              <option value="BHIM / Kotak UPI">App Used: BHIM / Bank UPI</option>
+            </select>
+            <input id="payerUpiId" placeholder="Your Payer UPI ID (e.g. name@okaxis) *" />
+            <input id="utrInput" maxlength="12" placeholder="12-Digit UPI UTR / Ref No. *" style="margin-bottom:0" />
           </div>`;
       } else if (mode === "card") {
-        updateTracker("⏳ Tracker: Enter 16-digit Card Number, Expiry (MM/YY) & CVV.", "");
+        updateTracker("⏳ Tracker: Enter Cardholder Name, 16-digit Card Number, Expiry & CVV.", "");
         body.innerHTML = `
-          <input id="cardNum" placeholder="16-Digit Card Number" maxlength="16" />
+          <input id="cardHolder" placeholder="Cardholder Full Name *" />
+          <input id="cardNum" placeholder="16-Digit Card Number *" maxlength="16" />
           <div style="display:flex;gap:8px">
-            <input id="cardExp" placeholder="MM/YY" maxlength="5" />
-            <input id="cardCvv" placeholder="CVV" maxlength="3" type="password" />
+            <input id="cardExp" placeholder="MM/YY *" maxlength="5" />
+            <input id="cardCvv" placeholder="CVV *" maxlength="3" type="password" />
           </div>`;
       } else {
         updateTracker("💵 Counter Mode: Pay ₹" + finalTotal + " at the Bidholi Café pickup counter.", "");
@@ -546,32 +588,60 @@
       setTimeout(() => {
         btn.textContent = "Verify Payment Status";
         btn.disabled = false;
-        let refId = "";
+        let refId = "", payerInfo = "", appUsed = "";
 
         if (payMode === "upi") {
+          const payerUpi = (document.getElementById("payerUpiId")?.value || "").trim();
           const utr = (document.getElementById("utrInput")?.value || "").trim();
+          appUsed = document.getElementById("payerApp")?.value || "UPI App";
+          if (!/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(payerUpi)) {
+            return updateTracker("❌ PAYMENT FAILED: Please enter a valid Payer UPI ID (e.g. rahul@okaxis)!", "fail");
+          }
           if (!/^[0-9]{12}$/.test(utr)) {
-            return updateTracker("❌ PAYMENT FAILED: No valid 12-digit UPI UTR received for ojassachan@kotakbank!", "fail");
+            return updateTracker("❌ PAYMENT FAILED: Invalid or missing 12-digit UPI UTR for ojassachan@kotakbank!", "fail");
           }
           refId = "UTR" + utr;
+          payerInfo = payerUpi;
         } else if (payMode === "card") {
+          const holder = (document.getElementById("cardHolder")?.value || "").trim();
           const num = (document.getElementById("cardNum")?.value || "").trim();
           const exp = (document.getElementById("cardExp")?.value || "").trim();
           const cvv = (document.getElementById("cardCvv")?.value || "").trim();
-          if (!/^[0-9]{16}$/.test(num) || !/^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(exp) || !/^[0-9]{3}$/.test(cvv)) {
-            return updateTracker("❌ PAYMENT FAILED: Invalid card details or transaction declined!", "fail");
+          if (holder.length < 2 || !/^[0-9]{16}$/.test(num) || !/^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(exp) || !/^[0-9]{3}$/.test(cvv)) {
+            return updateTracker("❌ PAYMENT FAILED: Invalid cardholder details or card declined!", "fail");
           }
           refId = "CARD" + Date.now().toString().slice(-6);
+          payerInfo = `${holder} (•••• ${num.slice(-4)})`;
+          appUsed = "Credit / Debit Card";
         } else {
           refId = "COUNTER-DUE";
+          payerInfo = document.getElementById("custName").value.trim() + " (Counter)";
+          appUsed = "Cash at Counter";
         }
 
-        updateTracker("✅ Payment Verified! Generating digital receipt...", "ok");
+        updateTracker("✅ Payment Verified! Saving payer details & generating receipt...", "ok");
         setTimeout(() => {
           closePaymentModal();
           const orderId = "VB-" + Math.floor(1000 + Math.random() * 9000);
           const timeStr = new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
+          const custName = document.getElementById("custName").value.trim();
+          const custPhone = document.getElementById("custPhone").value.trim();
           const statusLabel = payMode === "cash" ? "PAY AT COUNTER" : "PAID (VERIFIED)";
+
+          paymentLogs.unshift({
+            orderId,
+            timeStr,
+            custName,
+            custPhone,
+            payerInfo,
+            appUsed,
+            refId,
+            amount: finalTotal,
+            statusLabel
+          });
+          localStorage.setItem("vb_payment_logs", JSON.stringify(paymentLogs));
+          updateLogBadge();
+
           const itemsLines = cart.map(c => {
             const m = MENU.find(x => x.id === c.id);
             return `<div class="rl"><span>${m.name} × ${c.qty}</span><span>₹${m.price * c.qty}</span></div>`;
@@ -579,8 +649,9 @@
 
           document.getElementById("receiptBody").innerHTML = `
             <div class="rl"><span><b>Order ID:</b> ${orderId}</span><span><b>Ref:</b> ${refId}</span></div>
-            <div class="rl"><span><b>Customer:</b> ${document.getElementById("custName").value}</span><span>${timeStr}</span></div>
-            <div class="rl"><span><b>Status:</b> ${statusLabel}</span><span>${payMode === "upi" ? "ojassachan@kotakbank" : payMode.toUpperCase()}</span></div>
+            <div class="rl"><span><b>Customer:</b> ${custName} (${custPhone})</span><span>${timeStr}</span></div>
+            <div class="rl"><span><b>Paid By:</b> ${payerInfo}</span><span><b>Via:</b> ${appUsed}</span></div>
+            <div class="rl"><span><b>Status:</b> ${statusLabel}</span><span><b>To:</b> ojassachan@kotakbank</span></div>
             <div class="rl"><span><b>Pickup:</b> ${document.getElementById("custSlot").value}</span></div>
             <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
             ${itemsLines}
@@ -601,8 +672,40 @@
       document.getElementById("receiptModal").classList.remove("open");
     }
 
+    function updateLogBadge() {
+      document.getElementById("logCount").textContent = paymentLogs.length;
+    }
+
+    function renderLogs() {
+      updateLogBadge();
+      const tbody = document.getElementById("logsTableBody");
+      if (!paymentLogs.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">No transactions recorded yet. Complete a checkout to see payer details here.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = paymentLogs.map(log => `
+        <tr>
+          <td><b>${log.orderId}</b><br><small style="color:var(--muted)">${log.timeStr}</small></td>
+          <td><b>${log.custName}</b><br><small style="color:var(--muted)">${log.custPhone}</small></td>
+          <td><code>${log.payerInfo}</code></td>
+          <td>${log.appUsed}</td>
+          <td><b>${log.refId}</b></td>
+          <td><b>₹${log.amount}</b></td>
+          <td><span class="badge badge-vegan">${log.statusLabel}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function clearLogs() {
+      if (!confirm("Clear all saved payment logs from this browser?")) return;
+      paymentLogs = [];
+      localStorage.removeItem("vb_payment_logs");
+      renderLogs();
+    }
+
     renderMenu();
     renderCart();
+    updateLogBadge();
   </script>
 </body>
 </html>
