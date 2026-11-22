@@ -3,96 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Copper Kettle Café</title>
+<title>The Copper Kettle Café | Bidholi, Dehradun</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif}
 html{scroll-behavior:smooth}
-body{background:#faf6f0;color:#231710;line-height:1.5}
-header{background:rgba(44,21,9,.96);backdrop-filter:blur(8px);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.brand{font-weight:800;font-size:1.2rem;color:#ffd1a3;letter-spacing:-.02em}
-nav{display:flex;gap:8px;flex-wrap:wrap}
-nav button{background:rgba(255,255,255,.12);color:#fff;border:none;padding:8px 15px;border-radius:99px;font-weight:600;cursor:pointer;transition:.2s}
-nav button.active,nav button:hover{background:#f5c18c;color:#231710}
-main{max-width:1040px;margin:24px auto;padding:0 16px 60px}
-.tab{display:none;animation:fade .25s ease}.tab.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.hero{background:linear-gradient(125deg,rgba(44,21,9,.88),rgba(110,53,22,.82)),url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80') center/cover;color:#fff;padding:44px 28px;border-radius:18px;margin-bottom:26px;box-shadow:0 10px 25px rgba(0,0,0,.12)}
-.hero h1{font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:10px}
-.hero p{max-width:54ch;color:#f5e8dc;margin-bottom:16px}
-.btn{background:#f5c18c;color:#231710;border:none;padding:10px 20px;border-radius:99px;font-weight:700;cursor:pointer;transition:.15s}
+body{background:#fbf7f2;color:#24160e;line-height:1.55}
+header{background:rgba(38,18,8,.97);backdrop-filter:blur(10px);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:60;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+.nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.brand{font-weight:800;font-size:1.25rem;color:#ffd4a8;display:flex;align-items:center;gap:8px;cursor:pointer}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{background:rgba(255,255,255,.1);color:#f7ece1;border:none;padding:8px 15px;border-radius:99px;font-weight:600;font-size:.9rem;cursor:pointer;transition:.2s}
+nav button.active,nav button:hover{background:#f5c18c;color:#24160e}
+main{max-width:1080px;margin:24px auto;padding:0 16px 70px}
+.page{display:none;animation:fade .3s ease}.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(120deg,rgba(36,16,7,.88),rgba(105,49,19,.8)),url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80') center/cover;color:#fff;padding:48px 30px;border-radius:20px;margin-bottom:28px;box-shadow:0 12px 30px rgba(36,22,14,.16)}
+.tag{display:inline-block;background:rgba(245,193,140,.22);border:1px solid rgba(245,193,140,.45);color:#ffd9b3;padding:4px 12px;border-radius:99px;font-size:.8rem;font-weight:700;margin-bottom:12px}
+.hero h1{font-size:clamp(1.8rem,3.8vw,2.6rem);line-height:1.18;margin-bottom:12px}
+.hero p{max-width:54ch;color:#f4e6d8;margin-bottom:20px}
+.btn{background:#f5c18c;color:#24160e;border:none;padding:11px 22px;border-radius:99px;font-weight:700;font-size:.95rem;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:6px}
 .btn:active{transform:scale(.97)}.btn-dark{background:#7c3f1d;color:#fff}.btn-dark:hover{background:#5a2b12}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:16px}
-.card{background:#fff;border:1px solid #e6d8ca;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(35,23,16,.05);display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:20px;margin-top:18px}
+.card{background:#fff;border:1px solid #e8dacb;border-radius:16px;overflow:hidden;box-shadow:0 5px 16px rgba(36,22,14,.05);display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s}
 .card:hover{transform:translateY(-3px)}
-.card img{width:100%;height:175px;object-fit:cover;background:#efe5da}
-.card-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1;justify-content:space-between}
+.card img{width:100%;height:180px;object-fit:cover;background:#efe4d8}
+.card-body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1;justify-content:space-between}
 .badge{background:#f3ebe1;color:#5c4b41;font-size:.75rem;padding:3px 9px;border-radius:6px;font-weight:700;display:inline-block}
 .vegan{background:#e1f3e8;color:#246a45}
-.price{font-weight:800;color:#7c3f1d;font-size:1.15rem}
-.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
-input,select{width:100%;padding:10px 12px;border:1px solid #d5c5b5;border-radius:9px;margin:5px 0 12px;font-size:.95rem}
-.bill{background:#f5ede3;padding:14px;border-radius:10px;margin-top:12px;font-size:.95rem}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;place-items:center;padding:16px}
+.price{font-weight:800;color:#7c3f1d;font-size:1.2rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.pill{padding:7px 14px;border-radius:99px;border:1px solid #dfd0c0;background:#fff;font-weight:600;font-size:.85rem;cursor:pointer}
+.pill.active{background:#7c3f1d;color:#fff;border-color:#7c3f1d}
+input,select{width:100%;padding:11px 13px;border:1px solid #d6c5b3;border-radius:10px;margin:5px 0 12px;font-size:.95rem}
+.bill{background:#f6eee4;padding:15px;border-radius:12px;margin-top:12px;font-size:.95rem}
+.modal{display:none;position:fixed;inset:0;background:rgba(18,10,5,.72);z-index:100;place-items:center;padding:16px;overflow-y:auto}
 .modal.open{display:grid}
-.modal-box{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:22px;box-shadow:0 16px 40px rgba(0,0,0,.25);animation:fade .2s ease}
+.modal-box{background:#fff;border-radius:18px;max-width:440px;width:100%;padding:24px;box-shadow:0 20px 45px rgba(0,0,0,.3);animation:fade .2s ease}
 .pay-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 .pay-opt{border:1.5px solid #dfd0c0;border-radius:10px;padding:10px 6px;text-align:center;font-weight:700;font-size:.85rem;cursor:pointer;background:#faf6f0}
 .pay-opt.active{border-color:#7c3f1d;background:#f3e5d7;color:#5a2b12}
-.qr-box{text-align:center;background:#faf6f0;padding:14px;border-radius:12px;margin:10px 0;border:1px dashed #c87d4b}
-footer{background:#231710;color:#e7dcd3;text-align:center;padding:24px 16px;font-size:.9rem}
+.upi-apps{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.upi-app{display:block;text-align:center;padding:9px;border-radius:9px;background:#fff;border:1px solid #d5c5b5;color:#24160e;text-decoration:none;font-weight:700;font-size:.85rem}
+.upi-app:hover{background:#f3e5d7}
+.qr-box{text-align:center;background:#faf6f0;padding:14px;border-radius:12px;margin:10px 0;border:1.5px dashed #c87d4b}
+.receipt-paper{background:#fffdf9;border:1.5px dashed #b89f88;border-radius:12px;padding:16px;margin-top:12px;font-size:.9rem}
+.r-line{display:flex;justify-content:space-between;padding:4px 0}
+footer{background:#24160e;color:#e7dcd3;text-align:center;padding:26px 16px;font-size:.9rem}
 </style>
 </head>
 <body>
 <header>
-  <div class="brand">☕ The Copper Kettle Café</div>
-  <nav>
-    <button class="active" onclick="showTab('home',this)">Home</button>
-    <button onclick="showTab('menu',this)">Menu</button>
-    <button onclick="showTab('about',this)">About</button>
-    <button onclick="showTab('order',this)">Tray (<span id="count">2</span>)</button>
-  </nav>
+  <div class="nav-inner">
+    <div class="brand" onclick="goPage('home')">☕ The Copper Kettle Café</div>
+    <nav>
+      <button id="btn-home" class="active" onclick="goPage('home')">Home</button>
+      <button id="btn-menu" onclick="goPage('menu')">Menu</button>
+      <button id="btn-about" onclick="goPage('about')">About &amp; Location</button>
+      <button id="btn-order" onclick="goPage('order')">Tray (<span id="count">2</span>)</button>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <section id="home" class="tab active">
+  <!-- PAGE 1: HOME -->
+  <section id="page-home" class="page active">
     <div class="hero">
-      <h1>Single-Estate Coffee &amp; Artisanal Plates</h1>
-      <p>Hand-roasted Chikmagalur Arabica, kulhad masala chai, and fresh sourdough bakes in Dehradun &amp; Kanpur. Apply code <b>COPPER20</b> for 20% off orders ₹300+.</p>
-      <button class="btn" onclick="showTab('menu',document.querySelectorAll('nav button')[1])">Explore Menu &amp; Order</button>
+      <span class="tag">Bidholi, Near UPES Campus • Dehradun</span>
+      <h1>Specialty Coffee, Kulhad Chai &amp; Warm Sourdough</h1>
+      <p>Your neighborhood roastery &amp; student café right next to UPES Bidholi. Freshly brewed cups starting at ₹50, zero-queue pickup, and instant UPI payments.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" onclick="goPage('menu')">Explore Menu →</button>
+        <button class="btn" style="background:rgba(255,255,255,.15);color:#fff" onclick="goPage('about')">Visit Café</button>
+      </div>
     </div>
+
+    <h2>Popular Picks at Bidholi</h2>
     <div class="grid">
-      <div class="card"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Pour Over Coffee"><div class="card-body"><h3>Chikmagalur Roasts</h3><p>Small-batch medium-dark Arabica beans ground fresh for every pour-over and flat white.</p></div></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Bakery Croissant"><div class="card-body"><h3>Morning Sourdough</h3><p>24-hour fermented breads, flaky butter croissants, and grilled paneer &amp; pesto melts.</p></div></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="Instant Payment"><div class="card-body"><h3>Instant UPI &amp; Pickup</h3><p>Pay seamlessly via UPI QR or Card and pick up piping hot without waiting in line.</p></div></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80" alt="Kulhad Chai"><div class="card-body"><div><span class="badge">Best Value • ₹50</span><h3 style="margin-top:6px">Adrak Elaichi Chai</h3><p style="font-size:.9rem;color:#5c4b41">Freshly crushed ginger &amp; green cardamom tea simmered to perfection.</p></div><button class="btn btn-dark" onclick="add(1);goPage('order')">Order for ₹50</button></div></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Flat White"><div class="card-body"><div><span class="badge">Signature Coffee</span><h3 style="margin-top:6px">Copper Velvet Flat White</h3><p style="font-size:.9rem;color:#5c4b41">Double Chikmagalur espresso shot topped with silky micro-foamed milk.</p></div><button class="btn btn-dark" onclick="add(3);goPage('order')">Order for ₹180</button></div></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80" alt="Paneer Sourdough"><div class="card-body"><div><span class="badge">All-Day Plate</span><h3 style="margin-top:6px">Smoked Paneer Sourdough</h3><p style="font-size:.9rem;color:#5c4b41">Grilled cottage cheese, basil pesto &amp; roasted tomatoes on warm sourdough.</p></div><button class="btn btn-dark" onclick="add(7);goPage('order')">Order for ₹240</button></div></div>
     </div>
   </section>
 
-  <section id="menu" class="tab">
+  <!-- PAGE 2: MENU -->
+  <section id="page-menu" class="page">
     <div class="row">
-      <h2>Artisanal Café Menu</h2>
+      <div><h2>Café Menu (Prices in ₹)</h2><p style="color:#5c4b41;font-size:.9rem">Use code <b>COPPER20</b> on orders ₹300+ for 20% off.</p></div>
       <label style="font-weight:600;cursor:pointer"><input type="checkbox" id="vOnly" onchange="renderMenu()" style="width:auto;margin:0 6px 0 0">Vegan Only</label>
+    </div>
+    <div class="pills">
+      <button class="pill active" onclick="setCat('All',this)">All</button>
+      <button class="pill" onclick="setCat('Chai & Coffee',this)">Chai &amp; Coffee</button>
+      <button class="pill" onclick="setCat('Bakery',this)">Bakery</button>
+      <button class="pill" onclick="setCat('Plates',this)">All-Day Plates</button>
     </div>
     <div class="grid" id="menuList"></div>
   </section>
 
-  <section id="about" class="tab">
-    <div class="card"><div class="card-body">
-      <h2>About The Copper Kettle Café</h2>
-      <p>We roast in custom copper drums in small batches and serve 100% plastic-free, compostable takeaway packaging across our two outlets.</p>
-      <p><b>Dehradun Outlet:</b> 142 Rajpur Road, Jakhan • +91 98370 41210</p>
-      <p><b>Kanpur Outlet:</b> 7/118 Swaroop Nagar • +91 98390 55420</p>
-      <p><b>Hours:</b> 7:30 AM – 10:30 PM (All Days)</p>
-    </div></div>
+  <!-- PAGE 3: ABOUT & LOCATION -->
+  <section id="page-about" class="page">
+    <div class="grid">
+      <div class="card"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Cafe Interior"><div class="card-body">
+        <h2>Our Story</h2>
+        <p>The Copper Kettle Café was created as a warm, Wi-Fi-enabled sanctuary for coffee lovers and UPES students in Bidholi. We roast single-estate Indian Arabica in small copper-drum batches and serve 100% eco-friendly compostable packaging.</p>
+      </div></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Dehradun Location"><div class="card-body">
+        <h2>Visit Us in Dehradun</h2>
+        <p><b>Address:</b> Main Bidholi Road, Near UPES Campus Gate, Dehradun, Uttarakhand 248007</p>
+        <p><b>Opening Hours:</b> Monday – Sunday, 7:30 AM to 10:30 PM</p>
+        <p><b>Contact &amp; UPI:</b> +91 98370 41210 • <code>ojassachan@kotakbank</code></p>
+        <button class="btn btn-dark" onclick="goPage('menu')">Start Pre-Order →</button>
+      </div></div>
+    </div>
   </section>
 
-  <section id="order" class="tab">
+  <!-- PAGE 4: TRAY & CHECKOUT -->
+  <section id="page-order" class="page">
     <div class="grid">
       <div class="card"><div class="card-body">
         <div>
-          <h3>Your Pre-Order Tray</h3>
+          <h3>Your Order Tray</h3>
           <div id="cartList" style="margin-top:10px"></div>
           <div style="display:flex;gap:8px;margin-top:12px">
-            <input id="promo" placeholder="Promo: COPPER20" style="margin:0">
+            <input id="promo" placeholder="Promo code: COPPER20" style="margin:0">
             <button class="btn btn-dark" onclick="applyPromo()">Apply</button>
           </div>
           <p id="pMsg" style="font-size:.85rem;margin-top:6px;font-weight:600;color:#246a45"></p>
@@ -102,62 +136,85 @@ footer{background:#231710;color:#e7dcd3;text-align:center;padding:24px 16px;font
 
       <div class="card"><div class="card-body">
         <form onsubmit="openPayment(event)">
-          <h3>Pickup &amp; Checkout</h3>
-          <label style="display:block;margin-top:10px;font-weight:600">Full Name</label>
+          <h3>Pickup Details — Bidholi Café</h3>
+          <label style="display:block;margin-top:10px;font-weight:600">Full Name *</label>
           <input id="cName" required placeholder="Enter your name">
-          <label style="font-weight:600">Mobile Number (10 digits)</label>
-          <input id="cPhone" pattern="[0-9]{10}" required placeholder="9876543210">
-          <label style="font-weight:600">Select Outlet</label>
-          <select id="cOutlet"><option>Dehradun — Rajpur Road</option><option>Kanpur — Swaroop Nagar</option></select>
-          <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Proceed to Payment Gateway →</button>
+          <label style="font-weight:600">Mobile Number (10 digits) *</label>
+          <input id="cPhone" pattern="[0-9]{10}" required placeholder="e.g. 9876543210">
+          <label style="font-weight:600">Pickup Slot</label>
+          <select id="cSlot"><option>Express Pickup (10–15 mins)</option><option>Dine-In Table — Bidholi, Near UPES</option></select>
+          <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Pay Now (GPay / UPI / Card) →</button>
         </form>
-        <div id="receiptBox" style="display:none;margin-top:14px;padding:12px;background:#e1f3e8;color:#1b5436;border-radius:10px;font-size:.9rem;font-weight:600"></div>
       </div></div>
     </div>
   </section>
 </main>
 
+<!-- PAYMENT GATEWAY MODAL -->
 <div class="modal" id="payModal">
   <div class="modal-box">
-    <div class="row"><h3>CopperPay Secure Checkout</h3><button onclick="closePay()" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button></div>
-    <p style="color:#5c4b41;font-size:.9rem;margin-top:4px">Payable Amount: <b id="payAmt" style="color:#7c3f1d;font-size:1.1rem">₹0</b></p>
+    <div class="row"><h3>CopperPay Secure Gateway</h3><button onclick="closePay()" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button></div>
+    <p style="color:#5c4b41;font-size:.9rem;margin-top:4px">Amount Payable: <b id="payAmt" style="color:#7c3f1d;font-size:1.15rem">₹0</b></p>
     <div class="pay-opts">
-      <div class="pay-opt active" onclick="selMethod('upi',this)">📱 UPI / QR</div>
+      <div class="pay-opt active" onclick="selMethod('upi',this)">📱 GPay / UPI</div>
       <div class="pay-opt" onclick="selMethod('card',this)">💳 Card</div>
       <div class="pay-opt" onclick="selMethod('cash',this)">💵 Counter</div>
     </div>
     <div id="methodView"></div>
-    <button id="payNowBtn" class="btn btn-dark" style="width:100%;margin-top:12px" onclick="completePayment()">Verify &amp; Pay Now</button>
+    <button id="payNowBtn" class="btn btn-dark" style="width:100%;margin-top:14px" onclick="completePayment()">Confirm Payment &amp; Get Receipt</button>
+  </div>
+</div>
+
+<!-- DIGITAL RECEIPT MODAL -->
+<div class="modal" id="receiptModal">
+  <div class="modal-box">
+    <div style="text-align:center">
+      <div style="font-size:2.2rem">✅</div>
+      <h3 style="color:#246a45">Payment Successful!</h3>
+      <p style="font-size:.85rem;color:#5c4b41">The Copper Kettle Café • Bidholi, Near UPES, Dehradun</p>
+    </div>
+    <div class="receipt-paper" id="receiptContent"></div>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button class="btn btn-dark" style="flex:1;justify-content:center" onclick="window.print()">🖨️ Print / Save PDF</button>
+      <button class="btn" style="flex:1;justify-content:center" onclick="closeReceipt()">Done</button>
+    </div>
   </div>
 </div>
 
 <footer>
-  <b>The Copper Kettle Café</b> • CS-1 Project<br>
+  <b>The Copper Kettle Café</b> • Bidholi, Near UPES, Dehradun<br>
   Ojas, Uplaksh, Aakash, Harsh, Himanshi, Yash, Daksh
 </footer>
 
 <script>
 const ITEMS=[
-  {id:1,name:"Chikmagalur Pour-Over",cat:"Coffee",price:190,vegan:true,all:"None",img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80"},
-  {id:2,name:"Copper Velvet Flat White",cat:"Coffee",price:220,vegan:false,all:"Dairy",img:"https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80"},
-  {id:3,name:"Jaggery Cold Brew",cat:"Coffee",price:240,vegan:true,all:"None",img:"https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80"},
-  {id:4,name:"Kulhad Masala Chai",cat:"Tea",price:130,vegan:false,all:"Dairy",img:"https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80"},
-  {id:5,name:"Almond Croissant",cat:"Bakery",price:210,vegan:false,all:"Gluten, Dairy, Almonds",img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80"},
-  {id:6,name:"Dark Chocolate Tart",cat:"Bakery",price:230,vegan:true,all:"Almonds",img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"},
-  {id:7,name:"Smoked Paneer Sourdough",cat:"Plates",price:310,vegan:false,all:"Gluten, Dairy, Walnuts",img:"https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80"},
-  {id:8,name:"Truffle Mushroom Tartine",cat:"Plates",price:295,vegan:true,all:"Gluten, Sesame",img:"https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"}
+  {id:1,name:"Adrak Elaichi Chai",cat:"Chai & Coffee",price:50,vegan:false,all:"Dairy",img:"https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80"},
+  {id:2,name:"Chikmagalur Black Pour-Over",cat:"Chai & Coffee",price:140,vegan:true,all:"None",img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80"},
+  {id:3,name:"Copper Velvet Flat White",cat:"Chai & Coffee",price:180,vegan:false,all:"Dairy",img:"https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80"},
+  {id:4,name:"Jaggery Iced Cold Brew",cat:"Chai & Coffee",price:195,vegan:true,all:"None",img:"https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80"},
+  {id:5,name:"Warm Garlic Butter Bun",cat:"Bakery",price:65,vegan:false,all:"Gluten, Dairy",img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"},
+  {id:6,name:"Almond Frangipane Croissant",cat:"Bakery",price:175,vegan:false,all:"Gluten, Dairy, Almonds",img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80"},
+  {id:7,name:"Smoked Paneer Sourdough",cat:"Plates",price:240,vegan:false,all:"Gluten, Dairy, Walnuts",img:"https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80"},
+  {id:8,name:"Truffle Mushroom Tartine",cat:"Plates",price:230,vegan:true,all:"Gluten, Sesame",img:"https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80"}
 ];
-let cart=[{id:2,qty:1},{id:7,qty:1}],disc=0,payMode='upi',finalTot=0;
+let cart=[{id:1,qty:1},{id:7,qty:1}],curCat='All',disc=0,payMode='upi',finalTot=0,subTot=0,discAmt=0,gstAmt=0;
 
-function showTab(id,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+function goPage(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
   document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
+  document.getElementById('btn-'+p).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function setCat(c,el){
+  curCat=c;
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  renderMenu();
 }
 function renderMenu(){
   const v=document.getElementById('vOnly').checked;
-  document.getElementById('menuList').innerHTML=ITEMS.filter(i=>!v||i.vegan).map(i=>`
+  document.getElementById('menuList').innerHTML=ITEMS.filter(i=>(curCat==='All'||i.cat===curCat)&&(!v||i.vegan)).map(i=>`
     <div class="card">
       <img src="${i.img}" alt="${i.name}" loading="lazy">
       <div class="card-body">
@@ -165,7 +222,7 @@ function renderMenu(){
         <h3 style="margin-top:8px">${i.name}</h3>
         <p style="font-size:.8rem;color:#5c4b41;margin-top:4px">Allergens: ${i.all}</p></div>
         <div class="row" style="margin-top:10px"><span class="price">₹${i.price}</span>
-        <button class="btn btn-dark" style="padding:7px 14px" onclick="add(${i.id})">+ Add</button></div>
+        <button class="btn btn-dark" style="padding:7px 15px" onclick="add(${i.id})">+ Add</button></div>
       </div>
     </div>`).join('');
 }
@@ -186,16 +243,17 @@ function renderCart(){
       <span><b>${m.name}</b><br><small>₹${m.price} × ${c.qty}</small></span>
       <div><button onclick="chg(${m.id},-1)" style="padding:3px 9px">-</button> <b>${c.qty}</b> <button onclick="chg(${m.id},1)" style="padding:3px 9px">+</button></div>
     </div>`;
-  }).join(''):'<p>Tray is empty.</p>';
-  const sub=cart.reduce((s,c)=>s+ITEMS.find(m=>m.id===c.id).price*c.qty,0);
-  if(sub<300)disc=0;
-  const dAmt=Math.round(sub*disc),gst=Math.round((sub-dAmt)*0.05);
-  finalTot=sub-dAmt+gst;
-  document.getElementById('billBox').innerHTML=`Subtotal: ₹${sub}<br>Discount: -₹${dAmt}<br>GST (5%): ₹${gst}<br><b style="font-size:1.1rem">Total Payable: ₹${finalTot}</b>`;
+  }).join(''):'<p>Your tray is empty.</p>';
+  subTot=cart.reduce((s,c)=>s+ITEMS.find(m=>m.id===c.id).price*c.qty,0);
+  if(subTot<300)disc=0;
+  discAmt=Math.round(subTot*disc);
+  gstAmt=Math.round((subTot-discAmt)*0.05);
+  finalTot=subTot-discAmt+gstAmt;
+  document.getElementById('billBox').innerHTML=`Subtotal: ₹${subTot}<br>Discount: -₹${discAmt}<br>GST (5%): ₹${gstAmt}<br><b style="font-size:1.1rem">Total Payable: ₹${finalTot}</b>`;
 }
 function openPayment(e){
   e.preventDefault();
-  if(!cart.length)return alert('Add at least one item to your tray!');
+  if(!cart.length)return alert('Please add at least one item to your tray!');
   document.getElementById('payAmt').textContent='₹'+finalTot;
   selMethod('upi',document.querySelector('.pay-opt'));
   document.getElementById('payModal').classList.add('open');
@@ -206,24 +264,34 @@ function selMethod(m,el){
   document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('active'));
   if(el)el.classList.add('active');
   const v=document.getElementById('methodView');
-  if(m==='upi')v.innerHTML=`<div class="qr-box"><img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=upi://pay?pa=copperkettle@upi&am=${finalTot}" alt="UPI QR" style="margin:auto;display:block"><small style="display:block;margin-top:6px">Scan with GPay / PhonePe / Paytm<br><b>UPI ID:</b> copperkettle@upi</small></div>`;
-  else if(m==='card')v.innerHTML=`<input placeholder="Card Number (16 digits)" maxlength="16"><div style="display:flex;gap:8px"><input placeholder="MM/YY"><input placeholder="CVV" maxlength="3" type="password"></div>`;
-  else v.innerHTML=`<p style="background:#faf6f0;padding:12px;border-radius:10px;font-size:.9rem">Pay <b>₹${finalTot}</b> via Cash or Card at the pickup counter when collecting your order.</p>`;
+  const upiLink=`upi://pay?pa=ojassachan@kotakbank&pn=The%20Copper%20Kettle%20Cafe&am=${finalTot}&cu=INR`;
+  if(m==='upi'){
+    v.innerHTML=`<div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(upiLink)}" alt="UPI QR ojassachan@kotakbank" style="margin:auto;display:block;border-radius:8px">
+      <p style="font-size:.85rem;margin-top:8px">Scan with <b>GPay, PhonePe, Paytm or any UPI App</b><br>UPI ID: <b>ojassachan@kotakbank</b></p>
+      <div class="upi-apps">
+        <a class="upi-app" href="${upiLink}">Pay via GPay</a>
+        <a class="upi-app" href="${upiLink}">PhonePe / Paytm / UPI</a>
+      </div>
+    </div>`;
+  }else if(m==='card'){
+    v.innerHTML=`<input placeholder="Card Number (16 digits)" maxlength="16"><div style="display:flex;gap:8px"><input placeholder="MM/YY"><input placeholder="CVV" maxlength="3" type="password"></div>`;
+  }else{
+    v.innerHTML=`<p style="background:#faf6f0;padding:12px;border-radius:10px;font-size:.9rem">Pay <b>₹${finalTot}</b> at the Bidholi Café counter upon pickup.</p>`;
+  }
 }
 function completePayment(){
   const btn=document.getElementById('payNowBtn');
-  btn.textContent='Processing Payment...';btn.disabled=true;
+  btn.textContent='Verifying Payment...';btn.disabled=true;
   setTimeout(()=>{
-    btn.textContent='Verify & Pay Now';btn.disabled=false;
+    btn.textContent='Confirm Payment & Get Receipt';btn.disabled=false;
     closePay();
     const oid='CK-'+Math.floor(1000+Math.random()*9000);
-    const txn='TXN'+Date.now().toString().slice(-6);
-    const r=document.getElementById('receiptBox');
-    r.style.display='block';
-    r.innerHTML=`✅ Payment Successful (${payMode.toUpperCase()})!<br>Order ID: <b>${oid}</b> | Ref: <b>${txn}</b><br>Paid <b>₹${finalTot}</b> by ${document.getElementById('cName').value} for pickup at ${document.getElementById('cOutlet').value}.`;
-  },900);
-}
-renderMenu();renderCart();
-</script>
-</body>
-</html>
+    const txn='KOTAK'+Date.now().toString().slice(-6);
+    const now=new Date().toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'});
+    const itemsHtml=cart.map(c=>{
+      const m=ITEMS.find(x=>x.id===c.id);
+      return `<div class="r-line"><span>${m.name} × ${c.qty}</span><span>₹${m.price*c.qty}</span></div>`;
+    }).join('');
+    document.getElementById('receiptContent').innerHTML=`
+      <div class="r-line"><span><b>Order ID:</b> ${oid}</span><span><b>Txn:</b> ${
