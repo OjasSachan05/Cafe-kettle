@@ -31,7 +31,7 @@
     main { max-width: 1120px; margin: 28px auto; padding: 0 18px 70px; }
     .page-view { display: none; animation: fadeSlide 0.3s ease; }
     .page-view.active { display: block; }
-    @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
     .hero { background: linear-gradient(120deg, rgba(34, 18, 9, 0.89), rgba(104, 47, 18, 0.82)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80') center/cover; color: #fff; padding: 52px 32px; border-radius: 22px; margin-bottom: 32px; box-shadow: var(--shadow); }
     .hero-tag { display: inline-block; background: rgba(245, 193, 140, 0.22); border: 1px solid var(--gold); color: #ffd9b3; padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 12px; }
     .hero h1 { font-size: clamp(1.85rem, 3.8vw, 2.7rem); line-height: 1.18; margin-bottom: 12px; }
@@ -136,7 +136,386 @@
       <div class="grid">
         <div class="card"><div class="cb"><h3>12 kg Copper-Drum Roasting</h3><p class="meta">Every batch of Baba Budangiri Arabica is roasted in-house weekly for natural caramel &amp; cacao sweetness without bitterness.</p></div></div>
         <div class="card"><div class="cb"><h3>High-Speed Study Lounge</h3><p class="meta">Dedicated power sockets at every table, 300 Mbps fiber Wi-Fi, and quiet acoustic zones right next to UPES Bidholi.</p></div></div>
-        <div class="card"><div class="cb"><h3>Instant Verified UPI Pickup</h3><p class="meta">Scan &amp; pay directly via GPay or any UPI app (`ojassachan@kotakbank`) and grab your order from the express counter.</p></div></div>
+        <div class="card"><div class="cb"><h3>Instant Verified UPI Pickup</h3><p class="meta">Scan &amp; pay directly via GPay or any UPI app (<code>ojassachan@kotakbank</code>) and grab your order from the express counter.</p></div></div>
       </div>
     </section>
-    
+
+    <section id="view-menu" class="page-view">
+      <div class="section-head">
+        <h2>Full Café Menu (Prices in ₹)</h2>
+        <p>Apply promo code <b>VELVET20</b> in your tray on orders of ₹300 or above for 20% off.</p>
+      </div>
+      <div class="filter-box">
+        <div class="pills">
+          <button class="pill active" onclick="filterCat('All', this)">All (10)</button>
+          <button class="pill" onclick="filterCat('Chai & Coffee', this)">Chai &amp; Coffee</button>
+          <button class="pill" onclick="filterCat('Bakery', this)">Bakery</button>
+          <button class="pill" onclick="filterCat('Plates', this)">All-Day Plates</button>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+          <input id="searchBox" placeholder="Search coffee, chai, croissant..." oninput="renderMenu()" style="width:210px;margin:0;padding:8px 12px" />
+          <label style="font-weight:600;cursor:pointer"><input type="checkbox" id="veganOnly" onchange="renderMenu()" style="width:auto;margin:0 6px 0 0" />Vegan Only</label>
+        </div>
+      </div>
+      <div class="grid" id="menuGrid"></div>
+    </section>
+
+    <section id="view-about" class="page-view">
+      <div class="section-head">
+        <h2>Our Craft &amp; Bidholi Café Location</h2>
+        <p>Rooted in Indian specialty coffee culture and neighborhood hospitality.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="The Velvet Bean Cafe Interior" />
+          <div class="cb">
+            <h3>About The Velvet Bean Roastery</h3>
+            <p class="meta">Founded in 2026 in Dehradun, The Velvet Bean Roastery &amp; Café brings direct-trade Chikmagalur estates together with artisanal sourdough baking. Every takeaway cup, lid, and pastry box is 100% plastic-free and compostable.</p>
+            <p class="meta"><b>Roast Profile:</b> Medium-Dark City Roast • <b>Brew Methods:</b> Espresso, V60 Pour-Over, 18-Hr Cold Steep, Traditional Kulhad.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="Bidholi Near UPES Dehradun" />
+          <div class="cb">
+            <h3>Visit Us in Dehradun</h3>
+            <p class="meta"><b>Café Address:</b> Main Bidholi Road, Near UPES Campus Gate, Bidholi, Dehradun, Uttarakhand 248007</p>
+            <p class="meta"><b>Opening Hours:</b> Monday – Sunday, 7:30 AM to 10:30 PM</p>
+            <p class="meta"><b>Phone &amp; Support:</b> +91 98370 41210</p>
+            <p class="meta"><b>Official Merchant UPI:</b> <code>ojassachan@kotakbank</code></p>
+            <button class="btn btn-dark" onclick="switchPage('menu')">Order Pickup Now →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-order" class="page-view">
+      <div class="section-head">
+        <h2>Pre-Order Tray &amp; Secure Checkout</h2>
+        <p>Review your items, apply promo code <b>VELVET20</b>, and verify payment to generate your pickup receipt.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="cb">
+            <div>
+              <h3>Your Order Tray</h3>
+              <div id="cartContainer" style="margin-top:10px"></div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <input id="promoInput" placeholder="Enter code: VELVET20" style="margin:0" />
+                <button class="btn btn-dark" type="button" onclick="applyPromo()">Apply</button>
+              </div>
+              <p id="promoMsg" style="font-size:0.85rem;margin-top:6px;font-weight:600;color:var(--success)"></p>
+            </div>
+            <div class="bill" id="billSummary"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cb">
+            <form onsubmit="openPaymentModal(event)">
+              <h3>Customer &amp; Pickup Details</h3>
+              <label style="display:block;margin-top:10px;font-weight:600">Full Name *</label>
+              <input id="custName" required placeholder="Enter your full name" />
+              <label style="font-weight:600">Mobile Number (10 digits) *</label>
+              <input id="custPhone" pattern="[0-9]{10}" required placeholder="e.g. 9876543210" />
+              <label style="font-weight:600">Pickup Preference</label>
+              <select id="custSlot">
+                <option>Express Counter Pickup (10–15 mins) — Bidholi</option>
+                <option>Dine-In Table — Near UPES Campus Gate</option>
+              </select>
+              <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Proceed to Payment Gateway →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="payModal">
+    <div class="mbox">
+      <div class="row"><h3>VelvetPay Live Payment Tracker</h3><button type="button" onclick="closePaymentModal()" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button></div>
+      <p style="color:var(--muted);font-size:0.9rem;margin-top:4px">Total Payable: <b id="modalPayAmt" style="color:var(--primary);font-size:1.15rem">₹0</b></p>
+      <div class="popts">
+        <div class="popt active" id="opt-upi" onclick="selectPayMode('upi')">📱 GPay / UPI</div>
+        <div class="popt" id="opt-card" onclick="selectPayMode('card')">💳 Card</div>
+        <div class="popt" id="opt-cash" onclick="selectPayMode('cash')">💵 Counter</div>
+      </div>
+      <div id="payModeBody"></div>
+      <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment initiation...</div>
+      <button id="verifyPayBtn" type="button" class="btn btn-dark" style="width:100%;margin-top:12px" onclick="verifyPayment()">Verify Payment Status</button>
+    </div>
+  </div>
+
+  <div class="modal" id="receiptModal">
+    <div class="mbox">
+      <div style="text-align:center">
+        <div style="font-size:2.1rem">✅</div>
+        <h3 style="color:var(--success)">Payment Verified!</h3>
+        <p style="font-size:0.84rem;color:var(--muted)">The Velvet Bean Roastery &amp; Café • Bidholi, Near UPES, Dehradun</p>
+      </div>
+      <div class="paper" id="receiptBody"></div>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button type="button" class="btn btn-dark" style="flex:1;justify-content:center" onclick="window.print()">🖨️ Print Receipt</button>
+        <button type="button" class="btn" style="flex:1;justify-content:center" onclick="closeReceiptModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <b>The Velvet Bean Roastery &amp; Café</b><br />
+    Main Bidholi Road, Near UPES Campus Gate, Dehradun, Uttarakhand 248007<br />
+    Ojas, Uplaksh, Aakash, Harsh, Himanshi, Yash, Daksh
+  </footer>
+
+  <script>
+    const MENU = [
+      { id: 1, name: "Adrak Elaichi Kulhad Chai", cat: "Chai & Coffee", price: 50, vegan: false, cal: "110 kcal • 200 ml", desc: "Crushed fresh ginger, green cardamom & Assam orthodox tea simmered in farm milk.", allergens: "Dairy", img: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80" },
+      { id: 2, name: "Chikmagalur Black Pour-Over", cat: "Chai & Coffee", price: 140, vegan: true, cal: "10 kcal • 240 ml", desc: "Single-estate medium roast brewed via V60 with citrus & palm jaggery notes.", allergens: "None (100% Vegan)", img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80" },
+      { id: 3, name: "Velvet Hazelnut Flat White", cat: "Chai & Coffee", price: 180, vegan: false, cal: "190 kcal • 250 ml", desc: "Double Arabica espresso shot topped with silky micro-foamed milk & roasted hazelnut.", allergens: "Dairy, Tree Nuts", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" },
+      { id: 4, name: "Jaggery Iced Cold Brew", cat: "Chai & Coffee", price: 195, vegan: true, cal: "65 kcal • 300 ml", desc: "18-hour steeped Chikmagalur cold brew lightly sweetened with organic palm jaggery.", allergens: "None", img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" },
+      { id: 5, name: "Himalayan Buransh Fizz", cat: "Chai & Coffee", price: 150, vegan: true, cal: "80 kcal • 300 ml", desc: "Uttarakhand rhododendron flower reduction topped with sparkling spring water & mint.", allergens: "None", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" },
+      { id: 6, name: "Warm Garlic Butter Bun", cat: "Bakery", price: 65, vegan: false, cal: "220 kcal • 1 Pc", desc: "Soft oven-warm brioche bun brushed with roasted garlic & fresh herb butter.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
+      { id: 7, name: "Almond Frangipane Croissant", cat: "Bakery", price: 175, vegan: false, cal: "340 kcal • 1 Pc", desc: "Twice-baked flaky butter croissant filled with roasted almond cream & flakes.", allergens: "Gluten, Dairy, Almonds", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" },
+      { id: 8, name: "70% Dark Chocolate Ganache Tart", cat: "Bakery", price: 190, vegan: true, cal: "310 kcal • 1 Slice", desc: "Idukki single-origin dark chocolate ganache set in a crisp cocoa-almond crust.", allergens: "Tree Nuts (Almonds)", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" },
+      { id: 9, name: "Smoked Paneer Pesto Sourdough", cat: "Plates", price: 240, vegan: false, cal: "420 kcal • 2 Slices", desc: "Chargrilled cottage cheese, fresh basil pesto & sun-dried tomatoes on sourdough.", allergens: "Gluten, Dairy, Walnuts", img: "https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80" },
+      { id: 10, name: "Truffle Mushroom Hummus Tartine", cat: "Plates", price: 230, vegan: true, cal: "360 kcal • 2 Slices", desc: "Garlic-roasted wild mushrooms over whipped chickpea tahini on toasted sourdough.", allergens: "Gluten, Sesame", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" }
+    ];
+
+    let cart = [{ id: 1, qty: 1 }, { id: 9, qty: 1 }];
+    let activeCat = "All";
+    let discountRate = 0;
+    let payMode = "upi";
+    let subTotal = 0, discAmt = 0, gstAmt = 0, finalTotal = 0;
+
+    function switchPage(pageId) {
+      document.querySelectorAll(".page-view").forEach(p => p.classList.remove("active"));
+      document.getElementById("view-" + pageId).classList.add("active");
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("nav-" + pageId).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function filterCat(cat, btn) {
+      activeCat = cat;
+      document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      renderMenu();
+    }
+
+    function renderMenu() {
+      const veganOnly = document.getElementById("veganOnly").checked;
+      const query = document.getElementById("searchBox").value.trim().toLowerCase();
+      const filtered = MENU.filter(item =>
+        (activeCat === "All" || item.cat === activeCat) &&
+        (!veganOnly || item.vegan) &&
+        (item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query))
+      );
+      document.getElementById("menuGrid").innerHTML = filtered.length ? filtered.map(item => `
+        <div class="card">
+          <img src="${item.img}" alt="${item.name}" />
+          <div class="cb">
+            <div>
+              <div class="row" style="margin-bottom:6px">
+                <span class="badge">${item.cat}</span>
+                ${item.vegan ? '<span class="badge badge-vegan">Vegan</span>' : '<span class="meta">' + item.cal + '</span>'}
+              </div>
+              <h3>${item.name}</h3>
+              <p class="meta" style="margin-top:4px">${item.desc}</p>
+            </div>
+            <div>
+              <div class="allergen" style="margin:8px 0"><b>Allergens:</b> ${item.allergens}</div>
+              <div class="row">
+                <span class="price">₹${item.price}</span>
+                <button type="button" class="btn btn-dark" style="padding:8px 16px" onclick="addToCart(${item.id})">+ Add to Tray</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join("") : "<p>No matching items found. Try clearing your search filter.</p>";
+    }
+
+    function addToCart(id) {
+      const existing = cart.find(c => c.id === id);
+      if (existing) existing.qty += 1;
+      else cart.push({ id, qty: 1 });
+      renderCart();
+    }
+
+    function quickOrder(id) {
+      addToCart(id);
+      switchPage("order");
+    }
+
+    function changeQty(id, delta) {
+      const idx = cart.findIndex(c => c.id === id);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      renderCart();
+    }
+
+    function applyPromo() {
+      const code = document.getElementById("promoInput").value.trim().toUpperCase();
+      const msg = document.getElementById("promoMsg");
+      if (code === "VELVET20" && subTotal >= 300) {
+        discountRate = 0.20;
+        msg.style.color = "var(--success)";
+        msg.textContent = "VELVET20 applied! 20% discount unlocked.";
+      } else {
+        discountRate = 0;
+        msg.style.color = "var(--danger)";
+        msg.textContent = "Code VELVET20 requires an order subtotal of ₹300 or more.";
+      }
+      renderCart();
+    }
+
+    function renderCart() {
+      document.getElementById("trayCount").textContent = cart.reduce((sum, c) => sum + c.qty, 0);
+      document.getElementById("cartContainer").innerHTML = cart.length ? cart.map(c => {
+        const item = MENU.find(m => m.id === c.id);
+        return `
+          <div class="row" style="border-bottom:1px solid #eee;padding:8px 0">
+            <span><b>${item.name}</b><br><small style="color:var(--muted)">₹${item.price} × ${c.qty}</small></span>
+            <div>
+              <button type="button" onclick="changeQty(${item.id}, -1)" style="padding:3px 10px;border-radius:6px;border:1px solid #ccc;cursor:pointer">-</button>
+              <b style="margin:0 6px">${c.qty}</b>
+              <button type="button" onclick="changeQty(${item.id}, 1)" style="padding:3px 10px;border-radius:6px;border:1px solid #ccc;cursor:pointer">+</button>
+            </div>
+          </div>`;
+      }).join("") : "<p class='meta'>Your tray is empty. Add items from the Menu tab.</p>";
+
+      subTotal = cart.reduce((sum, c) => sum + MENU.find(m => m.id === c.id).price * c.qty, 0);
+      if (subTotal < 300 && discountRate > 0) {
+        discountRate = 0;
+        document.getElementById("promoMsg").textContent = "";
+      }
+      discAmt = Math.round(subTotal * discountRate);
+      gstAmt = Math.round((subTotal - discAmt) * 0.05);
+      finalTotal = subTotal - discAmt + gstAmt;
+
+      document.getElementById("billSummary").innerHTML = `
+        <div>Item Subtotal: <b>₹${subTotal}</b></div>
+        <div>Promo Discount: <b>-₹${discAmt}</b></div>
+        <div>GST (5%): <b>₹${gstAmt}</b></div>
+        <div style="font-size:1.12rem;color:var(--primary-dark);border-top:1px solid #d8c6b4;margin-top:6px;padding-top:6px">Total Payable: <b>₹${finalTotal}</b></div>
+      `;
+    }
+
+    function updateTracker(text, status) {
+      const box = document.getElementById("trackerBox");
+      box.className = "tracker" + (status ? " " + status : "");
+      box.textContent = text;
+    }
+
+    function openPaymentModal(e) {
+      e.preventDefault();
+      if (!cart.length) return alert("Please add at least one item to your tray first!");
+      document.getElementById("modalPayAmt").textContent = "₹" + finalTotal;
+      selectPayMode("upi");
+      document.getElementById("payModal").classList.add("open");
+    }
+
+    function closePaymentModal() {
+      document.getElementById("payModal").classList.remove("open");
+    }
+
+    function selectPayMode(mode) {
+      payMode = mode;
+      document.querySelectorAll(".popt").forEach(el => el.classList.remove("active"));
+      document.getElementById("opt-" + mode).classList.add("active");
+      const body = document.getElementById("payModeBody");
+      const upiUrl = `upi://pay?pa=ojassachan@kotakbank&pn=The%20Velvet%20Bean%20Cafe&am=${finalTotal}&cu=INR`;
+
+      if (mode === "upi") {
+        updateTracker("⏳ Tracker: Scan QR or pay via GPay/UPI, then enter 12-digit UTR below.", "");
+        body.innerHTML = `
+          <div class="qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=145x145&data=${encodeURIComponent(upiUrl)}" alt="UPI QR ojassachan@kotakbank" style="margin:auto;display:block;border-radius:8px" />
+            <p style="font-size:0.84rem;margin-top:8px">Scan with <b>GPay, PhonePe, Paytm or any UPI App</b><br>UPI ID: <b>ojassachan@kotakbank</b></p>
+            <div class="uapps">
+              <a class="uapp" href="${upiUrl}" onclick="updateTracker('📱 GPay / UPI opened! Enter 12-digit UTR below after completing payment.','')">Pay via GPay</a>
+              <a class="uapp" href="${upiUrl}" onclick="updateTracker('📱 UPI app opened! Enter 12-digit UTR below after completing payment.','')">Other UPI Apps</a>
+            </div>
+            <input id="utrInput" maxlength="12" placeholder="Enter 12-digit UPI UTR / Ref No. *" style="margin-top:10px;margin-bottom:0" />
+          </div>`;
+      } else if (mode === "card") {
+        updateTracker("⏳ Tracker: Enter 16-digit Card Number, Expiry (MM/YY) & CVV.", "");
+        body.innerHTML = `
+          <input id="cardNum" placeholder="16-Digit Card Number" maxlength="16" />
+          <div style="display:flex;gap:8px">
+            <input id="cardExp" placeholder="MM/YY" maxlength="5" />
+            <input id="cardCvv" placeholder="CVV" maxlength="3" type="password" />
+          </div>`;
+      } else {
+        updateTracker("💵 Counter Mode: Pay ₹" + finalTotal + " at the Bidholi Café pickup counter.", "");
+        body.innerHTML = `<p style="background:#faf6f0;padding:12px;border-radius:10px;font-size:0.9rem">Pay <b>₹${finalTotal}</b> via Cash or UPI at the Bidholi Café counter upon pickup.</p>`;
+      }
+    }
+
+    function verifyPayment() {
+      const btn = document.getElementById("verifyPayBtn");
+      btn.textContent = "Verifying with Bank Server...";
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.textContent = "Verify Payment Status";
+        btn.disabled = false;
+        let refId = "";
+
+        if (payMode === "upi") {
+          const utr = (document.getElementById("utrInput")?.value || "").trim();
+          if (!/^[0-9]{12}$/.test(utr)) {
+            return updateTracker("❌ PAYMENT FAILED: No valid 12-digit UPI UTR received for ojassachan@kotakbank!", "fail");
+          }
+          refId = "UTR" + utr;
+        } else if (payMode === "card") {
+          const num = (document.getElementById("cardNum")?.value || "").trim();
+          const exp = (document.getElementById("cardExp")?.value || "").trim();
+          const cvv = (document.getElementById("cardCvv")?.value || "").trim();
+          if (!/^[0-9]{16}$/.test(num) || !/^(0[1-9]|1[0-2])\/[0-9]{2}$/.test(exp) || !/^[0-9]{3}$/.test(cvv)) {
+            return updateTracker("❌ PAYMENT FAILED: Invalid card details or transaction declined!", "fail");
+          }
+          refId = "CARD" + Date.now().toString().slice(-6);
+        } else {
+          refId = "COUNTER-DUE";
+        }
+
+        updateTracker("✅ Payment Verified! Generating digital receipt...", "ok");
+        setTimeout(() => {
+          closePaymentModal();
+          const orderId = "VB-" + Math.floor(1000 + Math.random() * 9000);
+          const timeStr = new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
+          const statusLabel = payMode === "cash" ? "PAY AT COUNTER" : "PAID (VERIFIED)";
+          const itemsLines = cart.map(c => {
+            const m = MENU.find(x => x.id === c.id);
+            return `<div class="rl"><span>${m.name} × ${c.qty}</span><span>₹${m.price * c.qty}</span></div>`;
+          }).join("");
+
+          document.getElementById("receiptBody").innerHTML = `
+            <div class="rl"><span><b>Order ID:</b> ${orderId}</span><span><b>Ref:</b> ${refId}</span></div>
+            <div class="rl"><span><b>Customer:</b> ${document.getElementById("custName").value}</span><span>${timeStr}</span></div>
+            <div class="rl"><span><b>Status:</b> ${statusLabel}</span><span>${payMode === "upi" ? "ojassachan@kotakbank" : payMode.toUpperCase()}</span></div>
+            <div class="rl"><span><b>Pickup:</b> ${document.getElementById("custSlot").value}</span></div>
+            <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
+            ${itemsLines}
+            <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
+            <div class="rl"><span>Subtotal</span><span>₹${subTotal}</span></div>
+            <div class="rl"><span>Discount</span><span>-₹${discAmt}</span></div>
+            <div class="rl"><span>GST (5%)</span><span>₹${gstAmt}</span></div>
+            <div class="rl" style="font-weight:800;font-size:1.06rem;color:var(--primary-dark);margin-top:4px">
+              <span>Total ${payMode === "cash" ? "Due" : "Paid"}</span><span>₹${finalTotal}</span>
+            </div>
+          `;
+          document.getElementById("receiptModal").classList.add("open");
+        }, 450);
+      }, 800);
+    }
+
+    function closeReceiptModal() {
+      document.getElementById("receiptModal").classList.remove("open");
+    }
+
+    renderMenu();
+    renderCart();
+  </script>
+</body>
+</html>
