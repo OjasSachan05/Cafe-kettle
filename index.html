@@ -81,7 +81,7 @@
     .paper { background: #fffdf9; border: 1.5px dashed #b89f88; border-radius: 12px; padding: 15px; margin-top: 12px; font-size: 0.88rem; }
     .rl { display: flex; justify-content: space-between; padding: 4px 0; gap: 8px; }
     .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); margin-top: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 720px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 680px; }
     th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #eee2d5; }
     th { background: #f3ebe1; color: var(--primary-dark); font-weight: 700; }
     footer { background: #221209; color: #e7dcd3; text-align: center; padding: 28px 16px; font-size: 0.92rem; line-height: 1.75; }
@@ -312,8 +312,8 @@
     <section id="view-logs" class="page-view">
       <div class="row section-head">
         <div>
-          <h2>Counter Payment &amp; Payer Log</h2>
-          <p>Live record of verified UPI / Card payers, transaction IDs, and order totals.</p>
+          <h2>Counter Payment &amp; UTR Log</h2>
+          <p>Live record of verified customers, payment modes, UTR numbers, and order totals.</p>
         </div>
         <button type="button" class="btn" onclick="clearLogs()">Clear History</button>
       </div>
@@ -323,7 +323,6 @@
             <tr>
               <th>Order ID &amp; Time</th>
               <th>Customer &amp; Phone</th>
-              <th>Payer Details (UPI ID / Card)</th>
               <th>App / Mode</th>
               <th>UTR / Ref No.</th>
               <th>Amount</th>
@@ -347,7 +346,7 @@
         <div class="popt" id="opt-cash" onclick="selectPayMode('cash')">💵 Counter</div>
       </div>
       <div id="payModeBody"></div>
-      <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment &amp; payer details...</div>
+      <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment &amp; 12-digit UTR...</div>
       <button id="verifyPayBtn" type="button" class="btn btn-dark" style="width:100%;margin-top:12px" onclick="verifyPayment()">Verify Payment Status</button>
     </div>
   </div>
@@ -532,7 +531,7 @@
 
     function copyUpiId() {
       navigator.clipboard?.writeText("ojassachan@kotakbank");
-      updateTracker("📋 Copied ojassachan@kotakbank! Pay ₹" + finalTotal + " in any UPI app & enter UTR below.", "");
+      updateTracker("📋 Copied ojassachan@kotakbank! Pay ₹" + finalTotal + " in any UPI app & enter 12-digit UTR below.", "");
     }
 
     function launchUpi(appName, scheme) {
@@ -566,7 +565,7 @@
       const paytmUpi = `paytmmp://pay?${params}`;
 
       if (mode === "upi") {
-        updateTracker("⏳ Tracker: Tap an app below (on phone) or scan QR, then enter Payer UPI ID & 12-digit UTR.", "");
+        updateTracker("⏳ Tracker: Pay via QR or UPI app below, then enter 12-digit UTR to verify.", "");
         body.innerHTML = `
           <div class="qr">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(genericUpi)}" alt="UPI QR ojassachan@kotakbank" style="margin:auto;display:block;border-radius:8px" />
@@ -586,8 +585,7 @@
               <option value="Paytm">App Used: Paytm</option>
               <option value="BHIM / Other UPI">App Used: BHIM / Other UPI</option>
             </select>
-            <input id="payerUpiId" placeholder="Your Payer UPI ID (e.g. name@okaxis) *" />
-            <input id="utrInput" maxlength="12" placeholder="12-Digit UPI UTR / Ref No. *" style="margin-bottom:0" />
+            <input id="utrInput" maxlength="12" placeholder="Enter 12-Digit UPI UTR / Ref No. *" style="margin-bottom:0" />
           </div>`;
       } else if (mode === "card") {
         updateTracker("⏳ Tracker: Enter Cardholder Name, 16-digit Card Number, Expiry & CVV.", "");
@@ -612,20 +610,15 @@
       setTimeout(() => {
         btn.textContent = "Verify Payment Status";
         btn.disabled = false;
-        let refId = "", payerInfo = "", appUsed = "";
+        let refId = "", appUsed = "";
 
         if (payMode === "upi") {
-          const payerUpi = (document.getElementById("payerUpiId")?.value || "").trim();
           const utr = (document.getElementById("utrInput")?.value || "").trim();
           appUsed = document.getElementById("payerApp")?.value || "UPI App";
-          if (!/^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z]{2,}$/.test(payerUpi)) {
-            return updateTracker("❌ PAYMENT FAILED: Please enter a valid Payer UPI ID (e.g. rahul@okaxis)!", "fail");
-          }
           if (!/^[0-9]{12}$/.test(utr)) {
             return updateTracker("❌ PAYMENT FAILED: Invalid or missing 12-digit UPI UTR for ojassachan@kotakbank!", "fail");
           }
           refId = "UTR" + utr;
-          payerInfo = payerUpi;
         } else if (payMode === "card") {
           const holder = (document.getElementById("cardHolder")?.value || "").trim();
           const num = (document.getElementById("cardNum")?.value || "").trim();
@@ -635,15 +628,13 @@
             return updateTracker("❌ PAYMENT FAILED: Invalid cardholder details or card declined!", "fail");
           }
           refId = "CARD" + Date.now().toString().slice(-6);
-          payerInfo = `${holder} (•••• ${num.slice(-4)})`;
-          appUsed = "Credit / Debit Card";
+          appUsed = `Card (•••• ${num.slice(-4)})`;
         } else {
           refId = "COUNTER-DUE";
-          payerInfo = document.getElementById("custName").value.trim() + " (Counter)";
           appUsed = "Cash at Counter";
         }
 
-        updateTracker("✅ Payment Verified! Saving payer details & generating receipt...", "ok");
+        updateTracker("✅ Payment Verified! Generating digital receipt...", "ok");
         setTimeout(() => {
           closePaymentModal();
           const orderId = "VB-" + Math.floor(1000 + Math.random() * 9000);
@@ -657,7 +648,6 @@
             timeStr,
             custName,
             custPhone,
-            payerInfo,
             appUsed,
             refId,
             amount: finalTotal,
@@ -674,9 +664,8 @@
           document.getElementById("receiptBody").innerHTML = `
             <div class="rl"><span><b>Order ID:</b> ${orderId}</span><span><b>Ref:</b> ${refId}</span></div>
             <div class="rl"><span><b>Customer:</b> ${custName} (${custPhone})</span><span>${timeStr}</span></div>
-            <div class="rl"><span><b>Paid By:</b> ${payerInfo}</span><span><b>Via:</b> ${appUsed}</span></div>
-            <div class="rl"><span><b>Status:</b> ${statusLabel}</span><span><b>To:</b> ojassachan@kotakbank</span></div>
-            <div class="rl"><span><b>Pickup:</b> ${document.getElementById("custSlot").value}</span></div>
+            <div class="rl"><span><b>Mode:</b> ${appUsed}</span><span><b>To:</b> ojassachan@kotakbank</span></div>
+            <div class="rl"><span><b>Status:</b> ${statusLabel}</span><span>${document.getElementById("custSlot").value}</span></div>
             <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
             ${itemsLines}
             <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
@@ -704,14 +693,13 @@
       updateLogBadge();
       const tbody = document.getElementById("logsTableBody");
       if (!paymentLogs.length) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">No transactions recorded yet. Complete a checkout to see payer details here.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">No transactions recorded yet. Complete a checkout to see payment logs here.</td></tr>`;
         return;
       }
       tbody.innerHTML = paymentLogs.map(log => `
         <tr>
           <td><b>${log.orderId}</b><br><small style="color:var(--muted)">${log.timeStr}</small></td>
           <td><b>${log.custName}</b><br><small style="color:var(--muted)">${log.custPhone}</small></td>
-          <td><code>${log.payerInfo}</code></td>
           <td>${log.appUsed}</td>
           <td><b>${log.refId}</b></td>
           <td><b>₹${log.amount}</b></td>
