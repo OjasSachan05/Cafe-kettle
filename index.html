@@ -1,170 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Copper Kettle Café | Specialty Coffee & Artisanal Kitchen</title>
-  <style>
-    :root {
-      --bg: #faf6f0;
-      --surface: #ffffff;
-      --surface-alt: #f3ebe1;
-      --primary: #7c3f1d;
-      --primary-dark: #5a2b12;
-      --accent: #c87d4b;
-      --text: #231710;
-      --muted: #5c4b41;
-      --border: #e2d5c7;
-      --success: #246a45;
-      --danger: #a82828;
-      --radius: 14px;
-      --shadow: 0 8px 24px rgba(35, 23, 16, 0.08);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Copper Kettle Café</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
+body{background:#faf6f0;color:#231710;line-height:1.5}
+header{background:#3c1e0e;color:#fff;padding:16px 20px;position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.brand{font-weight:800;font-size:1.2rem;color:#ffd1a3}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+nav button{background:rgba(255,255,255,.12);color:#fff;border:none;padding:8px 14px;border-radius:20px;font-weight:600;cursor:pointer}
+nav button.active{background:#f5c18c;color:#231710}
+main{max-width:960px;margin:24px auto;padding:0 16px 60px}
+.tab{display:none}.tab.active{display:block}
+.hero{background:linear-gradient(135deg,#5a2b12,#8e4c27);color:#fff;padding:32px 24px;border-radius:16px;margin-bottom:24px}
+.hero h1{font-size:1.8rem;margin-bottom:8px}
+.btn{background:#f5c18c;color:#231710;border:none;padding:10px 18px;border-radius:24px;font-weight:700;cursor:pointer;margin-top:12px}
+.btn-dark{background:#7c3f1d;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:16px}
+.card{background:#fff;border:1px solid #e2d5c7;border-radius:12px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.badge{background:#f3ebe1;color:#5c4b41;font-size:.75rem;padding:3px 8px;border-radius:6px;font-weight:700}
+.vegan{background:#e1f3e8;color:#246a45}
+.price{font-weight:800;color:#7c3f1d;font-size:1.1rem}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+input,select{width:100%;padding:10px;border:1px solid #d5c5b5;border-radius:8px;margin:6px 0 12px}
+.bill{background:#f3ebe1;padding:14px;border-radius:10px;margin-top:12px}
+footer{background:#231710;color:#e7dcd3;text-align:center;padding:20px;font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">☕ The Copper Kettle Café</div>
+  <nav>
+    <button class="active" onclick="showTab('home',this)">Home</button>
+    <button onclick="showTab('menu',this)">Menu</button>
+    <button onclick="showTab('about',this)">About</button>
+    <button onclick="showTab('order',this)">Tray (<span id="count">2</span>)</button>
+  </nav>
+</header>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<main>
+  <section id="home" class="tab active">
+    <div class="hero">
+      <h1>Single-Estate Coffee &amp; Artisanal Sourdough</h1>
+      <p>Freshly roasted Chikmagalur Arabica, kulhad masala chai, and warm bakes in Dehradun &amp; Kanpur. Use code <b>COPPER20</b> for 20% off orders ₹300+.</p>
+      <button class="btn" onclick="showTab('menu',document.querySelectorAll('nav button')[1])">Explore Menu</button>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Chikmagalur Roasts</h3><p>Small-batch medium-dark Arabica beans ground fresh for every pour-over and flat white.</p></div>
+      <div class="card"><h3>Morning Sourdough</h3><p>24-hour fermented breads, butter croissants, and grilled paneer &amp; pesto melts.</p></div>
+      <div class="card"><h3>Express Pickup</h3><p>Customize your tray online with transparent 5% GST billing and zero queue waiting.</p></div>
+    </div>
+  </section>
 
-    html {
-      scroll-behavior: smooth;
-    }
+  <section id="menu" class="tab">
+    <h2>Café Menu</h2>
+    <label style="display:inline-flex;align-items:center;gap:6px;margin:10px 0;font-weight:600">
+      <input type="checkbox" id="vOnly" onchange="renderMenu()" style="width:auto;margin:0"> Vegan Only
+    </label>
+    <div class="grid" id="menuList"></div>
+  </section>
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+  <section id="about" class="tab">
+    <div class="card">
+      <h2>About The Copper Kettle Café</h2>
+      <p style="margin:10px 0">Founded in 2026, we roast in custom copper drums and serve 100% plastic-free takeaway packaging.</p>
+      <p><b>Dehradun:</b> 142 Rajpur Road, Jakhan • +91 98370 41210</p>
+      <p><b>Kanpur:</b> 7/118 Swaroop Nagar • +91 98390 55420</p>
+      <p><b>Hours:</b> 7:30 AM – 10:30 PM Daily</p>
+    </div>
+  </section>
 
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      background: var(--primary);
-      color: #fff;
-      padding: 12px 18px;
-      z-index: 1000;
-      border-radius: 0 0 8px 0;
-      font-weight: 600;
-    }
-    .skip-link:focus {
-      left: 0;
-    }
+  <section id="order" class="tab">
+    <div class="grid">
+      <div class="card">
+        <h3>Your Pre-Order Tray</h3>
+        <div id="cartList"></div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <input id="promo" placeholder="Promo: COPPER20" style="margin:0">
+          <button class="btn btn-dark" style="margin:0" onclick="applyPromo()">Apply</button>
+        </div>
+        <p id="pMsg" style="font-size:.85rem;margin-top:6px;font-weight:600"></p>
+        <div class="bill" id="billBox"></div>
+      </div>
+      <div class="card">
+        <h3>Pickup Checkout</h3>
+        <form onsubmit="placeOrder(event)">
+          <label>Name</label><input id="cName" required placeholder="Your full name">
+          <label>Mobile (10 digits)</label><input id="cPhone" pattern="[0-9]{10}" required placeholder="9876543210">
+          <label>Outlet</label>
+          <select id="cOutlet"><option>Dehradun — Rajpur Road</option><option>Kanpur — Swaroop Nagar</option></select>
+          <button type="submit" class="btn btn-dark" style="width:100%">Confirm Pre-Order</button>
+        </form>
+        <p id="oMsg" style="margin-top:10px;font-weight:700;color:#246a45"></p>
+      </div>
+    </div>
+  </section>
+</main>
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 900;
-      background: rgba(250, 246, 240, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
+<footer>
+  <b>The Copper Kettle Café</b> • CS-1 Project<br>
+  Team: Ojas (Lead), Uplaksh, Aakash, Harsh, Himanshi, Yash, Daksh
+</footer>
 
-    .nav-wrap {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+<script>
+const ITEMS=[
+  {id:1,name:"Chikmagalur Pour-Over",cat:"Coffee",price:190,vegan:true,all:"None"},
+  {id:2,name:"Copper Velvet Flat White",cat:"Coffee",price:220,vegan:false,all:"Dairy"},
+  {id:3,name:"Jaggery Cold Brew",cat:"Coffee",price:240,vegan:true,all:"None"},
+  {id:4,name:"Kulhad Masala Chai",cat:"Tea",price:130,vegan:false,all:"Dairy"},
+  {id:5,name:"Almond Croissant",cat:"Bakery",price:210,vegan:false,all:"Gluten, Dairy, Almonds"},
+  {id:6,name:"Dark Chocolate Tart",cat:"Bakery",price:230,vegan:true,all:"Almonds"},
+  {id:7,name:"Smoked Paneer Sourdough",cat:"Plates",price:310,vegan:false,all:"Gluten, Dairy, Walnuts"},
+  {id:8,name:"Truffle Mushroom Tartine",cat:"Plates",price:295,vegan:true,all:"Gluten, Sesame"}
+];
+let cart=[{id:2,qty:1},{id:7,qty:1}],disc=0;
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--primary-dark);
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--primary);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-size: 1.2rem;
-    }
-
-    .nav-tabs {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text);
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 10px 16px;
-      min-height: 44px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .tab-btn:hover,
-    .tab-btn:focus-visible {
-      background: var(--surface-alt);
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
-    }
-
-    .tab-btn[aria-selected="true"] {
-      background: var(--primary);
-      color: #ffffff;
-    }
-
-    .cart-pill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--primary-dark);
-      font-weight: 700;
-      padding: 10px 16px;
-      min-height: 44px;
-      border-radius: 999px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .cart-badge {
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 2px 8px;
-      border-radius: 999px;
-    }
-
-    .mobile-toggle {
-      display: none;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 10px 14px;
-      min-height: 44px;
-      min-width: 44px;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .nav-tabs
-    
+function showTab(id,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+function renderMenu(){
+  const v=document.getElementById('vOnly').checked;
+  document.getElementById('menuList').innerHTML=ITEMS.filter(i=>!v||i.vegan).map(i=>`
+    <div class="card">
+      <div><span class="badge">${i.cat}</span> ${i.vegan?'<span class="badge vegan">Vegan</span>':''}
+      <h3 style="margin-top:8px">${i.name}</h3>
+      <p style="font-size:.82rem;color:#5c4b41;margin-top:4px">Allergens: ${i.all}</p></div>
+      <div class="row"><span class="price">₹${i.price}</span>
+      <button class="btn btn-dark" style="margin:0;padding:7px 14px" onclick="add(${i.id})">+ Add</button></div>
+    </div>`).join('');
+}
+function add(id){const f=cart.find(c=>c.id===id);f?f.qty++:cart.push({id,qty:1});renderCart();}
+function chg(id,d){const i=cart.findIndex(c=>c.id===id);cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);renderCart();}
+function applyPromo(){
+  const sub=cart.reduce((s,c)=>s+ITEMS.find(m=>m.id===c.id).price*c.qty,0);
+  if(document.getElementById('promo').value.trim().toUpperCase()==='COPPER20'&&sub>=300){
+    disc=0.2;document.getElementById('pMsg').textContent='COPPER20 applied (20% off)!';
+  }else{disc=0;document.getElementById('pMsg').textContent='Requires code COPPER20 on ₹300+';}
+  renderCart();
+}
+function renderCart(){
+  document.getElementById('count').textContent=cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartList').innerHTML=cart.length?cart.map(c=>{
+    const m=ITEMS.find(x=>x.id===c.id);
+    return `<div class="row" style="border-bottom:1px solid #eee;padding-bottom:8px">
+      <span><b>${m.name}</b> (₹${m.price}×${c.qty})</span>
+      <div><button onclick="chg(${m.id},-1)" style="padding:2px 8px">-</button> <b>${c.qty}</b> <button onclick="chg(${m.id},1)" style="padding:2px 8px">+</button></div>
+    </div>`;
+  }).join(''):'<p>Tray is empty.</p>';
+  const sub=cart.reduce((s,c)=>s+ITEMS.find(m=>m.id===c.id).price*c.qty,0);
+  if(sub<300)disc=0;
+  const dAmt=Math.round(sub*disc),gst=Math.round((sub-dAmt)*0.05),tot=sub-dAmt+gst;
+  document.getElementById('billBox').innerHTML=`Subtotal: ₹${sub}<br>Discount: -₹${dAmt}<br>GST (5%): ₹${gst}<br><b>Total: ₹${tot}</b>`;
+}
+function placeOrder(e){
+  e.preventDefault();
+  if(!cart.length)return alert('Add items first!');
+  document.getElementById('oMsg').textContent=`Order #CK-${Math.floor(1000+Math.random()*9000)} confirmed for ${document.getElementById('cName').value} at ${document.getElementById('cOutlet').value}!`;
+}
+renderMenu();renderCart();
+</script>
+</body>
+</html>
