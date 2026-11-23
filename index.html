@@ -2,265 +2,720 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Velvet Bean Roastery & Café | Bidholi, Dehradun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>The Velvet Bean Roastery & Cafe | Artisanal Coffee & Kitchen</title>
   <style>
     :root {
-      --bg: #faf6f0;
+      --espresso: #23120b;
+      --roast: #3e2013;
+      --caramel: #8c5230;
+      --latte: #d8b894;
+      --silk: #f5e6d3;
+      --cream: #fbf6f0;
       --surface: #ffffff;
-      --surface-alt: #f3ebe1;
-      --primary: #7b3e1c;
-      --primary-dark: #4f240d;
-      --accent: #c87d4b;
-      --gold: #f5c18c;
-      --text: #23150d;
-      --muted: #5c4b41;
-      --border: #e5d6c7;
-      --success: #246a45;
-      --danger: #a82828;
-      --shadow: 0 8px 24px rgba(35, 21, 13, 0.07);
+      --tint: #f6ede3;
+      --ink: #23120b;
+      --muted: #6e5244;
+      --border: #e6d5c3;
+      --gold: #c99649;
+      --danger: #b91c1c;
+      --success: #166534;
+      --shadow: 0 18px 42px rgba(35, 18, 11, 0.12);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
-    header { background: #221209; color: #fff; padding: 14px 20px; position: sticky; top: 0; z-index: 60; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22); }
-    .nav-wrap { max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .brand { font-weight: 800; font-size: 1.22rem; color: #ffd4a8; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-    nav { display: flex; gap: 7px; flex-wrap: wrap; }
-    .nav-btn { background: rgba(255, 255, 255, 0.12); color: #f7ece1; border: none; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.2s ease; }
-    .nav-btn:hover, .nav-btn.active { background: var(--gold); color: #221209; }
-    main { max-width: 1140px; margin: 28px auto; padding: 0 18px 70px; }
-    .page-view { display: none; animation: fadeSlide 0.3s ease; }
-    .page-view.active { display: block; }
-    @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-    .hero { background: linear-gradient(120deg, rgba(34, 18, 9, 0.89), rgba(104, 47, 18, 0.82)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80') center/cover; color: #fff; padding: 52px 32px; border-radius: 22px; margin-bottom: 32px; box-shadow: var(--shadow); }
-    .hero-tag { display: inline-block; background: rgba(245, 193, 140, 0.22); border: 1px solid var(--gold); color: #ffd9b3; padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 12px; }
-    .hero h1 { font-size: clamp(1.85rem, 3.8vw, 2.7rem); line-height: 1.18; margin-bottom: 12px; }
-    .hero p { max-width: 58ch; color: #f5e7d9; font-size: 1.02rem; margin-bottom: 22px; }
-    .btn { background: var(--gold); color: #221209; border: none; padding: 11px 22px; border-radius: 999px; font-weight: 700; font-size: 0.94rem; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: transform 0.15s ease; }
-    .btn:active { transform: scale(0.97); }
-    .btn-dark { background: var(--primary); color: #fff; }
-    .btn-dark:hover { background: var(--primary-dark); }
-    .section-head { margin: 30px 0 14px; }
-    .section-head h2 { font-size: 1.55rem; color: var(--primary-dark); }
-    .section-head p { color: var(--muted); font-size: 0.94rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 16px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; }
-    .card img { width: 100%; height: 190px; object-fit: cover; background: #efe4d8; }
-    .cb { padding: 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: space-between; }
-    .badge { background: var(--surface-alt); color: var(--muted); font-size: 0.75rem; padding: 3px 10px; border-radius: 6px; font-weight: 700; display: inline-block; }
-    .badge-vegan { background: #e1f3e8; color: var(--success); }
-    .meta { font-size: 0.85rem; color: var(--muted); }
-    .allergen { font-size: 0.8rem; color: #6a4c3b; background: #fbf7f2; padding: 5px 9px; border-left: 3px solid var(--accent); border-radius: 4px; }
-    .price { font-weight: 800; color: var(--primary); font-size: 1.2rem; }
-    .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .story-box { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px; margin-top: 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; box-shadow: var(--shadow); }
-    @media (max-width: 780px) { .story-box { grid-template-columns: 1fr; } }
-    .story-box img { width: 100%; height: 260px; object-fit: cover; border-radius: 14px; }
-    .filter-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; margin: 16px 0; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
-    .pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pill { padding: 7px 14px; border-radius: 999px; border: 1px solid #dfd0c0; background: var(--bg); font-weight: 600; font-size: 0.85rem; cursor: pointer; }
-    .pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    input, select { width: 100%; padding: 10px 13px; border: 1px solid #d6c5b3; border-radius: 10px; margin: 4px 0 10px; font-size: 0.93rem; background: #fff; }
-    .bill { background: #f6eee4; padding: 15px; border-radius: 12px; margin-top: 12px; font-size: 0.95rem; line-height: 1.75; }
-    .status-banner { padding: 12px 14px; border-radius: 10px; margin-top: 12px; font-weight: 600; font-size: 0.9rem; background: #e1f3e8; color: var(--success); display: none; }
-    .modal { display: none; position: fixed; inset: 0; background: rgba(18, 10, 5, 0.76); z-index: 100; place-items: center; padding: 16px; overflow-y: auto; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    html, body { max-width: 100%; overflow-x: hidden; background: var(--cream); color: var(--ink); line-height: 1.6; scroll-behavior: smooth; }
+
+    /* AMBIENT LATTE & SILK ORBS */
+    .silk-orb {
+      position: fixed; border-radius: 50%; filter: blur(90px); z-index: -1; opacity: 0.42; pointer-events: none;
+      animation: floatSilk 14s ease-in-out infinite alternate;
+    }
+    .so-1 { width: 420px; height: 420px; background: #d8b894; top: -100px; right: -80px; }
+    .so-2 { width: 360px; height: 360px; background: #c99649; bottom: 5%; left: -90px; animation-delay: -6s; }
+    @keyframes floatSilk {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-30px, 40px) scale(1.14); }
+    }
+
+    /* FLOATING CAPSULE NAVBAR */
+    .nav-shell { position: sticky; top: 12px; z-index: 60; padding: 0 14px; }
+    header {
+      max-width: 1180px; margin: 0 auto;
+      background: rgba(35, 18, 11, 0.93);
+      backdrop-filter: blur(18px);
+      border: 1.5px solid rgba(216, 184, 148, 0.35);
+      border-radius: 999px;
+      padding: 10px 22px;
+      box-shadow: 0 14px 36px rgba(35, 18, 11, 0.30);
+    }
+    .mast { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .brand { display: flex; align-items: center; gap: 11px; cursor: pointer; color: var(--silk); font-weight: 800; font-size: 1.18rem; }
+    .brand-logo {
+      width: 46px; height: 46px; border-radius: 50%; object-fit: contain;
+      background: var(--silk); padding: 3px; border: 2px solid var(--gold);
+      box-shadow: 0 4px 16px rgba(201, 150, 73, 0.45);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+    }
+    .brand:hover .brand-logo { transform: rotate(12deg) scale(1.08); }
+    .brand-sub { display: block; font-size: 0.65rem; font-weight: 700; color: var(--latte); letter-spacing: 0.13em; text-transform: uppercase; }
+
+    nav { display: flex; gap: 5px; flex-wrap: wrap; background: rgba(245, 230, 211, 0.08); padding: 4px; border-radius: 999px; }
+    .nav-btn {
+      background: transparent; color: #e8d5c0; border: none;
+      padding: 8px 13px; border-radius: 999px; font-weight: 700; font-size: 0.81rem;
+      cursor: pointer; transition: all 0.25s ease; white-space: nowrap;
+    }
+    .nav-btn:hover { color: #fff; background: rgba(245, 230, 211, 0.14); }
+    .nav-btn.active {
+      background: linear-gradient(135deg, var(--silk), var(--latte));
+      color: var(--espresso);
+      box-shadow: 0 4px 14px rgba(216, 184, 148, 0.4);
+    }
+
+    @media (max-width: 780px) {
+      .nav-shell { top: 6px; padding: 0 8px; }
+      header { border-radius: 28px; padding: 10px 14px; }
+      .mast { flex-direction: column; align-items: stretch; }
+      .brand { justify-content: center; }
+      nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; width: 100%; border-radius: 20px; }
+      .nav-btn { text-align: center; padding: 7px 4px; font-size: 0.75rem; }
+    }
+
+    main { max-width: 1180px; margin: 20px auto; padding: 0 16px 115px; }
+    .page-view { display: none; }
+    .page-view.active { display: block; animation: silkReveal 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes silkReveal {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 3D COFFEE & SILK RIBBON PARALLAX HERO (VIDEO-INSPIRED) */
+    .coffee-stage {
+      position: relative; overflow: hidden;
+      background: radial-gradient(circle at 72% 48%, #6d3d22 0%, #3e2013 48%, #1e0e08 100%);
+      color: var(--silk); border-radius: 44px; padding: 44px 38px 66px;
+      display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 26px; align-items: center;
+      margin-bottom: 30px; box-shadow: 0 26px 60px rgba(35, 18, 11, 0.34);
+      border: 1.5px solid rgba(216, 184, 148, 0.38);
+    }
+    .silk-wave-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.35;
+    }
+    .silk-path {
+      fill: none; stroke: url(#silkGrad); stroke-width: 36; stroke-linecap: round;
+      animation: waveFlow 7s ease-in-out infinite alternate;
+    }
+    @keyframes waveFlow {
+      0% { transform: translateX(-18px) translateY(6px) scaleY(0.96); }
+      100% { transform: translateX(18px) translateY(-8px) scaleY(1.05); }
+    }
+    .hero-bottom-curve {
+      position: absolute; bottom: -1px; left: 0; width: 100%; height: 42px;
+      fill: var(--cream); pointer-events: none;
+    }
+
+    @media (max-width: 860px) {
+      .coffee-stage { grid-template-columns: 1fr; padding: 28px 20px 56px; border-radius: 32px; text-align: center; }
+      .hero-actions { justify-content: center; }
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(245, 230, 211, 0.12); border: 1px solid rgba(216, 184, 148, 0.42);
+      color: var(--latte); padding: 5px 15px; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 700; margin-bottom: 14px;
+    }
+    .coffee-stage h1 { font-size: clamp(1.85rem, 4vw, 2.9rem); line-height: 1.13; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .coffee-stage h1 span { color: var(--latte); font-style: italic; }
+    .coffee-stage p { color: #ebd8c3; font-size: 0.98rem; margin-bottom: 24px; max-width: 52ch; }
+
+    /* 3D INTERACTIVE FLOATING COFFEE MUG + BEANS + ICE CUBES */
+    .mug-scene {
+      position: relative; height: 330px; display: grid; place-items: center;
+      perspective: 900px; user-select: none;
+    }
+    .mug-orbit {
+      position: relative; width: 250px; height: 270px;
+      display: grid; place-items: center;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+      animation: mugHover 4.8s ease-in-out infinite;
+    }
+    @keyframes mugHover {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    .glow-halo {
+      position: absolute; width: 230px; height: 230px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 230, 211, 0.35), transparent 70%);
+      filter: blur(12px);
+    }
+    .steam {
+      position: absolute; top: -18px; width: 14px; height: 54px;
+      background: linear-gradient(to top, rgba(255,255,255,0.45), transparent);
+      border-radius: 50%; filter: blur(6px);
+      animation: steamRise 3.2s ease-in-out infinite;
+    }
+    .st-1 { left: 95px; animation-delay: 0s; }
+    .st-2 { left: 122px; animation-delay: 1.1s; height: 64px; }
+    .st-3 { left: 148px; animation-delay: 2.1s; }
+    @keyframes steamRise {
+      0% { transform: translateY(12px) scaleX(0.8); opacity: 0; }
+      50% { opacity: 0.75; }
+      100% { transform: translateY(-34px) scaleX(1.35); opacity: 0; }
+    }
+    .floating-item {
+      position: absolute; pointer-events: none;
+      animation: orbitFloat 4.2s ease-in-out infinite alternate;
+    }
+    .fi-bean1 { top: 22px; left: 12px; font-size: 1.65rem; transform: rotate(-28deg); }
+    .fi-bean2 { bottom: 32px; right: 10px; font-size: 1.85rem; transform: rotate(35deg); animation-delay: -1.5s; }
+    .fi-bean3 { top: 45px; right: 16px; font-size: 1.45rem; transform: rotate(18deg); animation-delay: -2.4s; }
+    .fi-ice1 {
+      bottom: 42px; left: 14px; width: 34px; height: 34px; border-radius: 9px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.65), rgba(216,184,148,0.22));
+      border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(4px);
+      transform: rotate(22deg); animation-delay: -1s;
+    }
+    .fi-ice2 {
+      top: 16px; right: 48px; width: 26px; height: 26px; border-radius: 7px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(216,184,148,0.2));
+      border: 1px solid rgba(255,255,255,0.65);
+      transform: rotate(-18deg); animation-delay: -2.8s;
+    }
+    @keyframes orbitFloat {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-11px) rotate(14deg); }
+    }
+
+    /* PILL BUTTONS */
+    .btn {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--roast), var(--caramel));
+      color: var(--silk); border: none; padding: 11px 24px;
+      border-radius: 999px; font-weight: 700; font-size: 0.9rem; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease; min-height: 43px;
+    }
+    .btn::before {
+      content: ""; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.32), transparent);
+      transition: left 0.55s ease;
+    }
+    .btn:hover::before { left: 130%; }
+    .btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 24px rgba(62, 32, 19, 0.32); }
+    .btn:active { transform: scale(0.96); }
+    .btn-silk {
+      background: linear-gradient(135deg, var(--silk), var(--latte));
+      color: var(--espresso);
+    }
+    .btn-ghost { background: transparent; color: var(--roast); border: 1.5px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--roast); background: var(--tint); box-shadow: none; }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions .btn { width: 100%; }
+    }
+
+    /* CURVY RIBBON */
+    .ribbon {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; margin-bottom: 30px;
+    }
+    .rib-item {
+      background: var(--surface); border: 1.5px solid var(--border); border-radius: 28px;
+      padding: 16px 20px; display: flex; align-items: center; gap: 13px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .rib-item:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: var(--shadow); }
+    .rib-icon {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--tint);
+      color: var(--roast); display: grid; place-items: center; font-weight: 800; flex-shrink: 0; font-size: 0.94rem;
+    }
+    .rib-item b { display: block; font-size: 0.95rem; color: var(--espresso); }
+    .rib-item span { font-size: 0.8rem; color: var(--muted); }
+
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px; margin: 28px 0 16px; }
+    .sec-head h2 { font-size: clamp(1.35rem, 3vw, 1.65rem); color: var(--espresso); letter-spacing: -0.02em; }
+    .sec-head p { color: var(--muted); font-size: 0.9rem; }
+
+    /* MENU CARDS + +1 BADGE ANIMATION */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .m-card {
+      position: relative;
+      background: var(--surface); border: 1.5px solid var(--border); border-radius: 32px;
+      overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s ease, border-color 0.3s ease;
+      animation: cardPop 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    }
+    @keyframes cardPop {
+      from { opacity: 0; transform: translateY(20px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .m-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--gold);
+      box-shadow: 0 20px 44px rgba(35, 18, 11, 0.16);
+    }
+    .m-card .img-box {
+      position: relative;
+      overflow: hidden; height: 192px; background: var(--tint);
+      border-radius: 0 0 28px 28px;
+    }
+    .m-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .m-card:hover img { transform: scale(1.08); }
+    .mc-body { padding: 17px 19px 19px; display: flex; flex-direction: column; gap: 8px; flex: 1; justify-content: space-between; }
+    .tag { background: var(--tint); color: var(--roast); font-size: 0.72rem; padding: 3px 11px; border-radius: 999px; font-weight: 700; display: inline-block; }
+    .tag-veg { background: #dcfce7; color: #166534; }
+    .tag-hot { background: #ffedd5; color: #9a3412; }
+    .meta { font-size: 0.84rem; color: var(--muted); }
+    .price { font-weight: 800; font-size: 1.2rem; color: var(--espresso); }
+    .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; position: relative; }
+
+    /* FLOATING +1 POP ANIMATION ON PRODUCT CARD */
+    .plus-one-pop {
+      position: absolute; right: 14px; bottom: 44px;
+      background: linear-gradient(135deg, var(--silk), var(--latte));
+      color: var(--espresso); font-weight: 900; font-size: 0.9rem;
+      padding: 4px 12px; border-radius: 999px;
+      border: 1.5px solid var(--espresso);
+      box-shadow: 0 6px 18px rgba(35, 18, 11, 0.25);
+      pointer-events: none; z-index: 15;
+      animation: floatPlusOne 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes floatPlusOne {
+      0% { opacity: 0; transform: translateY(10px) scale(0.6); }
+      25% { opacity: 1; transform: translateY(-6px) scale(1.14); }
+      75% { opacity: 1; transform: translateY(-22px) scale(1); }
+      100% { opacity: 0; transform: translateY(-36px) scale(0.9); }
+    }
+
+    .qty-pill-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(35, 18, 11, 0.92); color: var(--silk);
+      border: 1.5px solid var(--gold); font-size: 0.75rem; font-weight: 800;
+      padding: 4px 11px; border-radius: 999px; z-index: 5;
+    }
+
+    /* BOTTOM FLOATING TRAY POPUP BAR (LAPTOP & MOBILE) */
+    .tray-toast {
+      position: fixed; bottom: 18px; left: 50%;
+      transform: translateX(-50%) translateY(130%);
+      width: calc(100% - 28px); max-width: 580px;
+      background: linear-gradient(135deg, var(--espresso), var(--roast));
+      color: var(--silk); border: 1.5px solid var(--gold);
+      border-radius: 999px; padding: 11px 16px 11px 20px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      box-shadow: 0 18px 44px rgba(35, 18, 11, 0.45);
+      z-index: 95;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      opacity: 0; pointer-events: none;
+    }
+    .tray-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+    .toast-info { display: flex; flex-direction: column; min-width: 0; }
+    .toast-title { font-size: 0.88rem; font-weight: 800; color: var(--latte); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .toast-sub { font-size: 0.77rem; color: #ebd8c3; }
+    .toast-cta {
+      background: linear-gradient(135deg, var(--silk), var(--latte));
+      color: var(--espresso); border: none; padding: 9px 18px;
+      border-radius: 999px; font-weight: 800; font-size: 0.84rem;
+      cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    }
+    @media (max-width: 500px) {
+      .tray-toast { bottom: 12px; width: calc(100% - 20px); border-radius: 26px; padding: 10px 14px; }
+      .toast-title { font-size: 0.82rem; }
+      .toast-sub { font-size: 0.73rem; }
+      .toast-cta { padding: 8px 14px; font-size: 0.8rem; }
+    }
+
+    .panel { background: var(--surface); border: 1.5px solid var(--border); border-radius: 32px; padding: 24px; box-shadow: var(--shadow); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    @media (max-width: 780px) { .two-col { grid-template-columns: 1fr; } }
+
+    .filter-bar { background: var(--surface); border: 1.5px solid var(--border); border-radius: 28px; padding: 14px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pill { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--cream); font-weight: 600; font-size: 0.81rem; cursor: pointer; color: var(--muted); transition: 0.2s; }
+    .pill.active { background: var(--roast); color: var(--silk); border-color: var(--roast); }
+    .search-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; width: 100%; }
+    @media (min-width: 820px) { .search-row { width: auto; } }
+
+    input, select { width: 100%; padding: 11px 16px; border: 1.5px solid var(--border); border-radius: 999px; margin: 4px 0 11px; font-size: 16px; background: #fdfaf7; color: var(--ink); transition: border-color 0.2s; }
+    input:focus, select:focus { outline: none; border-color: var(--caramel); background: #fff; }
+    .bill-card { background: var(--tint); border: 1px solid var(--border); padding: 16px 18px; border-radius: 24px; margin-top: 12px; font-size: 0.94rem; line-height: 1.8; }
+
+    /* CURVED BOTTOM-SHEET VELVETPAY GATEWAY */
+    .sheet-backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(25, 12, 7, 0.78); backdrop-filter: blur(6px);
+      z-index: 105; align-items: flex-end; justify-content: center;
+    }
+    .sheet-backdrop.open { display: flex; animation: fadeBg 0.25s ease; }
+    @keyframes fadeBg { from { opacity: 0; } to { opacity: 1; } }
+
+    .curvy-sheet {
+      width: 100%; max-width: 540px; max-height: 92vh; overflow-y: auto;
+      background: var(--surface); border-radius: 38px 38px 0 0;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 -20px 60px rgba(25, 12, 7, 0.45);
+      animation: slideUpSheet 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    @media (min-width: 640px) {
+      .sheet-backdrop { align-items: center; padding: 16px; }
+      .curvy-sheet { border-radius: 38px; border: 2px solid var(--gold); }
+    }
+    @keyframes slideUpSheet {
+      from { transform: translateY(100%); opacity: 0.5; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .sheet-handle { width: 48px; height: 5px; background: rgba(245, 230, 211, 0.35); border-radius: 999px; margin: 0 auto 10px; }
+    .sheet-header {
+      background: linear-gradient(135deg, var(--espresso), var(--roast));
+      color: var(--silk); padding: 16px 24px 20px; text-align: center;
+      border-radius: 0 0 32px 32px;
+    }
+    .step-bar { display: flex; justify-content: center; gap: 8px; margin-top: 12px; font-size: 0.74rem; font-weight: 700; }
+    .step-chip { background: rgba(245, 230, 211, 0.12); color: #ebd8c3; padding: 4px 11px; border-radius: 999px; }
+    .step-chip.on { background: var(--silk); color: var(--espresso); }
+
+    .sheet-body { padding: 20px 24px 24px; }
+    .mode-pills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+    .mpill {
+      border: 1.5px solid var(--border); border-radius: 999px; padding: 9px 6px;
+      text-align: center; font-weight: 700; font-size: 0.81rem; cursor: pointer;
+      background: var(--cream); color: var(--muted); transition: 0.2s;
+    }
+    .mpill.active { border-color: var(--roast); background: var(--tint); color: var(--espresso); }
+
+    .qr-orb-box {
+      background: linear-gradient(145deg, #fbf6f0 0%, #f5e6d3 100%);
+      border: 1.5px dashed var(--caramel);
+      border-radius: 28px; padding: 15px; text-align: center; margin-bottom: 12px;
+    }
+    .qr-ring {
+      display: inline-block; padding: 6px; border-radius: 26px;
+      background: conic-gradient(from 45deg, #3e2013, #c99649, #8c5230, #f5e6d3, #3e2013);
+      box-shadow: 0 8px 22px rgba(62, 32, 19, 0.24);
+    }
+    .qr-ring img { width: 132px; height: 132px; border-radius: 20px; display: block; background: #fbf6f0; padding: 5px; }
+    .upi-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1.5px solid var(--border);
+      padding: 6px 14px; border-radius: 999px; margin-top: 9px; font-size: 0.82rem;
+    }
+    .copy-mini { background: var(--roast); color: var(--silk); border: none; padding: 4px 11px; border-radius: 999px; font-size: 0.74rem; font-weight: 700; cursor: pointer; }
+    .app-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 10px; }
+    @media (max-width: 440px) { .app-grid { grid-template-columns: repeat(2, 1fr); } }
+    .app-btn {
+      display: block; text-align: center; padding: 7px 4px; border-radius: 999px;
+      background: #fff; border: 1.5px solid var(--border); color: var(--espresso);
+      text-decoration: none; font-weight: 700; font-size: 0.77rem; transition: 0.2s;
+    }
+    .app-btn:hover { background: var(--roast); color: var(--silk); border-color: var(--roast); }
+
+    .tracker { font-size: 0.81rem; padding: 10px 14px; border-radius: 18px; margin-top: 8px; font-weight: 600; background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+    .tracker.fail { background: #fee2e2; color: var(--danger); border-color: #fca5a5; }
+    .tracker.ok { background: #dcfce7; color: var(--success); border-color: #86efac; }
+
+    /* RECEIPT MODAL */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(25, 12, 7, 0.78); backdrop-filter: blur(4px); z-index: 110; place-items: center; padding: 14px; overflow-y: auto; }
     .modal.open { display: grid; }
-    .mbox { background: #fff; border-radius: 18px; max-width: 455px; width: 100%; padding: 22px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    .popts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 10px 0; }
-    .popt { border: 1.5px solid #dfd0c0; border-radius: 10px; padding: 9px 6px; text-align: center; font-weight: 700; font-size: 0.85rem; cursor: pointer; background: #faf6f0; }
-    .popt.active { border-color: var(--primary); background: #f3e5d7; color: var(--primary-dark); }
-    .qr { text-align: center; background: #faf6f0; padding: 12px; border-radius: 12px; margin: 8px 0; border: 1.5px dashed var(--accent); }
-    .upi-copy-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
-    .copy-chip { background: #221209; color: #ffd4a8; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
-    .uapps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; margin: 9px 0; }
-    .uapp { display: block; text-align: center; padding: 8px 6px; border-radius: 9px; background: #fff; border: 1.5px solid #d5c5b5; color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.82rem; transition: 0.15s; }
-    .uapp:hover { border-color: var(--primary); background: #f3e5d7; }
-    .tracker { font-size: 0.83rem; padding: 9px 11px; border-radius: 9px; margin-top: 8px; font-weight: 600; background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
-    .tracker.fail { background: #fde8e8; color: var(--danger); border-color: #f5c6cb; }
-    .tracker.ok { background: #e1f3e8; color: var(--success); border-color: #c3e6cb; }
-    .paper { background: #fffdf9; border: 1.5px dashed #b89f88; border-radius: 12px; padding: 15px; margin-top: 12px; font-size: 0.88rem; }
+    .rec-box { background: var(--surface); border-radius: 34px; max-width: 450px; width: 100%; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.4); animation: cardPop 0.3s ease; }
+    .rec-head { background: linear-gradient(135deg, var(--espresso), var(--roast)); color: var(--silk); padding: 18px 20px; text-align: center; border-bottom: 2px solid var(--gold); border-radius: 0 0 26px 26px; }
+    .receipt-paper { background: #fdfaf7; border: 1.5px dashed #b99a82; border-radius: 20px; padding: 14px; margin-top: 8px; font-size: 0.86rem; }
     .rl { display: flex; justify-content: space-between; padding: 4px 0; gap: 8px; }
-    .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); margin-top: 14px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 680px; }
-    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #eee2d5; }
-    th { background: #f3ebe1; color: var(--primary-dark); font-weight: 700; }
-    footer { background: #221209; color: #e7dcd3; text-align: center; padding: 28px 16px; font-size: 0.92rem; line-height: 1.75; }
+
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--surface); border: 1.5px solid var(--border); border-radius: 26px; box-shadow: var(--shadow); margin-top: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 660px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #ede0d2; }
+    th { background: var(--tint); color: var(--espresso); font-weight: 700; }
+
+    footer { background: var(--espresso); color: #ebd8c3; text-align: center; padding: 32px 16px; font-size: 0.88rem; line-height: 1.75; border-radius: 36px 36px 0 0; border-top: 2px solid rgba(216, 184, 148, 0.3); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-wrap">
-      <div class="brand" onclick="switchPage('home')">☕ The Velvet Bean Roastery &amp; Café</div>
-      <nav>
-        <button id="nav-home" class="nav-btn active" onclick="switchPage('home')">Home</button>
-        <button id="nav-menu" class="nav-btn" onclick="switchPage('menu')">Menu</button>
-        <button id="nav-table" class="nav-btn" onclick="switchPage('table')">Book a Table</button>
-        <button id="nav-about" class="nav-btn" onclick="switchPage('about')">Our Story &amp; Visit</button>
-        <button id="nav-order" class="nav-btn" onclick="switchPage('order')">Tray (<span id="trayCount">0</span>)</button>
-        <button id="nav-logs" class="nav-btn" onclick="switchPage('logs')">Payment Log (<span id="logCount">0</span>)</button>
-      </nav>
-    </div>
-  </header>
+  <div class="silk-orb so-1"></div>
+  <div class="silk-orb so-2"></div>
+
+  <div class="nav-shell">
+    <header>
+      <div class="mast">
+        <div class="brand" onclick="switchPage('home')">
+          <img src="logo.jpg?v=6" alt="The Velvet Bean Logo" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%2323120b%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2234%22 font-weight=%22bold%22 fill=%22%23f5e6d3%22 text-anchor=%22middle%22>VB</text></svg>'" />
+          <div>
+            <span>The Velvet Bean</span>
+            <span class="brand-sub">Roastery &amp; Cafe</span>
+          </div>
+        </div>
+        <nav>
+          <button id="nav-home" class="nav-btn active" onclick="switchPage('home')">Home</button>
+          <button id="nav-menu" class="nav-btn" onclick="switchPage('menu')">Menu (24)</button>
+          <button id="nav-table" class="nav-btn" onclick="switchPage('table')">Book (₹500)</button>
+          <button id="nav-about" class="nav-btn" onclick="switchPage('about')">Story &amp; Visit</button>
+          <button id="nav-order" class="nav-btn" onclick="switchPage('order')">Tray (<span id="trayCount">0</span>)</button>
+          <button id="nav-logs" class="nav-btn" onclick="switchPage('logs')">Logs (<span id="logCount">0</span>)</button>
+        </nav>
+      </div>
+    </header>
+  </div>
 
   <main>
-    <!-- PAGE 1: HOME -->
+    <!-- PAGE 1: 3D COFFEE & SILK RIBBON HERO -->
     <section id="view-home" class="page-view active">
-      <div class="hero">
-        <span class="hero-tag">Main Bidholi Road, Near UPES Campus • Dehradun</span>
-        <h1>Small-Batch Specialty Roasts, Pastries &amp; Warm Sourdough</h1>
-        <p>Handcrafted Chikmagalur Arabica coffee, kulhad masala chai starting at ₹50, and fresh French pastries right outside UPES Bidholi.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <button class="btn" onclick="switchPage('menu')">Explore Full Menu →</button>
-          <button class="btn" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.4)" onclick="switchPage('table')">🪑 Book a Table</button>
-        </div>
-      </div>
+      <div class="coffee-stage" id="heroStage" onmousemove="tiltMug(event)" onmouseleave="resetMug()">
+        <svg class="silk-wave-svg" viewBox="0 0 1200 450" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="silkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f5e6d3" stop-opacity="0.1" />
+              <stop offset="50%" stop-color="#d8b894" stop-opacity="0.65" />
+              <stop offset="100%" stop-color="#f5e6d3" stop-opacity="0.1" />
+            </linearGradient>
+          </defs>
+          <path class="silk-path" d="M-50,320 C240,140 520,410 820,210 C1020,80 1150,240 1280,150" />
+          <path class="silk-path" style="animation-delay:-3s;stroke-width:22" d="M-50,180 C280,350 580,90 880,270 C1060,360 1160,170 1280,260" />
+        </svg>
 
-      <div class="section-head">
-        <h2>Bestsellers at Bidholi Campus</h2>
-        <p>Tap any item below to add it straight to your tray.</p>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80" alt="Adrak Elaichi Kulhad Chai" />
-          <div class="cb">
-            <div><span class="badge">Student Favorite • ₹50</span><h3 style="margin-top:8px">Adrak Elaichi Kulhad Chai</h3><p class="meta">200 ml • Crushed fresh ginger, green cardamom &amp; Assam orthodox tea simmered in farm milk.</p></div>
-            <button class="btn btn-dark" onclick="quickOrder(1)">Add &amp; Order • ₹50</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Belgian Chocolate Truffle Pastry" />
-          <div class="cb">
-            <div><span class="badge">Fresh Pastry • 1 Slice</span><h3 style="margin-top:8px">Belgian Chocolate Truffle Pastry</h3><p class="meta">Rich 70% dark cocoa sponge layered with velvety chocolate ganache &amp; hazelnut crunch.</p></div>
-            <button class="btn btn-dark" onclick="quickOrder(6)">Add &amp; Order • ₹135</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" alt="Smoked Paneer Pesto Sourdough" />
-          <div class="cb">
-            <div><span class="badge">All-Day Plate • 2 Slices</span><h3 style="margin-top:8px">Smoked Paneer Pesto Sourdough</h3><p class="meta">Chargrilled cottage cheese, fresh basil pesto &amp; roasted tomatoes on 24-hr sourdough.</p></div>
-            <button class="btn btn-dark" onclick="quickOrder(11)">Add &amp; Order • ₹240</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="story-box">
         <div>
-          <span class="badge" style="margin-bottom:8px">Our Café Story</span>
-          <h2 style="color:var(--primary-dark);margin-bottom:10px">From Chikmagalur Hills to UPES Bidholi</h2>
-          <p class="meta" style="margin-bottom:10px">The Velvet Bean Roastery &amp; Café started with a simple idea: Dehradun students and coffee lovers deserve freshly roasted single-estate coffee and warm bakery treats without big-city markups.</p>
-          <p class="meta" style="margin-bottom:16px">Every morning at 6:00 AM, our bakers pull flaky croissants and rich chocolate pastries from the oven while our roaster prepares small 12 kg batches of Arabica beans.</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button class="btn btn-dark" onclick="switchPage('about')">Read Full Story</button>
-            <button class="btn" onclick="switchPage('table')">Reserve Study Table</button>
+          <span class="eyebrow">✦ Main Bidholi Road, Near UPES Campus • Dehradun</span>
+          <h1>Where Every Sip Feels <span>Velvet</span></h1>
+          <p>Hand-roasted Chikmagalur espresso, silky iced lattes, cheese pull-apart garlic bread, wood-fired pizzas, sizzling platters, and zero-proof botanical coolers.</p>
+          <div class="hero-actions" style="display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-silk" onclick="switchPage('menu')">Order Online (24 Items) →</button>
+            <button class="btn" style="background:rgba(245,230,211,0.14);border:1px solid rgba(216,184,148,0.45)" onclick="switchPage('table')">🪑 Book Table (₹500)</button>
           </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="Our Cafe Story Interior" />
+
+        <!-- 3D FLOATING GLASS MUG + MILK SPLASH + ICE CUBES + BEANS -->
+        <div class="mug-scene">
+          <div class="mug-orbit" id="mugOrbit">
+            <div class="glow-halo"></div>
+            <div class="steam st-1"></div>
+            <div class="steam st-2"></div>
+            <div class="steam st-3"></div>
+            <span class="floating-item fi-bean1">🫘</span>
+            <span class="floating-item fi-bean2">🫘</span>
+            <span class="floating-item fi-bean3">☕</span>
+            <div class="floating-item fi-ice1"></div>
+            <div class="floating-item fi-ice2"></div>
+
+            <svg width="210" height="240" viewBox="0 0 210 240" style="filter:drop-shadow(0 24px 30px rgba(0,0,0,0.48))">
+              <defs>
+                <linearGradient id="coffeeLiquid" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f3dfc8" />
+                  <stop offset="35%" stop-color="#b67d4c" />
+                  <stop offset="100%" stop-color="#3b1d0e" />
+                </linearGradient>
+                <linearGradient id="glassRim" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75" />
+                  <stop offset="100%" stop-color="#d8b894" stop-opacity="0.2" />
+                </linearGradient>
+              </defs>
+              <!-- Mug Handle -->
+              <path d="M158,85 C192,85 192,165 154,165" fill="none" stroke="url(#glassRim)" stroke-width="13" stroke-linecap="round" />
+              <!-- Glass Body -->
+              <rect x="44" y="55" width="116" height="145" rx="26" fill="rgba(255,255,255,0.14)" stroke="url(#glassRim)" stroke-width="3" />
+              <!-- Coffee & Cream Swirl -->
+              <rect x="50" y="78" width="104" height="116" rx="20" fill="url(#coffeeLiquid)" />
+              <!-- Silk Milk Splash Top -->
+              <path d="M50,84 Q78,64 102,82 T154,80 L154,98 Q125,112 100,96 T50,100 Z" fill="#fbf6f0" opacity="0.92" />
+              <!-- Glass Highlight -->
+              <rect x="58" y="68" width="10" height="115" rx="5" fill="#ffffff" opacity="0.28" />
+            </svg>
+          </div>
+        </div>
+
+        <svg class="hero-bottom-curve" viewBox="0 0 1440 70" preserveAspectRatio="none">
+          <path d="M0,30 C360,80 1080,-10 1440,35 L1440,70 L0,70 Z"></path>
+        </svg>
+      </div>
+
+      <div class="ribbon">
+        <div class="rib-item"><div class="rib-icon">☕</div><div><b>Velvet Espresso &amp; Lattes</b><span>Single-estate Chikmagalur specialty roasts</span></div></div>
+        <div class="rib-item"><div class="rib-icon">🍕</div><div><b>Garlic Bread, Pizza &amp; Sizzlers</b><span>Fresh sourdough bakes, burgers &amp; platters</span></div></div>
+        <div class="rib-item"><div class="rib-icon">5%</div><div><b>Transparent 5% GST</b><span>Clear tax breakdown on every invoice</span></div></div>
+        <div class="rib-item"><div class="rib-icon">🪑</div><div><b>₹500 Table Reservation</b><span>Instant slot booking with live history log</span></div></div>
+      </div>
+
+      <div class="sec-head">
+        <div>
+          <h2>Roastery &amp; Kitchen Signatures</h2>
+          <p>Tap any item below to add (+1) straight to your tray.</p>
+        </div>
+        <button class="btn btn-ghost" onclick="switchPage('menu')">View Full Menu (24 Items)</button>
+      </div>
+
+      <div class="grid">
+        <div class="m-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Silk Hazelnut Velvet Latte" /></div>
+          <div class="mc-body">
+            <div><span class="tag">Roastery Signature • Coffee</span><h3 style="margin-top:7px">Silk Hazelnut Velvet Latte</h3><p class="meta">Double Chikmagalur espresso swirled with roasted hazelnut cream &amp; velvety micro-foam.</p></div>
+            <div class="row" style="margin-top:8px"><span class="price">₹195</span><button class="btn" style="padding:8px 16px" onclick="addToCart(3, this)">+ Add • ₹195</button></div>
+          </div>
+        </div>
+
+        <div class="m-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?auto=format&fit=crop&w=600&q=80" alt="Cheese Pull-Apart Garlic Bread" /></div>
+          <div class="mc-body">
+            <div><span class="tag tag-hot">Fresh Bake • Garlic Bread</span><h3 style="margin-top:7px">Cheese Pull-Apart Stuffed Garlic Bread</h3><p class="meta">Warm herb-buttered sourdough loaf stuffed with molten mozzarella, roasted garlic &amp; jalapeños.</p></div>
+            <div class="row" style="margin-top:8px"><span class="price">₹175</span><button class="btn" style="padding:8px 16px" onclick="addToCart(301, this)">+ Add • ₹175</button></div>
+          </div>
+        </div>
+
+        <div class="m-card">
+          <div class="img-box"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Truffle Burrata Margherita Pizza" /></div>
+          <div class="mc-body">
+            <div><span class="tag tag-hot">Chef Special • Pizza</span><h3 style="margin-top:7px">Truffle Burrata Margherita Pizza</h3><p class="meta">10-inch hand-stretched sourdough crust, creamy burrata, San Marzano tomatoes &amp; basil.</p></div>
+            <div class="row" style="margin-top:8px"><span class="price">₹370</span><button class="btn" style="padding:8px 16px" onclick="addToCart(101, this)">+ Add • ₹370</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel two-col" style="margin-top:30px;align-items:center">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80" alt="The Velvet Bean Roastery" style="width:100%;height:245px;object-fit:cover;border-radius:26px" />
+        <div>
+          <span class="tag" style="margin-bottom:8px">Our Craft</span>
+          <h2 style="font-size:1.48rem;color:var(--espresso);margin-bottom:10px">Small-Batch Roasting &amp; Artisanal Comfort Kitchen</h2>
+          <p class="meta" style="font-size:0.92rem;margin-bottom:10px">Located steps from UPES Bidholi, The Velvet Bean Roastery &amp; Cafe brings freshly roasted Arabica beans, stuffed garlic breads, stone-baked pizzas, ravioli pasta, and refreshing zero-proof coolers under one roof.</p>
+          <p class="meta" style="font-size:0.92rem;margin-bottom:16px">Enjoy transparent 5% GST billing, instant VelvetPay UPI verification, and ₹500 lounge table reservations.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn" onclick="switchPage('menu')">Explore Full Menu</button>
+            <button class="btn btn-ghost" onclick="switchPage('table')">Book Table &amp; History</button>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PAGE 2: FULL MENU -->
     <section id="view-menu" class="page-view">
-      <div class="section-head">
-        <h2>Explore Full Café Menu (Prices in ₹)</h2>
-        <p>Apply promo code <b>VELVET20</b> in your tray on orders of ₹300 or above for 20% off.</p>
+      <div class="sec-head">
+        <div>
+          <h2>Roastery &amp; Kitchen Menu (Prices in ₹ + 5% GST)</h2>
+          <p>Apply promo code <b>VELVET20</b> in your tray on orders ₹300+ for 20% off.</p>
+        </div>
       </div>
-      <div class="filter-box">
+
+      <div class="filter-bar">
         <div class="pills">
-          <button class="pill active" onclick="filterCat('All', this)">All Items (12)</button>
-          <button class="pill" onclick="filterCat('Chai & Coffee', this)">Chai &amp; Coffee</button>
-          <button class="pill" onclick="filterCat('Pastries & Bakery', this)">Pastries &amp; Bakery</button>
-          <button class="pill" onclick="filterCat('Plates', this)">All-Day Plates</button>
+          <button class="pill active" onclick="filterCat('All', this)">All (24)</button>
+          <button class="pill" onclick="filterCat('Coffee & Chai', this)">☕ Coffee &amp; Chai</button>
+          <button class="pill" onclick="filterCat('Pizza, Pasta & Sizzlers', this)">🍕 Pizza, Pasta, Burgers &amp; Sizzlers</button>
+          <button class="pill" onclick="filterCat('Bakery & Desserts', this)">🥖 Garlic Bread, Fries &amp; Desserts</button>
+          <button class="pill" onclick="filterCat('Mocktails & Coolers', this)">🍹 Zero-Proof Mocktails &amp; Iced Teas</button>
+          <button class="pill" onclick="filterCat('Cold Drinks & Water', this)">🥤 Cold Drinks &amp; Water</button>
         </div>
-        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
-          <input id="searchBox" placeholder="Search pastry, chai, coffee..." oninput="renderMenu()" style="width:210px;margin:0;padding:8px 12px" />
-          <label style="font-weight:600;cursor:pointer"><input type="checkbox" id="veganOnly" onchange="renderMenu()" style="width:auto;margin:0 6px 0 0" />Vegan Only</label>
+        <div class="search-row">
+          <input id="searchBox" placeholder="Search latte, garlic bread, pizza, sizzler..." oninput="renderMenu()" style="flex:1;min-width:215px;margin:0;padding:8px 14px" />
+          <label style="font-weight:600;font-size:0.86rem;cursor:pointer;white-space:nowrap"><input type="checkbox" id="veganOnly" onchange="renderMenu()" style="width:auto;margin:0 6px 0 0" />Vegan / Pure</label>
         </div>
       </div>
+
       <div class="grid" id="menuGrid"></div>
     </section>
 
-    <!-- PAGE 3: BOOK A TABLE -->
+    <!-- PAGE 3: BOOK A TABLE (₹500 + 5% GST) + BOOKING HISTORY -->
     <section id="view-table" class="page-view">
-      <div class="section-head">
-        <h2>Book a Table at Bidholi Café</h2>
-        <p>Reserve a cozy window booth, outdoor patio seat, or high-speed Wi-Fi study table near UPES Campus.</p>
+      <div class="sec-head">
+        <div>
+          <h2>Reserve a Table at The Velvet Bean (₹500 + 5% GST)</h2>
+          <p>Lock your booth for ₹525 (₹500 + ₹25 GST) via UPI/Card—₹500 redeemable against your café bill.</p>
+        </div>
       </div>
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=700&q=80" alt="Cafe Seating" />
-          <div class="cb">
-            <h3>Seating Zones &amp; Amenities</h3>
-            <p class="meta"><b>1. Study &amp; Laptop Lounge:</b> Individual power outlets, 300 Mbps Wi-Fi, quiet ambiance.</p>
-            <p class="meta"><b>2. Outdoor Garden Patio:</b> Scenic Dehradun valley breeze, ideal for group hangouts.</p>
-            <p class="meta"><b>3. Window Espresso Bar:</b> Quick coffee &amp; pastry seating right by the roaster.</p>
-            <p class="meta"><b>Address:</b> Main Bidholi Road, Near UPES Campus Gate, Dehradun 248007</p>
-          </div>
+      <div class="two-col">
+        <div class="panel">
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=700&q=80" alt="Velvet Bean Lounge Seating" style="width:100%;height:215px;object-fit:cover;border-radius:24px;margin-bottom:14px" />
+          <h3 style="color:var(--espresso);margin-bottom:8px">Seating Zones &amp; Reservation Policy</h3>
+          <p class="meta" style="margin-bottom:6px"><b>• Reservation Fee:</b> ₹500 + 5% GST (₹525 total; ₹500 adjustable in final bill).</p>
+          <p class="meta" style="margin-bottom:6px"><b>• Roastery Study Lounge:</b> Power sockets + 300 Mbps fiber Wi-Fi.</p>
+          <p class="meta" style="margin-bottom:6px"><b>• Espresso Bar &amp; Patio Booths:</b> Wood-fired pizzas, sizzlers &amp; acoustic evenings.</p>
+          <p class="meta"><b>• Address:</b> Main Bidholi Road, Near UPES Campus Gate, Dehradun 248007</p>
         </div>
-        <div class="card">
-          <div class="cb">
-            <form onsubmit="confirmBooking(event)">
-              <h3>Instant Table Reservation</h3>
-              <label style="display:block;margin-top:8px;font-weight:600">Your Full Name *</label>
-              <input id="bkName" required placeholder="Enter your name" />
-              <label style="font-weight:600">Mobile Number (10 digits) *</label>
-              <input id="bkPhone" pattern="[0-9]{10}" required placeholder="e.g. 9876543210" />
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                <div>
-                  <label style="font-weight:600">Date *</label>
-                  <input id="bkDate" type="date" required />
-                </div>
-                <div>
-                  <label style="font-weight:600">Guests *</label>
-                  <select id="bkGuests">
-                    <option>2 Guests</option>
-                    <option>4 Guests</option>
-                    <option>6 Guests (Group)</option>
-                    <option>1 Person (Solo Study)</option>
-                  </select>
-                </div>
+
+        <div class="panel">
+          <form onsubmit="startTableBookingPayment(event)">
+            <h3 style="color:var(--espresso);margin-bottom:10px">Instant Table Reservation • ₹525 (Incl. GST)</h3>
+            <label style="font-weight:600;font-size:0.88rem">Full Name *</label>
+            <input id="bkName" required placeholder="Enter guest name" />
+            <label style="font-weight:600;font-size:0.88rem">Mobile Number (10 digits) *</label>
+            <input id="bkPhone" type="tel" pattern="[0-9]{10}" required placeholder="e.g. 9876543210" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div>
+                <label style="font-weight:600;font-size:0.88rem">Date *</label>
+                <input id="bkDate" type="date" required />
               </div>
-              <label style="font-weight:600">Preferred Time &amp; Zone</label>
-              <select id="bkSlot">
-                <option>11:00 AM — Study &amp; Laptop Lounge</option>
-                <option>02:00 PM — Window Espresso Bar</option>
-                <option>05:30 PM — Outdoor Garden Patio</option>
-                <option>08:00 PM — Dinner &amp; Coffee Booth</option>
-              </select>
-              <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Confirm Table Booking →</button>
-              <div id="bookingStatus" class="status-banner"></div>
-            </form>
-          </div>
+              <div>
+                <label style="font-weight:600;font-size:0.88rem">Guests *</label>
+                <select id="bkGuests">
+                  <option>2 Guests</option>
+                  <option>4 Guests</option>
+                  <option>6 Guests (VIP Roastery Booth)</option>
+                  <option>1 Person (Solo Study)</option>
+                </select>
+              </div>
+            </div>
+            <label style="font-weight:600;font-size:0.88rem">Time Slot &amp; Zone</label>
+            <select id="bkSlot">
+              <option>11:00 AM — Roastery Study Lounge</option>
+              <option>02:30 PM — Window Espresso Bar</option>
+              <option>06:00 PM — Sizzler &amp; Mocktail Lounge</option>
+              <option>08:30 PM — Evening Patio Booth</option>
+            </select>
+            <button type="submit" class="btn" style="width:100%;margin-top:6px">Pay ₹525 &amp; Confirm Booking →</button>
+          </form>
         </div>
+      </div>
+
+      <!-- LIVE TABLE BOOKING HISTORY -->
+      <div class="sec-head" style="margin-top:32px">
+        <div>
+          <h2>Table Booking History (<span id="bkHistCount">0</span>)</h2>
+          <p>Verified table reservations saved in live lounge records.</p>
+        </div>
+        <button type="button" class="btn btn-ghost" onclick="clearBookingHistory()">Clear Booking History</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Guest Name &amp; Phone</th>
+              <th>Date &amp; Time Slot</th>
+              <th>Guests</th>
+              <th>Paid (Incl. GST)</th>
+              <th>UTR / Ref No.</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="bookingHistoryBody"></tbody>
+        </table>
       </div>
     </section>
 
-    <!-- PAGE 4: OUR STORY & VISIT -->
+    <!-- PAGE 4: STORY & VISIT -->
     <section id="view-about" class="page-view">
-      <div class="section-head">
-        <h2>Our Café Story &amp; Bidholi Location</h2>
-        <p>Rooted in Indian specialty coffee craft and warm neighborhood hospitality.</p>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="The Velvet Bean Cafe Interior" />
-          <div class="cb">
-            <h3>Our Café Story</h3>
-            <p class="meta">Founded in 2026 in Dehradun, The Velvet Bean Roastery &amp; Café brings direct-trade Chikmagalur estates together with artisanal pastry and sourdough baking. Every takeaway cup, lid, and pastry box is 100% plastic-free and compostable.</p>
-            <p class="meta"><b>Roast Profile:</b> Medium-Dark City Roast • <b>Signature Bakes:</b> Belgian Truffle Pastry, Red Velvet Slice, 24-Hr Sourdough.</p>
-          </div>
+      <div class="sec-head">
+        <div>
+          <h2>Our Story &amp; Bidholi Location</h2>
+          <p>Artisanal coffee roastery, sourdough bakery, and gourmet kitchen in Dehradun.</p>
         </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="Bidholi Near UPES Dehradun" />
-          <div class="cb">
-            <h3>Visit Us in Dehradun</h3>
-            <p class="meta"><b>Café Address:</b> Main Bidholi Road, Near UPES Campus Gate, Bidholi, Dehradun, Uttarakhand 248007</p>
-            <p class="meta"><b>Opening Hours:</b> Monday – Sunday, 7:30 AM to 10:30 PM</p>
-            <p class="meta"><b>Phone &amp; Support:</b> +91 98370 41210</p>
-            <p class="meta"><b>Official Merchant UPI:</b> <code>ojassachan@kotakbank</code></p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn btn-dark" onclick="switchPage('menu')">Explore Full Menu →</button>
-              <button class="btn" onclick="switchPage('table')">Book a Table</button>
-            </div>
+      </div>
+      <div class="two-col">
+        <div class="panel">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80" alt="Cafe Story" style="width:100%;height:215px;object-fit:cover;border-radius:24px;margin-bottom:14px" />
+          <h3 style="color:var(--espresso);margin-bottom:8px">The Velvet Bean Story</h3>
+          <p class="meta" style="margin-bottom:8px">Founded in 2026 in Bidholi, Dehradun, The Velvet Bean Roastery &amp; Cafe pairs small-batch Chikmagalur coffee craftsmanship with freshly baked garlic breads, stone-baked pizzas, ravioli pasta, sizzlers, and refreshing zero-proof coolers.</p>
+          <p class="meta">Every order comes with clear 5% GST billing and eco-friendly packaging.</p>
+        </div>
+        <div class="panel">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="Location" style="width:100%;height:215px;object-fit:cover;border-radius:24px;margin-bottom:14px" />
+          <h3 style="color:var(--espresso);margin-bottom:8px">Visit Us in Dehradun</h3>
+          <p class="meta" style="margin-bottom:6px"><b>Address:</b> Main Bidholi Road, Near UPES Campus Gate, Bidholi, Dehradun, Uttarakhand 248007</p>
+          <p class="meta" style="margin-bottom:6px"><b>Hours:</b> Monday – Sunday, 7:30 AM to 11:30 PM</p>
+          <p class="meta" style="margin-bottom:14px"><b>Contact &amp; UPI:</b> +91 98370 41210 • <code>ojassachan@kotakbank</code></p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn" onclick="switchPage('menu')">Explore Menu →</button>
+            <button class="btn btn-ghost" onclick="switchPage('table')">Book Table (₹500)</button>
           </div>
         </div>
       </div>
@@ -268,64 +723,62 @@
 
     <!-- PAGE 5: TRAY & CHECKOUT -->
     <section id="view-order" class="page-view">
-      <div class="section-head">
-        <h2>Pre-Order Tray &amp; Secure Checkout</h2>
-        <p>Review your selected items, apply promo code <b>VELVET20</b>, and verify payment to get your receipt.</p>
+      <div class="sec-head">
+        <div>
+          <h2>Your Order Tray &amp; Checkout (5% GST Applied)</h2>
+          <p>Apply code <b>VELVET20</b> on orders ₹300+ and verify your payment to generate a receipt.</p>
+        </div>
       </div>
-      <div class="grid">
-        <div class="card">
-          <div class="cb">
-            <div>
-              <h3>Your Order Tray</h3>
-              <div id="cartContainer" style="margin-top:10px"></div>
-              <div style="display:flex;gap:8px;margin-top:12px">
-                <input id="promoInput" placeholder="Enter code: VELVET20" style="margin:0" />
-                <button class="btn btn-dark" type="button" onclick="applyPromo()">Apply</button>
-              </div>
-              <p id="promoMsg" style="font-size:0.85rem;margin-top:6px;font-weight:600;color:var(--success)"></p>
+      <div class="two-col">
+        <div class="panel" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <h3 style="color:var(--espresso);margin-bottom:8px">Selected Items</h3>
+            <div id="cartContainer"></div>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <input id="promoInput" placeholder="Promo code: VELVET20" style="margin:0" />
+              <button class="btn" type="button" onclick="applyPromo()">Apply</button>
             </div>
-            <div class="bill" id="billSummary"></div>
+            <p id="promoMsg" style="font-size:0.84rem;margin-top:6px;font-weight:600"></p>
           </div>
+          <div class="bill-card" id="billSummary"></div>
         </div>
 
-        <div class="card">
-          <div class="cb">
-            <form onsubmit="openPaymentModal(event)">
-              <h3>Customer &amp; Pickup Details</h3>
-              <label style="display:block;margin-top:10px;font-weight:600">Full Name *</label>
-              <input id="custName" required placeholder="Enter your full name" />
-              <label style="font-weight:600">Mobile Number (10 digits) *</label>
-              <input id="custPhone" pattern="[0-9]{10}" required placeholder="e.g. 9876543210" />
-              <label style="font-weight:600">Pickup Preference</label>
-              <select id="custSlot">
-                <option>Express Counter Pickup (10–15 mins) — Bidholi</option>
-                <option>Dine-In Table — Near UPES Campus Gate</option>
-              </select>
-              <button type="submit" class="btn btn-dark" style="width:100%;margin-top:6px">Proceed to Payment (GPay / UPI / Card) →</button>
-            </form>
-          </div>
+        <div class="panel">
+          <form onsubmit="openOrderPaymentModal(event)">
+            <h3 style="color:var(--espresso);margin-bottom:10px">Pickup &amp; Customer Details</h3>
+            <label style="font-weight:600;font-size:0.88rem">Full Name *</label>
+            <input id="custName" required placeholder="Enter your full name" />
+            <label style="font-weight:600;font-size:0.88rem">Mobile Number (10 digits) *</label>
+            <input id="custPhone" type="tel" pattern="[0-9]{10}" required placeholder="e.g. 9876543210" />
+            <label style="font-weight:600;font-size:0.88rem">Order Mode</label>
+            <select id="custSlot">
+              <option>Express Counter Pickup (10–15 mins) — Bidholi</option>
+              <option>Roastery Lounge Table Service — Near UPES Campus Gate</option>
+            </select>
+            <button type="submit" class="btn" style="width:100%;margin-top:8px">Open VelvetPay Checkout →</button>
+          </form>
         </div>
       </div>
     </section>
 
-    <!-- PAGE 6: LIVE PAYMENT LOG (COUNTER VIEW) -->
+    <!-- PAGE 6: PAYMENT LOG -->
     <section id="view-logs" class="page-view">
-      <div class="row section-head">
+      <div class="sec-head">
         <div>
           <h2>Counter Payment &amp; UTR Log</h2>
-          <p>Live record of verified customers, payment modes, UTR numbers, and order totals.</p>
+          <p>Live record of all food, coffee, and table booking transactions (including 5% GST).</p>
         </div>
-        <button type="button" class="btn" onclick="clearLogs()">Clear History</button>
+        <button type="button" class="btn btn-ghost" onclick="clearLogs()">Clear Payment Logs</button>
       </div>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Order ID &amp; Time</th>
+              <th>Ref / Order ID</th>
               <th>Customer &amp; Phone</th>
-              <th>App / Mode</th>
+              <th>Type &amp; App</th>
               <th>UTR / Ref No.</th>
-              <th>Amount</th>
+              <th>Amount (Incl. GST)</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -335,73 +788,139 @@
     </section>
   </main>
 
-  <!-- PAYMENT GATEWAY MODAL -->
-  <div class="modal" id="payModal">
-    <div class="mbox">
-      <div class="row"><h3>VelvetPay Live Payment Tracker</h3><button type="button" onclick="closePaymentModal()" style="border:none;background:none;font-size:1.3rem;cursor:pointer">✕</button></div>
-      <p style="color:var(--muted);font-size:0.9rem;margin-top:4px">Total Payable: <b id="modalPayAmt" style="color:var(--primary);font-size:1.15rem">₹0</b></p>
-      <div class="popts">
-        <div class="popt active" id="opt-upi" onclick="selectPayMode('upi')">📱 GPay / UPI</div>
-        <div class="popt" id="opt-card" onclick="selectPayMode('card')">💳 Card</div>
-        <div class="popt" id="opt-cash" onclick="selectPayMode('cash')">💵 Counter</div>
+  <!-- BOTTOM FLOATING TRAY POPUP BAR (WORKS ON LAPTOP & MOBILE) -->
+  <div class="tray-toast" id="trayToast">
+    <div class="toast-info">
+      <span class="toast-title" id="toastTitle">+1 Item Added to Tray</span>
+      <span class="toast-sub" id="toastSub">1 Product in Tray • ₹0 (Incl. 5% GST)</span>
+    </div>
+    <button type="button" class="toast-cta" onclick="switchPage('order')">View Tray →</button>
+  </div>
+
+  <!-- CURVED BOTTOM-SHEET VELVETPAY GATEWAY -->
+  <div class="sheet-backdrop" id="paySheetBackdrop" onclick="if(event.target===this) closePaymentModal()">
+    <div class="curvy-sheet">
+      <div class="sheet-header">
+        <div class="sheet-handle"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.78rem;color:var(--latte);font-weight:700" id="gwTitle">VelvetPay Checkout</span>
+          <button type="button" onclick="closePaymentModal()" style="border:none;background:rgba(245,230,211,0.16);color:#fff;width:30px;height:30px;border-radius:50%;font-size:1rem;cursor:pointer">✕</button>
+        </div>
+        <div style="margin-top:6px">
+          <div style="font-size:0.8rem;color:#ebd8c3">Total Payable (Incl. 5% GST)</div>
+          <div style="font-size:2rem;font-weight:900;color:var(--silk);line-height:1.15" id="modalPayAmt">₹0</div>
+        </div>
+        <div class="step-bar">
+          <span class="step-chip on">1. Choose Method</span>
+          <span class="step-chip on">2. Scan QR</span>
+          <span class="step-chip" id="step3Chip">3. Verify UTR</span>
+        </div>
       </div>
-      <div id="payModeBody"></div>
-      <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment &amp; 12-digit UTR...</div>
-      <button id="verifyPayBtn" type="button" class="btn btn-dark" style="width:100%;margin-top:12px" onclick="verifyPayment()">Verify Payment Status</button>
+
+      <div class="sheet-body">
+        <div class="mode-pills">
+          <div class="mpill active" id="opt-upi" onclick="selectPayMode('upi')">📱 UPI / QR</div>
+          <div class="mpill" id="opt-card" onclick="selectPayMode('card')">💳 Card</div>
+          <div class="mpill" id="opt-cash" onclick="selectPayMode('cash')">💵 Counter</div>
+        </div>
+        <div id="payModeBody"></div>
+        <div id="trackerBox" class="tracker">⏳ Tracker: Waiting for payment &amp; 12-digit UTR...</div>
+        <button id="verifyPayBtn" type="button" class="btn btn-silk" style="width:100%;margin-top:12px;border:1.5px solid var(--roast)" onclick="verifyPayment()">Verify &amp; Issue GST Receipt →</button>
+      </div>
     </div>
   </div>
 
   <!-- DIGITAL RECEIPT MODAL -->
   <div class="modal" id="receiptModal">
-    <div class="mbox">
-      <div style="text-align:center">
-        <div style="font-size:2.1rem">✅</div>
-        <h3 style="color:var(--success)">Payment Verified!</h3>
-        <p style="font-size:0.84rem;color:var(--muted)">The Velvet Bean Roastery &amp; Café • Bidholi, Near UPES, Dehradun</p>
+    <div class="rec-box">
+      <div class="rec-head">
+        <b style="font-size:1.12rem" id="recHeading">✅ Payment Verified</b>
+        <div style="font-size:0.78rem;color:var(--latte)">The Velvet Bean Roastery &amp; Cafe • Bidholi, Dehradun</div>
       </div>
-      <div class="paper" id="receiptBody"></div>
-      <div style="display:flex;gap:8px;margin-top:14px">
-        <button type="button" class="btn btn-dark" style="flex:1;justify-content:center" onclick="window.print()">🖨️ Print Receipt</button>
-        <button type="button" class="btn" style="flex:1;justify-content:center" onclick="closeReceiptModal()">Done</button>
+      <div style="padding:18px 20px 20px">
+        <div class="receipt-paper" id="receiptBody"></div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <button type="button" class="btn" style="flex:1" onclick="window.print()">🖨️ Print Receipt</button>
+          <button type="button" class="btn btn-ghost" style="flex:1" onclick="closeReceiptModal()">Done</button>
+        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    <b>The Velvet Bean Roastery &amp; Café</b><br />
-    Main Bidholi Road, Near UPES Campus Gate, Dehradun, Uttarakhand 248007<br />
-    Ojas, Uplaksh, Aakash, Harsh, Himanshi, Yash, Daksh
+    <b>The Velvet Bean Roastery &amp; Cafe</b><br />
+    Main Bidholi Road, Near UPES Campus Gate, Dehradun, Uttarakhand 248007
   </footer>
 
   <script>
+    const UPI_ID = "ojassachan@kotakbank";
+    const BOOKING_BASE = 500;
+    const GST_RATE = 0.05;
+
     const MENU = [
-      { id: 1, name: "Adrak Elaichi Kulhad Chai", cat: "Chai & Coffee", price: 50, vegan: false, cal: "110 kcal • 200 ml", desc: "Crushed fresh ginger, green cardamom & Assam orthodox tea simmered in farm milk.", allergens: "Dairy", img: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80" },
-      { id: 2, name: "Chikmagalur Black Pour-Over", cat: "Chai & Coffee", price: 140, vegan: true, cal: "10 kcal • 240 ml", desc: "Single-estate medium roast brewed via V60 with citrus & palm jaggery notes.", allergens: "None (100% Vegan)", img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80" },
-      { id: 3, name: "Velvet Hazelnut Flat White", cat: "Chai & Coffee", price: 180, vegan: false, cal: "190 kcal • 250 ml", desc: "Double Arabica espresso shot topped with silky micro-foamed milk & roasted hazelnut.", allergens: "Dairy, Tree Nuts", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" },
-      { id: 4, name: "Jaggery Iced Cold Brew", cat: "Chai & Coffee", price: 195, vegan: true, cal: "65 kcal • 300 ml", desc: "18-hour steeped Chikmagalur cold brew lightly sweetened with organic palm jaggery.", allergens: "None", img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" },
-      { id: 5, name: "Warm Garlic Butter Bun", cat: "Pastries & Bakery", price: 65, vegan: false, cal: "220 kcal • 1 Pc", desc: "Soft oven-warm brioche bun brushed with roasted garlic & fresh herb butter.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
-      { id: 6, name: "Belgian Chocolate Truffle Pastry", cat: "Pastries & Bakery", price: 135, vegan: false, cal: "360 kcal • 1 Slice", desc: "Rich 70% dark cocoa sponge layered with silky chocolate ganache & hazelnut crunch.", allergens: "Gluten, Dairy, Tree Nuts", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" },
-      { id: 7, name: "Red Velvet Cream Cheese Pastry", cat: "Pastries & Bakery", price: 145, vegan: false, cal: "330 kcal • 1 Slice", desc: "Classic crimson cocoa velvet sponge frosted with tangy Madagascar vanilla cream cheese.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=600&q=80" },
-      { id: 8, name: "Blueberry Cheesecake Slice", cat: "Pastries & Bakery", price: 165, vegan: false, cal: "380 kcal • 1 Slice", desc: "Creamy baked cheesecake on a buttery biscuit crust topped with wild blueberry compote.", allergens: "Gluten, Dairy", img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" },
-      { id: 9, name: "Almond Frangipane Croissant", cat: "Pastries & Bakery", price: 175, vegan: false, cal: "340 kcal • 1 Pc", desc: "Twice-baked flaky butter croissant filled with roasted almond cream & flakes.", allergens: "Gluten, Dairy, Almonds", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" },
-      { id: 10, name: "Cinnamon Sugar Churros & Dip", cat: "Pastries & Bakery", price: 120, vegan: true, cal: "290 kcal • 4 Pcs", desc: "Crisp golden choux pastry sticks dusted with cinnamon sugar & dark chocolate dip.", allergens: "Gluten", img: "https://images.unsplash.com/photo-1624371414361-e670edf4898d?auto=format&fit=crop&w=600&q=80" },
-      { id: 11, name: "Smoked Paneer Pesto Sourdough", cat: "Plates", price: 240, vegan: false, cal: "420 kcal • 2 Slices", desc: "Chargrilled cottage cheese, fresh basil pesto & sun-dried tomatoes on sourdough.", allergens: "Gluten, Dairy, Walnuts", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" },
-      { id: 12, name: "Truffle Mushroom Hummus Tartine", cat: "Plates", price: 230, vegan: true, cal: "360 kcal • 2 Slices", desc: "Garlic-roasted wild mushrooms over whipped chickpea tahini on toasted sourdough.", allergens: "Gluten, Sesame", img: "https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=600&q=80" }
+      { id: 3, name: "Silk Hazelnut Velvet Latte", cat: "Coffee & Chai", price: 195, vegan: false, desc: "Double Chikmagalur espresso swirled with roasted hazelnut cream & velvety micro-foam.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" },
+      { id: 2, name: "Chikmagalur V60 Pour-Over Black", cat: "Coffee & Chai", price: 145, vegan: true, desc: "Single-estate medium roast brewed via V60 with cocoa & caramelized jaggery notes.", img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80" },
+      { id: 4, name: "Iced Ceremonial Matcha Oat Latte", cat: "Coffee & Chai", price: 205, vegan: true, desc: "Whisked shade-grown green tea layered over chilled oat milk & organic wildflower honey.", img: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=600&q=80" },
+      { id: 401, name: "Iced Caramel Macchiato Cloud", cat: "Coffee & Chai", price: 210, vegan: false, desc: "Chilled vanilla-infused milk marked with rich espresso shots & salted caramel drizzle.", img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80" },
+      { id: 1, name: "Adrak Elaichi Kulhad Chai", cat: "Coffee & Chai", price: 55, vegan: false, desc: "Crushed fresh ginger, green cardamom & Assam tea simmered in farm milk.", img: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=600&q=80" },
+      { id: 301, name: "Cheese Pull-Apart Stuffed Garlic Bread", cat: "Bakery & Desserts", price: 175, vegan: false, desc: "Warm herb-buttered sourdough loaf stuffed with molten mozzarella, roasted garlic & jalapeños.", img: "https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?auto=format&fit=crop&w=600&q=80" },
+      { id: 302, name: "Roasted Garlic & Herb Brioche Breadsticks", cat: "Bakery & Desserts", price: 135, vegan: false, desc: "Golden oven-baked garlic breadsticks brushed with parsley butter & marinara dip.", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
+      { id: 101, name: "Truffle Burrata Margherita Pizza", cat: "Pizza, Pasta & Sizzlers", price: 370, vegan: false, desc: "10-inch sourdough crust, creamy burrata, San Marzano tomatoes & fresh garden basil.", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" },
+      { id: 102, name: "Wild Mushroom & Sage Ravioli Pasta", cat: "Pizza, Pasta & Sizzlers", price: 300, vegan: false, desc: "Hand-folded porcini ricotta ravioli tossed in brown-butter sage cream & parmesan.", img: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=600&q=80" },
+      { id: 103, name: "Peri-Peri Cottage Cheese Sizzler", cat: "Pizza, Pasta & Sizzlers", price: 395, vegan: false, desc: "Flame-grilled peri-peri paneer steaks on sizzling iron skillet with herb rice & fries.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" },
+      { id: 104, name: "Smoky Caramelized Onion & Cheddar Burger", cat: "Pizza, Pasta & Sizzlers", price: 215, vegan: false, desc: "Crispy herb patty, aged cheddar, balsamic caramelized onions & smoky aioli in brioche.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" },
+      { id: 27, name: "Farmhouse Pesto & Olive Pizza", cat: "Pizza, Pasta & Sizzlers", price: 330, vegan: false, desc: "10-inch sourdough crust with basil pesto, Kalamata olives, roasted peppers & mozzarella.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" },
+      { id: 28, name: "Arrabbiata & Burrata Penne Pasta", cat: "Pizza, Pasta & Sizzlers", price: 265, vegan: false, desc: "Al dente penne in spicy garlic-tomato sauce crowned with fresh creamy burrata.", img: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80" },
+      { id: 107, name: "Rose Lychee Sparkler (Zero-Proof)", cat: "Mocktails & Coolers", price: 175, vegan: true, desc: "Damask rosewater, chilled lychee nectar, lime & sparkling tonic over crushed ice.", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" },
+      { id: 17, name: "Virgin Cucumber & Mint Mojito", cat: "Mocktails & Coolers", price: 165, vegan: true, desc: "Muddled garden mint, English cucumber, key lime & chilled sparkling club soda.", img: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=600&q=80" },
+      { id: 402, name: "Passionfruit & Ginger Fizz Cooler", cat: "Mocktails & Coolers", price: 185, vegan: true, desc: "Tangy tropical passionfruit purée shaken with fresh ginger juice & sparkling soda.", img: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80" },
+      { id: 33, name: "Peach & Elderflower Iced Tea", cat: "Mocktails & Coolers", price: 135, vegan: true, desc: "Chilled Assam black tea infused with ripe orchard peach, elderflower & fresh lemon.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80" },
+      { id: 105, name: "Pistachio Baklava Cheesecake Jar", cat: "Bakery & Desserts", price: 195, vegan: false, desc: "Creamy vanilla cheesecake layered with honey-roasted pistachios & crisp phyllo.", img: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" },
+      { id: 31, name: "Truffle Parmesan Loaded Fries", cat: "Bakery & Desserts", price: 160, vegan: false, desc: "Crisp golden skin-on fries tossed with white truffle oil, herbs & aged parmesan.", img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80" },
+      { id: 32, name: "Belgian Dark Chocolate Lava Cake", cat: "Bakery & Desserts", price: 165, vegan: false, desc: "Warm 70% dark cocoa fondant cake with a molten chocolate center & vanilla scoop.", img: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=600&q=80" },
+      { id: 12, name: "Avocado & Truffle Mushroom Tartine", cat: "Bakery & Desserts", price: 240, vegan: true, desc: "Smashed Hass avocado, sautéed wild mushrooms & truffle oil on toasted sourdough.", img: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=600&q=80" },
+      { id: 13, name: "Melody Chocolaty Toffee", cat: "Bakery & Desserts", price: 1, vegan: false, desc: "Classic caramel & rich chocolaty center toffee—sweet counter treat.", img: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80" },
+      { id: 21, name: "Chilled Aerated Cold Drink (330 ml)", cat: "Cold Drinks & Water", price: 45, vegan: true, desc: "Ice-cold Coke / Sprite / Ginger Ale served in a frosted glass with lemon slice.", img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" },
+      { id: 22, name: "Himalayan Mineral Water Bottle (1 L)", cat: "Cold Drinks & Water", price: 20, vegan: true, desc: "Sealed natural mountain mineral drinking water bottle (chilled or room temp).", img: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=600&q=80" }
     ];
 
     let cart = [];
-    let paymentLogs = JSON.parse(localStorage.getItem("vb_payment_logs") || "[]");
+    let paymentLogs = JSON.parse(localStorage.getItem("vbr_payment_logs") || "[]");
+    let bookingLogs = JSON.parse(localStorage.getItem("vbr_booking_logs") || "[]");
     let activeCat = "All";
     let discountRate = 0;
     let payMode = "upi";
-    let subTotal = 0, discAmt = 0, gstAmt = 0, finalTotal = 0;
+    let checkoutContext = "order";
+    let pendingBooking = null;
+    let toastTimer = null;
+    let subTotal = 0, discAmt = 0, gstAmt = 0, finalTotal = 0, activePayable = 0;
+
+    function tiltMug(e) {
+      const stage = document.getElementById("heroStage");
+      const orbit = document.getElementById("mugOrbit");
+      if (!stage || !orbit) return;
+      const rect = stage.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -20;
+      orbit.style.animation = "none";
+      orbit.style.transform = `rotateY(${x}deg) rotateX(${y}deg) translateY(-6px)`;
+    }
+
+    function resetMug() {
+      const orbit = document.getElementById("mugOrbit");
+      if (!orbit) return;
+      orbit.style.transform = "";
+      orbit.style.animation = "mugHover 4.8s ease-in-out infinite";
+    }
 
     function switchPage(pageId) {
       document.querySelectorAll(".page-view").forEach(p => p.classList.remove("active"));
       document.getElementById("view-" + pageId).classList.add("active");
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       document.getElementById("nav-" + pageId).classList.add("active");
+      if (pageId === "order") document.getElementById("trayToast").classList.remove("show");
       if (pageId === "logs") renderLogs();
+      if (pageId === "table") renderBookingHistory();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -412,48 +931,77 @@
       renderMenu();
     }
 
+    function getItemQty(id) {
+      const found = cart.find(c => c.id === id);
+      return found ? found.qty : 0;
+    }
+
     function renderMenu() {
       const veganOnly = document.getElementById("veganOnly").checked;
       const query = document.getElementById("searchBox").value.trim().toLowerCase();
       const filtered = MENU.filter(item =>
         (activeCat === "All" || item.cat === activeCat) &&
         (!veganOnly || item.vegan) &&
-        (item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query))
+        (item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query) || item.cat.toLowerCase().includes(query))
       );
-      document.getElementById("menuGrid").innerHTML = filtered.length ? filtered.map(item => `
-        <div class="card">
-          <img src="${item.img}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80'" />
-          <div class="cb">
+      document.getElementById("menuGrid").innerHTML = filtered.length ? filtered.map((item, idx) => {
+        const qty = getItemQty(item.id);
+        return `
+        <div class="m-card" style="animation-delay:${Math.min(idx * 0.04, 0.45)}s">
+          <div class="img-box">
+            ${qty > 0 ? `<span class="qty-pill-badge">In Tray: ${qty}</span>` : ''}
+            <img src="${item.img}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'" />
+          </div>
+          <div class="mc-body">
             <div>
-              <div class="row" style="margin-bottom:6px">
-                <span class="badge">${item.cat}</span>
-                ${item.vegan ? '<span class="badge badge-vegan">Vegan</span>' : '<span class="meta">' + item.cal + '</span>'}
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <span class="tag ${item.cat.includes('Pizza') ? 'tag-hot' : ''}">${item.cat}</span>
+                ${item.vegan ? '<span class="tag tag-veg">Vegan / Pure</span>' : ''}
               </div>
-              <h3>${item.name}</h3>
+              <h3 style="margin-top:7px">${item.name}</h3>
               <p class="meta" style="margin-top:4px">${item.desc}</p>
             </div>
-            <div>
-              <div class="allergen" style="margin:8px 0"><b>Allergens:</b> ${item.allergens}</div>
-              <div class="row">
-                <span class="price">₹${item.price}</span>
-                <button type="button" class="btn btn-dark" style="padding:8px 16px" onclick="addToCart(${item.id})">+ Add to Tray</button>
-              </div>
+            <div class="row" style="margin-top:10px">
+              <span class="price">₹${item.price}</span>
+              <button type="button" class="btn" style="padding:8px 16px" onclick="addToCart(${item.id}, this)">+ Add${qty > 0 ? ` (${qty})` : ''}</button>
             </div>
           </div>
-        </div>
-      `).join("") : "<p>No matching items found. Try clearing your search filter.</p>";
+        </div>`;
+      }).join("") : "<p class='meta'>No items match your search filter.</p>";
     }
 
-    function addToCart(id) {
-      const existing = cart.find(c => c.id === id);
-      if (existing) existing.qty += 1;
+    function spawnPlusOneBadge(btnEl) {
+      if (!btnEl) return;
+      const card = btnEl.closest(".m-card");
+      if (!card) return;
+      const badge = document.createElement("span");
+      badge.className = "plus-one-pop";
+      badge.textContent = "+1 Added";
+      card.appendChild(badge);
+      setTimeout(() => badge.remove(), 950);
+    }
+
+    function showTrayPopup(addedItemName) {
+      const totalItems = cart.reduce((sum, c) => sum + c.qty, 0);
+      const toast = document.getElementById("trayToast");
+      document.getElementById("toastTitle").textContent = `+1 ${addedItemName}`;
+      document.getElementById("toastSub").textContent = `${totalItems} Product${totalItems > 1 ? 's' : ''} in Tray • ₹${finalTotal} (Incl. 5% GST)`;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 4500);
+    }
+
+    function addToCart(id, btnEl) {
+      const found = cart.find(c => c.id === id);
+      if (found) found.qty += 1;
       else cart.push({ id, qty: 1 });
       renderCart();
-    }
-
-    function quickOrder(id) {
-      addToCart(id);
-      switchPage("order");
+      renderMenu();
+      spawnPlusOneBadge(btnEl);
+      const itemObj = MENU.find(m => m.id === id);
+      if (itemObj) showTrayPopup(itemObj.name);
     }
 
     function changeQty(id, delta) {
@@ -462,6 +1010,7 @@
       cart[idx].qty += delta;
       if (cart[idx].qty <= 0) cart.splice(idx, 1);
       renderCart();
+      renderMenu();
     }
 
     function applyPromo() {
@@ -484,15 +1033,15 @@
       document.getElementById("cartContainer").innerHTML = cart.length ? cart.map(c => {
         const item = MENU.find(m => m.id === c.id);
         return `
-          <div class="row" style="border-bottom:1px solid #eee;padding:8px 0">
-            <span><b>${item.name}</b><br><small style="color:var(--muted)">₹${item.price} × ${c.qty}</small></span>
+          <div class="row" style="border-bottom:1px solid var(--border);padding:8px 0">
+            <span><b>${item.name}</b><br><small class="meta">₹${item.price} × ${c.qty}</small></span>
             <div>
-              <button type="button" onclick="changeQty(${item.id}, -1)" style="padding:3px 10px;border-radius:6px;border:1px solid #ccc;cursor:pointer">-</button>
-              <b style="margin:0 6px">${c.qty}</b>
-              <button type="button" onclick="changeQty(${item.id}, 1)" style="padding:3px 10px;border-radius:6px;border:1px solid #ccc;cursor:pointer">+</button>
+              <button type="button" onclick="changeQty(${item.id}, -1)" style="padding:4px 11px;border-radius:999px;border:1px solid var(--border);cursor:pointer">-</button>
+              <b style="margin:0 7px">${c.qty}</b>
+              <button type="button" onclick="changeQty(${item.id}, 1)" style="padding:4px 11px;border-radius:999px;border:1px solid var(--border);cursor:pointer">+</button>
             </div>
           </div>`;
-      }).join("") : "<p class='meta'>Your tray is currently empty. Explore our menu to add coffee, pastries, or plates.</p>";
+      }).join("") : "<p class='meta'>Your tray is empty. Explore the Menu tab to add coffees, garlic bread, pizzas, or desserts.</p>";
 
       subTotal = cart.reduce((sum, c) => sum + MENU.find(m => m.id === c.id).price * c.qty, 0);
       if (subTotal < 300 && discountRate > 0) {
@@ -500,27 +1049,16 @@
         document.getElementById("promoMsg").textContent = "";
       }
       discAmt = Math.round(subTotal * discountRate);
-      gstAmt = Math.round((subTotal - discAmt) * 0.05);
-      finalTotal = subTotal - discAmt + gstAmt;
+      const taxableAmt = subTotal - discAmt;
+      gstAmt = Math.round(taxableAmt * GST_RATE);
+      finalTotal = taxableAmt + gstAmt;
 
       document.getElementById("billSummary").innerHTML = `
         <div>Item Subtotal: <b>₹${subTotal}</b></div>
         <div>Promo Discount: <b>-₹${discAmt}</b></div>
         <div>GST (5%): <b>₹${gstAmt}</b></div>
-        <div style="font-size:1.12rem;color:var(--primary-dark);border-top:1px solid #d8c6b4;margin-top:6px;padding-top:6px">Total Payable: <b>₹${finalTotal}</b></div>
+        <div style="font-size:1.12rem;color:var(--espresso);border-top:1px solid var(--border);margin-top:6px;padding-top:6px">Total Payable (Incl. GST): <b>₹${finalTotal}</b></div>
       `;
-    }
-
-    function confirmBooking(e) {
-      e.preventDefault();
-      const name = document.getElementById("bkName").value.trim();
-      const date = document.getElementById("bkDate").value;
-      const guests = document.getElementById("bkGuests").value;
-      const slot = document.getElementById("bkSlot").value;
-      const ref = "TBL-" + Math.floor(1000 + Math.random() * 9000);
-      const banner = document.getElementById("bookingStatus");
-      banner.style.display = "block";
-      banner.textContent = `✅ Table Reserved (${ref}) for ${name} (${guests}) on ${date} at ${slot}.`;
     }
 
     function updateTracker(text, status) {
@@ -530,75 +1068,106 @@
     }
 
     function copyUpiId() {
-      navigator.clipboard?.writeText("ojassachan@kotakbank");
-      updateTracker("📋 Copied ojassachan@kotakbank! Pay ₹" + finalTotal + " in any UPI app & enter 12-digit UTR below.", "");
+      navigator.clipboard?.writeText(UPI_ID);
+      updateTracker("📋 Copied " + UPI_ID + "! Pay ₹" + activePayable + " in any UPI app & enter 12-digit UTR below.", "");
     }
 
     function launchUpi(appName, scheme) {
       const sel = document.getElementById("payerApp");
       if (sel) sel.value = appName;
-      updateTracker("📱 Opening " + appName + "... (If on Laptop, scan the QR code above with your phone)", "");
+      updateTracker("📱 Opening " + appName + "... (If on Laptop, scan the QR code with your phone)", "");
       window.location.href = scheme;
     }
 
-    function openPaymentModal(e) {
+    function openOrderPaymentModal(e) {
       e.preventDefault();
-      if (!cart.length) return alert("Your tray is empty! Please add items from the Menu first.");
-      document.getElementById("modalPayAmt").textContent = "₹" + finalTotal;
+      if (!cart.length) return alert("Your tray is empty! Add at least one item first.");
+      checkoutContext = "order";
+      activePayable = finalTotal;
+      document.getElementById("gwTitle").textContent = "VelvetPay Order Checkout";
+      document.getElementById("modalPayAmt").textContent = "₹" + activePayable;
       selectPayMode("upi");
-      document.getElementById("payModal").classList.add("open");
+      document.getElementById("paySheetBackdrop").classList.add("open");
+    }
+
+    function startTableBookingPayment(e) {
+      e.preventDefault();
+      checkoutContext = "booking";
+      const bkGst = Math.round(BOOKING_BASE * GST_RATE);
+      activePayable = BOOKING_BASE + bkGst;
+      pendingBooking = {
+        name: document.getElementById("bkName").value.trim(),
+        phone: document.getElementById("bkPhone").value.trim(),
+        date: document.getElementById("bkDate").value,
+        guests: document.getElementById("bkGuests").value,
+        slot: document.getElementById("bkSlot").value,
+        base: BOOKING_BASE,
+        gst: bkGst,
+        total: activePayable
+      };
+      document.getElementById("gwTitle").textContent = "VelvetPay Table Reservation";
+      document.getElementById("modalPayAmt").textContent = "₹" + activePayable;
+      selectPayMode("upi");
+      document.getElementById("paySheetBackdrop").classList.add("open");
     }
 
     function closePaymentModal() {
-      document.getElementById("payModal").classList.remove("open");
+      document.getElementById("paySheetBackdrop").classList.remove("open");
     }
 
     function selectPayMode(mode) {
       payMode = mode;
-      document.querySelectorAll(".popt").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".mpill").forEach(el => el.classList.remove("active"));
       document.getElementById("opt-" + mode).classList.add("active");
       const body = document.getElementById("payModeBody");
-      const params = `pa=ojassachan@kotakbank&pn=The%20Velvet%20Bean%20Cafe&am=${finalTotal}&cu=INR&tn=CafeOrder`;
+      const note = checkoutContext === "booking" ? "VelvetBeanTable" : "VelvetBeanOrder";
+      const params = `pa=${UPI_ID}&pn=The%20Velvet%20Bean&am=${activePayable}&cu=INR&tn=${note}`;
       const genericUpi = `upi://pay?${params}`;
       const gpayUpi = `tez://upi/pay?${params}`;
       const phonepeUpi = `phonepe://pay?${params}`;
       const paytmUpi = `paytmmp://pay?${params}`;
+      const styledQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&color=3e2013&bgcolor=fbf6f0&qzone=1&data=${encodeURIComponent(genericUpi)}`;
 
       if (mode === "upi") {
-        updateTracker("⏳ Tracker: Pay via QR or UPI app below, then enter 12-digit UTR to verify.", "");
+        updateTracker("⏳ Tracker: Scan QR or pay ₹" + activePayable + " via UPI app, then enter 12-digit UTR.", "");
         body.innerHTML = `
-          <div class="qr">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(genericUpi)}" alt="UPI QR ojassachan@kotakbank" style="margin:auto;display:block;border-radius:8px" />
-            <div class="upi-copy-row">
-              <span style="font-size:0.82rem">UPI: <b>ojassachan@kotakbank</b></span>
-              <button type="button" class="copy-chip" onclick="copyUpiId()">Copy UPI</button>
+          <div class="qr-orb-box">
+            <div style="font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#3e2013;margin-bottom:8px">✦ Instant Multi-App UPI QR ✦</div>
+            <div class="qr-ring">
+              <img src="${styledQrUrl}" alt="UPI QR ${UPI_ID}" />
             </div>
-            <div class="uapps">
-              <a class="uapp" href="${gpayUpi}" onclick="launchUpi('Google Pay','${gpayUpi}');return false;">Pay via GPay</a>
-              <a class="uapp" href="${phonepeUpi}" onclick="launchUpi('PhonePe','${phonepeUpi}');return false;">Pay via PhonePe</a>
-              <a class="uapp" href="${paytmUpi}" onclick="launchUpi('Paytm','${paytmUpi}');return false;">Pay via Paytm</a>
-              <a class="uapp" href="${genericUpi}" onclick="launchUpi('BHIM / Other UPI','${genericUpi}');return false;">Other UPI App</a>
+            <div>
+              <div class="upi-tag">
+                <b style="color:#23120b">${UPI_ID}</b>
+                <button type="button" class="copy-mini" onclick="copyUpiId()">Copy UPI</button>
+              </div>
             </div>
-            <select id="payerApp" style="margin-top:4px">
-              <option value="Google Pay">App Used: Google Pay (GPay)</option>
-              <option value="PhonePe">App Used: PhonePe</option>
-              <option value="Paytm">App Used: Paytm</option>
-              <option value="BHIM / Other UPI">App Used: BHIM / Other UPI</option>
-            </select>
-            <input id="utrInput" maxlength="12" placeholder="Enter 12-Digit UPI UTR / Ref No. *" style="margin-bottom:0" />
-          </div>`;
+            <div class="app-grid">
+              <a class="app-btn" href="${gpayUpi}" onclick="launchUpi('Google Pay','${gpayUpi}');return false;">GPay</a>
+              <a class="app-btn" href="${phonepeUpi}" onclick="launchUpi('PhonePe','${phonepeUpi}');return false;">PhonePe</a>
+              <a class="app-btn" href="${paytmUpi}" onclick="launchUpi('Paytm','${paytmUpi}');return false;">Paytm</a>
+              <a class="app-btn" href="${genericUpi}" onclick="launchUpi('Other UPI','${genericUpi}');return false;">Other</a>
+            </div>
+          </div>
+          <select id="payerApp">
+            <option value="Google Pay">App Used: Google Pay (GPay)</option>
+            <option value="PhonePe">App Used: PhonePe</option>
+            <option value="Paytm">App Used: Paytm</option>
+            <option value="Kotak UPI / Other App">App Used: Kotak UPI / Other App</option>
+          </select>
+          <input id="utrInput" inputmode="numeric" maxlength="12" placeholder="Enter 12-Digit UPI UTR / Ref No. *" style="margin-bottom:0" />`;
       } else if (mode === "card") {
         updateTracker("⏳ Tracker: Enter Cardholder Name, 16-digit Card Number, Expiry & CVV.", "");
         body.innerHTML = `
           <input id="cardHolder" placeholder="Cardholder Full Name *" />
-          <input id="cardNum" placeholder="16-Digit Card Number *" maxlength="16" />
+          <input id="cardNum" inputmode="numeric" placeholder="16-Digit Card Number *" maxlength="16" />
           <div style="display:flex;gap:8px">
             <input id="cardExp" placeholder="MM/YY *" maxlength="5" />
-            <input id="cardCvv" placeholder="CVV *" maxlength="3" type="password" />
+            <input id="cardCvv" inputmode="numeric" placeholder="CVV *" maxlength="3" type="password" />
           </div>`;
       } else {
-        updateTracker("💵 Counter Mode: Pay ₹" + finalTotal + " at the Bidholi Café pickup counter.", "");
-        body.innerHTML = `<p style="background:#faf6f0;padding:12px;border-radius:10px;font-size:0.9rem">Pay <b>₹${finalTotal}</b> via Cash or UPI at the Bidholi Café counter upon pickup.</p>`;
+        updateTracker("💵 Counter Mode: Pay ₹" + activePayable + " at The Velvet Bean reception counter.", "");
+        body.innerHTML = `<p style="background:var(--tint);padding:14px;border-radius:20px;font-size:0.9rem">Pay <b>₹${activePayable}</b> (incl. 5% GST) via Cash or UPI at The Velvet Bean reception desk.</p>`;
       }
     }
 
@@ -608,7 +1177,7 @@
       btn.disabled = true;
 
       setTimeout(() => {
-        btn.textContent = "Verify Payment Status";
+        btn.textContent = "Verify & Issue GST Receipt →";
         btn.disabled = false;
         let refId = "", appUsed = "";
 
@@ -616,7 +1185,7 @@
           const utr = (document.getElementById("utrInput")?.value || "").trim();
           appUsed = document.getElementById("payerApp")?.value || "UPI App";
           if (!/^[0-9]{12}$/.test(utr)) {
-            return updateTracker("❌ PAYMENT FAILED: Invalid or missing 12-digit UPI UTR for ojassachan@kotakbank!", "fail");
+            return updateTracker("❌ PAYMENT FAILED: Invalid or missing 12-digit UPI UTR for " + UPI_ID + "!", "fail");
           }
           refId = "UTR" + utr;
         } else if (payMode === "card") {
@@ -634,26 +1203,77 @@
           appUsed = "Cash at Counter";
         }
 
-        updateTracker("✅ Payment Verified! Generating digital receipt...", "ok");
+        document.getElementById("step3Chip").classList.add("on");
+        updateTracker("✅ Payment Verified! Issuing GST receipt...", "ok");
         setTimeout(() => {
           closePaymentModal();
-          const orderId = "VB-" + Math.floor(1000 + Math.random() * 9000);
           const timeStr = new Date().toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" });
+          const statusLabel = payMode === "cash" ? "PAY AT COUNTER" : "PAID (VERIFIED)";
+
+          if (checkoutContext === "booking" && pendingBooking) {
+            const bookingId = "VB-TBL-" + Math.floor(1000 + Math.random() * 9000);
+            const bkRecord = {
+              bookingId,
+              timeStr,
+              name: pendingBooking.name,
+              phone: pendingBooking.phone,
+              date: pendingBooking.date,
+              guests: pendingBooking.guests,
+              slot: pendingBooking.slot,
+              amount: pendingBooking.total,
+              refId,
+              statusLabel
+            };
+            bookingLogs.unshift(bkRecord);
+            localStorage.setItem("vbr_booking_logs", JSON.stringify(bookingLogs));
+            renderBookingHistory();
+
+            paymentLogs.unshift({
+              orderId: bookingId,
+              timeStr,
+              custName: pendingBooking.name,
+              custPhone: pendingBooking.phone,
+              appUsed: "Table Booking • " + appUsed,
+              refId,
+              amount: pendingBooking.total,
+              statusLabel
+            });
+            localStorage.setItem("vbr_payment_logs", JSON.stringify(paymentLogs));
+            updateLogBadge();
+
+            document.getElementById("recHeading").textContent = "✅ Table Reservation Confirmed";
+            document.getElementById("receiptBody").innerHTML = `
+              <div class="rl"><span><b>Booking ID:</b> ${bookingId}</span><span><b>Ref:</b> ${refId}</span></div>
+              <div class="rl"><span><b>Guest:</b> ${pendingBooking.name} (${pendingBooking.phone})</span><span>${timeStr}</span></div>
+              <div class="rl"><span><b>Date:</b> ${pendingBooking.date}</span><span><b>Party:</b> ${pendingBooking.guests}</span></div>
+              <div class="rl"><span><b>Slot:</b> ${pendingBooking.slot}</span></div>
+              <div class="rl"><span><b>Mode:</b> ${appUsed}</span><span><b>To:</b> ${UPI_ID}</span></div>
+              <hr style="margin:8px 0;border:none;border-top:1px dashed #b99a82" />
+              <div class="rl"><span>Table Reservation Fee</span><span>₹${pendingBooking.base}</span></div>
+              <div class="rl"><span>GST (5%)</span><span>₹${pendingBooking.gst}</span></div>
+              <div class="rl" style="font-weight:800;font-size:1.06rem;color:var(--espresso);margin-top:4px">
+                <span>Total ${payMode === "cash" ? "Due" : "Paid"}</span><span>₹${pendingBooking.total}</span>
+              </div>
+            `;
+            document.getElementById("receiptModal").classList.add("open");
+            return;
+          }
+
+          const orderId = "VB-" + Math.floor(1000 + Math.random() * 9000);
           const custName = document.getElementById("custName").value.trim();
           const custPhone = document.getElementById("custPhone").value.trim();
-          const statusLabel = payMode === "cash" ? "PAY AT COUNTER" : "PAID (VERIFIED)";
 
           paymentLogs.unshift({
             orderId,
             timeStr,
             custName,
             custPhone,
-            appUsed,
+            appUsed: "Order • " + appUsed,
             refId,
             amount: finalTotal,
             statusLabel
           });
-          localStorage.setItem("vb_payment_logs", JSON.stringify(paymentLogs));
+          localStorage.setItem("vbr_payment_logs", JSON.stringify(paymentLogs));
           updateLogBadge();
 
           const itemsLines = cart.map(c => {
@@ -661,18 +1281,19 @@
             return `<div class="rl"><span>${m.name} × ${c.qty}</span><span>₹${m.price * c.qty}</span></div>`;
           }).join("");
 
+          document.getElementById("recHeading").textContent = "✅ Payment Verified";
           document.getElementById("receiptBody").innerHTML = `
             <div class="rl"><span><b>Order ID:</b> ${orderId}</span><span><b>Ref:</b> ${refId}</span></div>
             <div class="rl"><span><b>Customer:</b> ${custName} (${custPhone})</span><span>${timeStr}</span></div>
-            <div class="rl"><span><b>Mode:</b> ${appUsed}</span><span><b>To:</b> ojassachan@kotakbank</span></div>
+            <div class="rl"><span><b>Mode:</b> ${appUsed}</span><span><b>To:</b> ${UPI_ID}</span></div>
             <div class="rl"><span><b>Status:</b> ${statusLabel}</span><span>${document.getElementById("custSlot").value}</span></div>
-            <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
+            <hr style="margin:8px 0;border:none;border-top:1px dashed #b99a82" />
             ${itemsLines}
-            <hr style="margin:8px 0;border:none;border-top:1px dashed #c8b6a6" />
+            <hr style="margin:8px 0;border:none;border-top:1px dashed #b99a82" />
             <div class="rl"><span>Subtotal</span><span>₹${subTotal}</span></div>
             <div class="rl"><span>Discount</span><span>-₹${discAmt}</span></div>
             <div class="rl"><span>GST (5%)</span><span>₹${gstAmt}</span></div>
-            <div class="rl" style="font-weight:800;font-size:1.06rem;color:var(--primary-dark);margin-top:4px">
+            <div class="rl" style="font-weight:800;font-size:1.06rem;color:var(--espresso);margin-top:4px">
               <span>Total ${payMode === "cash" ? "Due" : "Paid"}</span><span>₹${finalTotal}</span>
             </div>
           `;
@@ -685,6 +1306,33 @@
       document.getElementById("receiptModal").classList.remove("open");
     }
 
+    function renderBookingHistory() {
+      document.getElementById("bkHistCount").textContent = bookingLogs.length;
+      const tbody = document.getElementById("bookingHistoryBody");
+      if (!bookingLogs.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:20px">No table reservations yet. Complete a table booking above to see it here.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = bookingLogs.map(b => `
+        <tr>
+          <td><b>${b.bookingId}</b><br><small class="meta">${b.timeStr}</small></td>
+          <td><b>${b.name}</b><br><small class="meta">${b.phone}</small></td>
+          <td><b>${b.date}</b><br><small class="meta">${b.slot}</small></td>
+          <td>${b.guests}</td>
+          <td><b>₹${b.amount}</b></td>
+          <td><b>${b.refId}</b></td>
+          <td><span class="tag tag-veg">${b.statusLabel}</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function clearBookingHistory() {
+      if (!confirm("Clear saved table booking history?")) return;
+      bookingLogs = [];
+      localStorage.removeItem("vbr_booking_logs");
+      renderBookingHistory();
+    }
+
     function updateLogBadge() {
       document.getElementById("logCount").textContent = paymentLogs.length;
     }
@@ -693,17 +1341,17 @@
       updateLogBadge();
       const tbody = document.getElementById("logsTableBody");
       if (!paymentLogs.length) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">No transactions recorded yet. Complete a checkout to see payment logs here.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">No transactions recorded yet.</td></tr>`;
         return;
       }
       tbody.innerHTML = paymentLogs.map(log => `
         <tr>
-          <td><b>${log.orderId}</b><br><small style="color:var(--muted)">${log.timeStr}</small></td>
-          <td><b>${log.custName}</b><br><small style="color:var(--muted)">${log.custPhone}</small></td>
+          <td><b>${log.orderId}</b><br><small class="meta">${log.timeStr}</small></td>
+          <td><b>${log.custName}</b><br><small class="meta">${log.custPhone}</small></td>
           <td>${log.appUsed}</td>
           <td><b>${log.refId}</b></td>
           <td><b>₹${log.amount}</b></td>
-          <td><span class="badge badge-vegan">${log.statusLabel}</span></td>
+          <td><span class="tag tag-veg">${log.statusLabel}</span></td>
         </tr>
       `).join("");
     }
@@ -711,12 +1359,13 @@
     function clearLogs() {
       if (!confirm("Clear all saved payment logs from this browser?")) return;
       paymentLogs = [];
-      localStorage.removeItem("vb_payment_logs");
+      localStorage.removeItem("vbr_payment_logs");
       renderLogs();
     }
 
     renderMenu();
     renderCart();
+    renderBookingHistory();
     updateLogBadge();
   </script>
 </body>
