@@ -24,13 +24,13 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif; }
-    html, body { max-width: 100%; overflow-x: hidden; background: var(--cream); color: var(--ink); line-height: 1.6; scroll-behavior: smooth; }
+    html, body { max-width: 100%; overflow-x: clip; background: var(--cream); color: var(--ink); line-height: 1.6; }
 
     /* FLOATING CAPSULE NAVBAR */
     .nav-shell { position: fixed; top: 12px; left: 0; right: 0; z-index: 70; padding: 0 14px; }
     header {
       max-width: 1180px; margin: 0 auto;
-      background: rgba(30, 15, 9, 0.88);
+      background: rgba(30, 15, 9, 0.90);
       backdrop-filter: blur(18px);
       border: 1.5px solid rgba(229, 198, 160, 0.35);
       border-radius: 999px;
@@ -74,49 +74,68 @@
     .page-view { display: none; }
     .page-view.active { display: block; }
 
-    /* 240VH SCROLL-MORPHING 3D COFFEE STAGE */
-    .scrolly-wrapper { position: relative; height: 240vh; width: 100%; }
+    /* 260VH SCROLL-MORPHING 3D COFFEE STAGE */
+    .scrolly-wrapper { position: relative; height: 260vh; width: 100%; }
     .sticky-stage {
-      position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: radial-gradient(circle at 55% 48%, #59331e 0%, #2a150b 52%, #140905 100%);
-      transition: background 0.35s linear;
     }
     .silk-ribbons-layer {
       position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;
-      opacity: 0.25; transition: opacity 0.25s linear, transform 0.25s linear;
+      opacity: 0.35; will-change: transform, opacity;
     }
     .ribbon-stroke {
       fill: none; stroke-linecap: round;
-      animation: silkWave 8s ease-in-out infinite alternate;
+      animation: silkWave 7s ease-in-out infinite alternate;
     }
     @keyframes silkWave {
-      0% { transform: translateX(-22px) translateY(8px); }
-      100% { transform: translateX(22px) translateY(-10px); }
+      0% { transform: translateX(-24px) translateY(8px); }
+      100% { transform: translateX(24px) translateY(-10px); }
     }
     .hero-bottom-curve {
       position: absolute; bottom: -1px; left: 0; width: 100%; height: 46px;
       fill: var(--cream); pointer-events: none; z-index: 15;
     }
 
+    /* STAGE PROGRESS DOTS */
+    .stage-dots {
+      position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 10px; z-index: 25;
+    }
+    @media (max-width: 820px) { .stage-dots { right: 12px; } }
+    .s-dot {
+      width: 9px; height: 9px; border-radius: 999px;
+      background: rgba(247, 234, 217, 0.3);
+      transition: all 0.3s ease;
+    }
+    .s-dot.on { height: 26px; background: var(--gold); box-shadow: 0 0 12px rgba(217, 168, 91, 0.7); }
+
     .stage-container {
-      position: relative; z-index: 10; max-width: 1180px; width: 100%; padding: 70px 24px 60px;
+      position: relative; z-index: 10; max-width: 1180px; width: 100%; padding: 70px 28px 60px;
       display: grid; grid-template-columns: 1fr 1.15fr 0.75fr; align-items: center; gap: 20px;
     }
     @media (max-width: 920px) {
-      .stage-container { grid-template-columns: 1fr; text-align: center; padding-top: 118px; gap: 8px; }
+      .stage-container { grid-template-columns: 1fr; text-align: center; padding-top: 116px; gap: 8px; }
       .stage-right-note { display: none; }
     }
 
     .stage-copy { position: relative; min-height: 210px; display: flex; flex-direction: column; justify-content: center; }
     .copy-slide {
       position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center;
-      opacity: 0; transform: translateY(24px); pointer-events: none;
-      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 0; transform: translateY(28px); pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .copy-slide.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
     @media (max-width: 920px) {
-      .stage-copy { min-height: 155px; align-items: center; }
+      .stage-copy { min-height: 150px; align-items: center; }
       .copy-slide { align-items: center; }
     }
 
@@ -137,7 +156,7 @@
 
     /* CENTERPIECE 3D GLASS LATTE MUG + SPLASH + ICE + BEANS */
     .center-mug-wrap { position: relative; height: 390px; display: grid; place-items: center; perspective: 1100px; }
-    @media (max-width: 920px) { .center-mug-wrap { height: 285px; } }
+    @media (max-width: 920px) { .center-mug-wrap { height: 275px; } }
 
     .mug-3d-rig {
       position: relative; width: 280px; height: 310px; display: grid; place-items: center;
@@ -152,8 +171,7 @@
 
     .milk-splash-svg {
       position: absolute; width: 320px; height: 290px; top: -12px; left: -20px;
-      pointer-events: none; opacity: 0; transform: scale(0.75) translateY(20px);
-      transition: opacity 0.25s linear, transform 0.25s linear;
+      pointer-events: none; opacity: 0; will-change: transform, opacity;
     }
 
     .aroma-steam {
@@ -171,21 +189,21 @@
     }
 
     .orbit-bean {
-      position: absolute; width: 34px; height: 22px; border-radius: 50%;
+      position: absolute; width: 36px; height: 23px; border-radius: 50%;
       background: radial-gradient(circle at 35% 30%, #7c4728, #2b1308 80%);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45), inset 0 2px 4px rgba(255, 220, 185, 0.35);
       will-change: transform;
     }
     .orbit-bean::after {
-      content: ""; position: absolute; top: 4px; left: 15px; width: 2px; height: 14px;
+      content: ""; position: absolute; top: 4px; left: 16px; width: 2px; height: 15px;
       background: #140703; border-radius: 50%; transform: rotate(12deg);
     }
 
     .crystal-ice {
       position: absolute; border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.22) 55%, rgba(217, 168, 91, 0.35) 100%);
-      border: 1.5px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28), inset 0 0 12px rgba(255, 255, 255, 0.65);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.24) 55%, rgba(217, 168, 91, 0.35) 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28), inset 0 0 12px rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(4px); opacity: 0; will-change: transform, opacity;
     }
 
@@ -195,7 +213,7 @@
 
     .stage-bottom-bar {
       position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-      z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 10px;
+      z-index: 20; display: flex; flex-direction: column; align-items: center; gap: 9px;
     }
     .scroll-hint {
       font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
@@ -425,7 +443,7 @@
     <header>
       <div class="mast">
         <div class="brand" onclick="switchPage('home')">
-          <img src="logo.jpg?v=8" alt="The Velvet Bean Logo" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231e0f09%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2234%22 font-weight=%22bold%22 fill=%22%23f7ead9%22 text-anchor=%22middle%22>VB</text></svg>'" />
+          <img src="logo.jpg?v=9" alt="The Velvet Bean Logo" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%231e0f09%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2234%22 font-weight=%22bold%22 fill=%22%23f7ead9%22 text-anchor=%22middle%22>VB</text></svg>'" />
           <div>
             <span>The Velvet Bean</span>
             <span class="brand-sub">Roastery &amp; Cafe</span>
@@ -443,7 +461,7 @@
     </header>
   </div>
 
-  <!-- PAGE 1: HOME WITH 240VH SCROLL-MORPHING 3D COFFEE STAGE -->
+  <!-- PAGE 1: HOME WITH 260VH SCROLL-MORPHING 3D COFFEE STAGE -->
   <section id="view-home" class="page-view active">
     <div class="scrolly-wrapper" id="scrollyWrapper">
       <div class="sticky-stage" id="stickyStage">
@@ -451,14 +469,21 @@
         <svg class="silk-ribbons-layer" id="silkLayer" viewBox="0 0 1440 800" preserveAspectRatio="none">
           <defs>
             <linearGradient id="silkGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f7ead9" stop-opacity="0.05" />
-              <stop offset="50%" stop-color="#e5c6a0" stop-opacity="0.85" />
-              <stop offset="100%" stop-color="#f7ead9" stop-opacity="0.05" />
+              <stop offset="0%" stop-color="#f7ead9" stop-opacity="0.08" />
+              <stop offset="50%" stop-color="#e5c6a0" stop-opacity="0.90" />
+              <stop offset="100%" stop-color="#f7ead9" stop-opacity="0.08" />
             </linearGradient>
           </defs>
-          <path class="ribbon-stroke" stroke="url(#silkGrad1)" stroke-width="58" d="M-80,580 C260,260 620,690 980,360 C1180,180 1340,420 1520,280" />
-          <path class="ribbon-stroke" style="animation-delay:-3.5s" stroke="url(#silkGrad1)" stroke-width="34" d="M-80,260 C320,560 720,140 1080,460 C1280,620 1380,290 1520,420" />
+          <path class="ribbon-stroke" stroke="url(#silkGrad1)" stroke-width="64" d="M-80,580 C260,260 620,690 980,360 C1180,180 1340,420 1520,280" />
+          <path class="ribbon-stroke" style="animation-delay:-3.5s" stroke="url(#silkGrad1)" stroke-width="38" d="M-80,260 C320,560 720,140 1080,460 C1280,620 1380,290 1520,420" />
         </svg>
+
+        <!-- STAGE DOTS -->
+        <div class="stage-dots">
+          <span class="s-dot on" id="dot-0"></span>
+          <span class="s-dot" id="dot-1"></span>
+          <span class="s-dot" id="dot-2"></span>
+        </div>
 
         <div class="stage-container">
           <!-- LEFT MORPHING COPY -->
@@ -492,12 +517,12 @@
 
               <!-- MILK SPLASH CROWN (SCROLL REVEAL) -->
               <svg class="milk-splash-svg" id="milkSplash" viewBox="0 0 320 290">
-                <path d="M85,125 Q55,70 42,88 Q68,125 75,148 Z" fill="#fffaf3" opacity="0.92" />
-                <path d="M235,122 Q272,58 286,78 Q258,124 245,146 Z" fill="#fffaf3" opacity="0.95" />
+                <path d="M85,125 Q55,70 42,88 Q68,125 75,148 Z" fill="#fffaf3" opacity="0.94" />
+                <path d="M235,122 Q272,58 286,78 Q258,124 245,146 Z" fill="#fffaf3" opacity="0.96" />
                 <circle cx="48" cy="64" r="6" fill="#fffaf3" />
                 <circle cx="278" cy="52" r="7" fill="#fffaf3" />
                 <circle cx="294" cy="96" r="5" fill="#fffaf3" />
-                <path d="M72,225 Q160,255 248,225 Q210,244 160,244 Q110,244 72,225 Z" fill="#f7ead9" opacity="0.85" />
+                <path d="M72,225 Q160,255 248,225 Q210,244 160,244 Q110,244 72,225 Z" fill="#f7ead9" opacity="0.88" />
               </svg>
 
               <!-- 3D ORBITING ROASTED BEANS -->
@@ -905,9 +930,11 @@
     let checkoutContext = "order";
     let pendingBooking = null;
     let toastTimer = null;
+    let ticking = false;
     let subTotal = 0, discAmt = 0, gstAmt = 0, finalTotal = 0, activePayable = 0;
 
     function updateScrollStage() {
+      ticking = false;
       const wrapper = document.getElementById("scrollyWrapper");
       if (!wrapper || !document.getElementById("view-home").classList.contains("active")) return;
 
@@ -919,9 +946,9 @@
       const p = scrolled / totalScroll;
 
       const stage = document.getElementById("stickyStage");
-      if (p < 0.35) {
+      if (p < 0.34) {
         stage.style.background = "radial-gradient(circle at 55% 48%, #59331e 0%, #2a150b 52%, #140905 100%)";
-      } else if (p < 0.72) {
+      } else if (p < 0.68) {
         stage.style.background = "radial-gradient(circle at 52% 45%, #b8844c 0%, #6d3d22 54%, #2b150b 100%)";
       } else {
         stage.style.background = "radial-gradient(circle at 50% 45%, #d6a972 0%, #8c5230 56%, #361b0f 100%)";
@@ -929,52 +956,54 @@
 
       const activeSlide = p < 0.34 ? 0 : (p < 0.68 ? 1 : 2);
       [0, 1, 2].forEach(i => {
-        const el = document.getElementById("slide-" + i);
-        if (el) el.classList.toggle("active", i === activeSlide);
+        const slideEl = document.getElementById("slide-" + i);
+        const dotEl = document.getElementById("dot-" + i);
+        if (slideEl) slideEl.classList.toggle("active", i === activeSlide);
+        if (dotEl) dotEl.classList.toggle("on", i === activeSlide);
       });
 
       const silk = document.getElementById("silkLayer");
       if (silk) {
-        const ribbonVis = Math.min(Math.max((p - 0.15) * 1.6, 0.15), 0.75);
+        const ribbonVis = Math.min(Math.max(0.2 + p * 0.65, 0.2), 0.85);
         silk.style.opacity = ribbonVis.toFixed(2);
-        silk.style.transform = `scale(${(0.94 + p * 0.12).toFixed(3)})`;
+        silk.style.transform = `scale(${(0.95 + p * 0.14).toFixed(3)})`;
       }
 
       const mug = document.getElementById("mugRig");
       if (mug) {
-        const rotY = Math.sin(p * Math.PI * 2) * 16;
-        const rotZ = (p - 0.5) * 12;
-        const scale = 1 + Math.sin(p * Math.PI) * 0.08;
+        const rotY = Math.sin(p * Math.PI * 2) * 18;
+        const rotZ = (p - 0.5) * 14;
+        const scale = 1 + Math.sin(p * Math.PI) * 0.1;
         mug.style.transform = `rotateY(${rotY.toFixed(1)}deg) rotateZ(${rotZ.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
       }
 
       const splash = document.getElementById("milkSplash");
       if (splash) {
-        const sOp = Math.min(Math.max((p - 0.22) * 2.5, 0), 1);
+        const sOp = Math.min(Math.max((p - 0.18) * 2.6, 0), 1);
         splash.style.opacity = sOp.toFixed(2);
-        splash.style.transform = `scale(${(0.75 + sOp * 0.28).toFixed(2)}) translateY(${((1 - sOp) * 22).toFixed(1)}px)`;
+        splash.style.transform = `scale(${(0.75 + sOp * 0.3).toFixed(2)}) translateY(${((1 - sOp) * 22).toFixed(1)}px)`;
       }
 
       const b1 = document.getElementById("bean1");
       const b2 = document.getElementById("bean2");
       const b3 = document.getElementById("bean3");
       const b4 = document.getElementById("bean4");
-      if (b1) b1.style.transform = `translate(${(-p * 34).toFixed(1)}px, ${(-p * 26).toFixed(1)}px) rotate(${(-28 + p * 140).toFixed(0)}deg)`;
-      if (b2) b2.style.transform = `translate(${(p * 36).toFixed(1)}px, ${(p * 24).toFixed(1)}px) rotate(${(35 - p * 150).toFixed(0)}deg)`;
-      if (b3) b3.style.transform = `translate(${(p * 28).toFixed(1)}px, ${(-p * 32).toFixed(1)}px) rotate(${(18 + p * 120).toFixed(0)}deg)`;
-      if (b4) b4.style.transform = `translate(${(-p * 26).toFixed(1)}px, ${(p * 30).toFixed(1)}px) rotate(${(-40 - p * 110).toFixed(0)}deg)`;
+      if (b1) b1.style.transform = `translate(${(-p * 38).toFixed(1)}px, ${(-p * 28).toFixed(1)}px) rotate(${(-28 + p * 150).toFixed(0)}deg)`;
+      if (b2) b2.style.transform = `translate(${(p * 40).toFixed(1)}px, ${(p * 26).toFixed(1)}px) rotate(${(35 - p * 160).toFixed(0)}deg)`;
+      if (b3) b3.style.transform = `translate(${(p * 32).toFixed(1)}px, ${(-p * 34).toFixed(1)}px) rotate(${(18 + p * 130).toFixed(0)}deg)`;
+      if (b4) b4.style.transform = `translate(${(-p * 30).toFixed(1)}px, ${(p * 32).toFixed(1)}px) rotate(${(-40 - p * 120).toFixed(0)}deg)`;
 
-      const iceVis = Math.min(Math.max((p - 0.52) * 2.4, 0), 1);
+      const iceVis = Math.min(Math.max((p - 0.50) * 2.5, 0), 1);
       [
-        { id: "ice1", x: -38, y: -28, r: -24 },
-        { id: "ice2", x: 42, y: 24, r: 28 },
-        { id: "ice3", x: 36, y: -32, r: 18 },
-        { id: "ice4", x: -34, y: 28, r: -16 }
+        { id: "ice1", x: -42, y: -30, r: -24 },
+        { id: "ice2", x: 44, y: 26, r: 28 },
+        { id: "ice3", x: 38, y: -34, r: 18 },
+        { id: "ice4", x: -36, y: 30, r: -16 }
       ].forEach(ic => {
         const el = document.getElementById(ic.id);
         if (el) {
           el.style.opacity = iceVis.toFixed(2);
-          el.style.transform = `translate(${(ic.x * iceVis).toFixed(1)}px, ${(ic.y * iceVis).toFixed(1)}px) rotate(${(ic.r * iceVis + p * 45).toFixed(0)}deg) scale(${(0.6 + iceVis * 0.45).toFixed(2)})`;
+          el.style.transform = `translate(${(ic.x * iceVis).toFixed(1)}px, ${(ic.y * iceVis).toFixed(1)}px) rotate(${(ic.r * iceVis + p * 50).toFixed(0)}deg) scale(${(0.6 + iceVis * 0.45).toFixed(2)})`;
         }
       });
 
@@ -982,7 +1011,15 @@
       if (hint) hint.style.opacity = p > 0.85 ? "0" : "0.9";
     }
 
-    window.addEventListener("scroll", updateScrollStage, { passive: true });
+    function requestScrollTick() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollStage);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", requestScrollTick, { passive: true });
+    window.addEventListener("resize", requestScrollTick, { passive: true });
 
     function switchPage(pageId) {
       document.querySelectorAll(".page-view").forEach(p => p.classList.remove("active"));
@@ -992,8 +1029,8 @@
       if (pageId === "order") document.getElementById("trayToast").classList.remove("show");
       if (pageId === "logs") renderLogs();
       if (pageId === "table") renderBookingHistory();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      if (pageId === "home") setTimeout(updateScrollStage, 50);
+      window.scrollTo({ top: 0, behavior: "auto" });
+      if (pageId === "home") requestScrollTick();
     }
 
     function filterCat(cat, btn) {
